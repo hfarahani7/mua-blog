@@ -84,7 +84,9 @@ export default function Header() {
             }}>
 
             <div style={{ width: "30%" }}>
-                <img src="/assets/logo.png" alt="Logo" style={{ height: "40px" }} href="/index" />
+                <Link href="/">
+                    <img src="/assets/logo.png" alt="Logo" style={{ height: "40px" }} />
+                </Link>
             </div>
 
             <nav style={{ width: "70%" }}>
