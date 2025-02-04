@@ -14,18 +14,18 @@ export default function Header() {
                 { label: "About Me", href: "/inquiries#me" }
             ]
         },
-        {
-            label: "Reviews",
-            href: "/reviews"
-        },
+        // {
+        //     label: "Reviews",
+        //     href: "/reviews"
+        // },
         { //move to under about?
             label: "Process",
             href: "/process",
             subLinks: [
-                { label: "travel", href: "/process#travel" },
-                { label: "rates", href: "/process#rates" },
-                { label: "cancellation", href: "/process#cancellation" },
-                { label: "deposits", href: "/process#deposits" },
+                { label: "Travel", href: "/process#travel" },
+                { label: "Rates", href: "/process#rates" },
+                { label: "Cancellation", href: "/process#cancellation" },
+                { label: "Deposits", href: "/process#deposits" },
             ]
         }
     ];
@@ -35,7 +35,7 @@ export default function Header() {
         justifyContent: "space-evenly", 
         alignItems: "center",
     };
-
+ 
     const dropdownContainerStyle = {
         position: "absolute",
         top: "100%",

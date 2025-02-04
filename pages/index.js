@@ -60,7 +60,7 @@ export default function Home() {
         </p>
 
         <h2 style={{ marginBottom: '1rem' }}>Recent Looks</h2>
-        {mounted && (
+        {mounted && ( //make this a component and import?
           <div style={instagramGridStyle}>
           <blockquote
             className="instagram-media"
