@@ -12,10 +12,8 @@ import {
 } from '@mui/material';
 
 const Inquiries = () => {
-  // Track which page you’re on (1 or 2)
   const [step, setStep] = useState(1);
 
-  // Collect all form fields here
   const [formData, setFormData] = useState({
     // Page 1 fields
     firstName: '',
@@ -29,7 +27,6 @@ const Inquiries = () => {
     zip: '',
     country: '',
     // Page 2 fields
-    // Services checkboxes
     services: {
       hair: false,
       makeup: false,
@@ -37,23 +34,19 @@ const Inquiries = () => {
     weddingDate: '',
     venue: '',
     gettingReadyLocation: '',
-    // Bridal Party Services
     bridalPartyGuests: '',
     bridalPartyHair: false,
     bridalPartyMakeup: false,
     additionalInfo: '',
   });
 
-  // Standard change handler for text fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // For checkboxes that may live in nested objects
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
-    // Check if the checkbox belongs to the services object
     if (name in formData.services) {
       setFormData(prev => ({
         ...prev,
@@ -64,7 +57,6 @@ const Inquiries = () => {
     }
   };
 
-  // Navigation functions for the multi-step flow
   const handleNext = () => {
     setStep(2);
   };
@@ -73,11 +65,9 @@ const Inquiries = () => {
     setStep(1);
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create a combined message from all the fields
     const message = `
       First Name: ${formData.firstName}
       Last Name: ${formData.lastName}
@@ -106,7 +96,6 @@ const Inquiries = () => {
       Additional Info: ${formData.additionalInfo}
     `;
 
-    // For the email API, we combine the first and last name
     const name = `${formData.firstName} ${formData.lastName}`;
     const payload = {
       name,
@@ -137,6 +126,7 @@ const Inquiries = () => {
       <form onSubmit={handleSubmit}>
         {step === 1 && (
           <Box>
+
             <Typography variant="h4" gutterBottom>
               Contact Information
             </Typography>
@@ -151,24 +141,34 @@ const Inquiries = () => {
               />
             </Box>
 
-            <TextField
-              fullWidth
-              label="First Name"
-              name="firstName"
-              placeholder="E.g. John"
-              value={formData.firstName}
-              onChange={handleChange}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="Last Name"
-              name="lastName"
-              placeholder="E.g. Doe"
-              value={formData.lastName}
-              onChange={handleChange}
-              margin="normal"
-            />
+            <Box
+                sx={{ 
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: '10px'
+                }}
+            >  
+                <TextField
+                    fullWidth
+                    label="First Name"
+                    name="firstName"
+                    placeholder="E.g. John"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    margin="normal"
+                />
+                <TextField
+                    fullWidth
+                    label="Last Name"
+                    name="lastName"
+                    placeholder="E.g. Doe"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    margin="normal"
+                />
+
+            </Box>
+            
             <TextField
               fullWidth
               required
