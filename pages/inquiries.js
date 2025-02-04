@@ -1,85 +1,392 @@
-import { useState } from 'react';
+// components/MultiStepForm.js
+import React, { useState } from 'react';
+import Image from 'next/image';
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  TextField,
+  Typography
+} from '@mui/material';
 
-export default function Inquiries() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+const Inquiries = () => {
+  // Track which page you’re on (1 or 2)
+  const [step, setStep] = useState(1);
 
-    const [status, setStatus] = useState(null);
+  // Collect all form fields here
+  const [formData, setFormData] = useState({
+    // Page 1 fields
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    streetAddress: '',
+    apartment: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: '',
+    // Page 2 fields
+    // Services checkboxes
+    services: {
+      hair: false,
+      makeup: false,
+    },
+    weddingDate: '',
+    venue: '',
+    gettingReadyLocation: '',
+    // Bridal Party Services
+    bridalPartyGuests: '',
+    bridalPartyHair: false,
+    bridalPartyMakeup: false,
+    additionalInfo: '',
+  });
 
-    async function handleSubmit(e) {
-        e.preventDeault();
+  // Standard change handler for text fields
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-        try {
-            const res = await fetch('/api/send-inquiry', { 
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, email, message })
-            });
-    
-            if (res.ok) {
-                setName('');
-                setEmail('');
-                setMessage('');
-                setStatus('success');
-            } else {
-                throw new Error('Email could not be sent.');
-            }
-        } catch (error) {
-            setStatus('error');
-        }
+  // For checkboxes that may live in nested objects
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    // Check if the checkbox belongs to the services object
+    if (name in formData.services) {
+      setFormData(prev => ({
+        ...prev,
+        services: { ...prev.services, [name]: checked }
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: checked }));
     }
+  };
 
-    return (
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <h1>Inquiries</h1>
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            
-            <label>
-            Name:
-            <input 
-                type="text" 
-                value={name} 
-                onChange={(e) => setName(e.target.value)}
-                required 
+  // Navigation functions for the multi-step flow
+  const handleNext = () => {
+    setStep(2);
+  };
+
+  const handlePrevious = () => {
+    setStep(1);
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Create a combined message from all the fields
+    const message = `
+      First Name: ${formData.firstName}
+      Last Name: ${formData.lastName}
+      Email: ${formData.email}
+      Phone: ${formData.phone}
+      Street Address: ${formData.streetAddress}
+      Apartment: ${formData.apartment}
+      City: ${formData.city}
+      State/Province: ${formData.state}
+      ZIP/Postal Code: ${formData.zip}
+      Country: ${formData.country}
+
+      Services Selected: ${Object.entries(formData.services)
+        .filter(([key, value]) => value)
+        .map(([key]) => key)
+        .join(', ')}
+
+      Wedding Date: ${formData.weddingDate}
+      Venue: ${formData.venue}
+      Getting Ready Location: ${formData.gettingReadyLocation}
+
+      Bridal Party Guests Requiring Services: ${formData.bridalPartyGuests}
+      Bridal Party Hair: ${formData.bridalPartyHair ? 'Yes' : 'No'}
+      Bridal Party Makeup: ${formData.bridalPartyMakeup ? 'Yes' : 'No'}
+
+      Additional Info: ${formData.additionalInfo}
+    `;
+
+    // For the email API, we combine the first and last name
+    const name = `${formData.firstName} ${formData.lastName}`;
+    const payload = {
+      name,
+      email: formData.email,
+      message,
+    };
+
+    try {
+      const res = await fetch('/api/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        alert('Email sent successfully!');
+        // Optionally reset the form or redirect the user here
+      } else {
+        alert('Failed to send message.');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('An error occurred while sending your message.');
+    }
+  };
+
+  return (
+    <Box sx={{ maxWidth: 600, mx: 'auto', p: 2 }}>
+      <form onSubmit={handleSubmit}>
+        {step === 1 && (
+          <Box>
+            <Typography variant="h4" gutterBottom>
+              Contact Information
+            </Typography>
+
+            {/* Display your current Page 1 image */}
+            <Box sx={{ my: 2 }}>
+              <Image
+                src="/images/form-page1.png"  // Replace with your actual image path
+                alt="Form Page 1"
+                width={600}
+                height={400}
+              />
+            </Box>
+
+            <TextField
+              fullWidth
+              label="First Name"
+              name="firstName"
+              placeholder="E.g. John"
+              value={formData.firstName}
+              onChange={handleChange}
+              margin="normal"
             />
-            </label>
-
-            <label>
-            Email:
-            <input 
-                type="email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)}
-                required 
+            <TextField
+              fullWidth
+              label="Last Name"
+              name="lastName"
+              placeholder="E.g. Doe"
+              value={formData.lastName}
+              onChange={handleChange}
+              margin="normal"
             />
-            </label>
-
-            <label>
-            Message:
-            <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows="5"
-                required
+            <TextField
+              fullWidth
+              required
+              label="Email Address"
+              name="email"
+              placeholder="E.g. john@doe.com"
+              value={formData.email}
+              onChange={handleChange}
+              margin="normal"
             />
-            </label>
+            <TextField
+              fullWidth
+              label="Phone Number"
+              name="phone"
+              placeholder="E.g. +1 3004005000"
+              value={formData.phone}
+              onChange={handleChange}
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="Street Address"
+              name="streetAddress"
+              placeholder="E.g. 42 Wallaby Way"
+              value={formData.streetAddress}
+              onChange={handleChange}
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="Apartment, suite, etc"
+              name="apartment"
+              placeholder=""
+              value={formData.apartment}
+              onChange={handleChange}
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="City"
+              name="city"
+              placeholder="E.g. Sydney"
+              value={formData.city}
+              onChange={handleChange}
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="State/Province"
+              name="state"
+              placeholder="E.g. New South Wales"
+              value={formData.state}
+              onChange={handleChange}
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="ZIP / Postal Code"
+              name="zip"
+              placeholder="E.g. 2000"
+              value={formData.zip}
+              onChange={handleChange}
+              margin="normal"
+            />
+            <TextField
+              fullWidth
+              label="Country"
+              name="country"
+              placeholder=""
+              value={formData.country}
+              onChange={handleChange}
+              margin="normal"
+            />
 
-            <button type="submit">Send Inquiry</button>
-        </form>
-
-        {status === 'success' && (
-            <p style={{ color: 'green', marginTop: '1rem' }}>
-            Thank you! Your inquiry has been sent.
-            </p>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+              <Button variant="contained" color="primary" onClick={handleNext}>
+                Next
+              </Button>
+            </Box>
+          </Box>
         )}
-        {status === 'error' && (
-            <p style={{ color: 'red', marginTop: '1rem' }}>
-            Oops! Something went wrong. Please try again.
-            </p>
+
+        {step === 2 && (
+          <Box>
+            <Typography variant="h4" gutterBottom>
+              Service Details
+            </Typography>
+
+            {/* Display your current Page 2 image */}
+            <Box sx={{ my: 2 }}>
+              <Image
+                src="/images/form-page2.png"  // Replace with your actual image path
+                alt="Form Page 2"
+                width={600}
+                height={400}
+              />
+            </Box>
+
+            <Typography variant="h6" gutterBottom>
+              Services (Check all that apply)
+            </Typography>
+            <FormGroup row>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formData.services.hair}
+                    onChange={handleCheckboxChange}
+                    name="hair"
+                  />
+                }
+                label="Hair"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formData.services.makeup}
+                    onChange={handleCheckboxChange}
+                    name="makeup"
+                  />
+                }
+                label="Makeup"
+              />
+            </FormGroup>
+
+            <TextField
+              fullWidth
+              label="Wedding Date"
+              name="weddingDate"
+              type="date"
+              value={formData.weddingDate}
+              onChange={handleChange}
+              margin="normal"
+              InputLabelProps={{ shrink: true }}
+            />
+
+            <TextField
+              fullWidth
+              label="Venue"
+              name="venue"
+              placeholder=""
+              inputProps={{ maxLength: 30 }}
+              value={formData.venue}
+              onChange={handleChange}
+              margin="normal"
+            />
+
+            <TextField
+              fullWidth
+              label="Getting Ready Location"
+              name="gettingReadyLocation"
+              placeholder=""
+              inputProps={{ maxLength: 30 }}
+              value={formData.gettingReadyLocation}
+              onChange={handleChange}
+              margin="normal"
+            />
+
+            <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+              Bridal Party Services
+            </Typography>
+            <TextField
+              fullWidth
+              label="How many guests will require additional services? (Do not include self)"
+              name="bridalPartyGuests"
+              type="number"
+              value={formData.bridalPartyGuests}
+              onChange={handleChange}
+              margin="normal"
+            />
+            <FormGroup row>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formData.bridalPartyHair}
+                    onChange={handleCheckboxChange}
+                    name="bridalPartyHair"
+                  />
+                }
+                label="Hair"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formData.bridalPartyMakeup}
+                    onChange={handleCheckboxChange}
+                    name="bridalPartyMakeup"
+                  />
+                }
+                label="Makeup"
+              />
+            </FormGroup>
+
+            <TextField
+              fullWidth
+              label="Additional Info"
+              name="additionalInfo"
+              placeholder="Enter your message..."
+              multiline
+              rows={4}
+              inputProps={{ maxLength: 180 }}
+              value={formData.additionalInfo}
+              onChange={handleChange}
+              margin="normal"
+            />
+
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
+              <Button variant="outlined" onClick={handlePrevious}>
+                Previous
+              </Button>
+              <Button variant="contained" color="primary" type="submit">
+                Send Message
+              </Button>
+            </Box>
+          </Box>
         )}
-        </div>
-    );
-}
+      </form>
+    </Box>
+  );
+};
+
+export default Inquiries;
