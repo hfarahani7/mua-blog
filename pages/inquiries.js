@@ -10,9 +10,11 @@ import {
   TextField,
   Typography
 } from '@mui/material';
+import { RegionDropdown } from 'react-country-region-selector';
 
 const Inquiries = () => {
   const [step, setStep] = useState(1);
+  const [region, setRegion] = useState('');
 
   const [formData, setFormData] = useState({
     // Page 1 fields
@@ -23,7 +25,7 @@ const Inquiries = () => {
     streetAddress: '',
     apartment: '',
     city: '',
-    state: '',
+    state: region,
     zip: '',
     country: '',
     // Page 2 fields
@@ -169,25 +171,33 @@ const Inquiries = () => {
 
             </Box>
             
-            <TextField
-              fullWidth
-              required
-              label="Email Address"
-              name="email"
-              placeholder="E.g. john@doe.com"
-              value={formData.email}
-              onChange={handleChange}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="Phone Number"
-              name="phone"
-              placeholder="E.g. +1 3004005000"
-              value={formData.phone}
-              onChange={handleChange}
-              margin="normal"
-            />
+            <Box
+                sx={{ 
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: '10px'
+                }}
+            >  
+                <TextField
+                fullWidth
+                required
+                label="Email Address"
+                name="email"
+                placeholder="E.g. john@doe.com"
+                value={formData.email}
+                onChange={handleChange}
+                margin="normal"
+                />
+                <TextField
+                fullWidth
+                label="Phone Number"
+                name="phone"
+                placeholder="E.g. +1 3004005000"
+                value={formData.phone}
+                onChange={handleChange}
+                margin="normal"
+                />
+            </Box>
             <TextField
               fullWidth
               label="Street Address"
@@ -206,42 +216,42 @@ const Inquiries = () => {
               onChange={handleChange}
               margin="normal"
             />
-            <TextField
-              fullWidth
-              label="City"
-              name="city"
-              placeholder="E.g. Sydney"
-              value={formData.city}
-              onChange={handleChange}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="State/Province"
-              name="state"
-              placeholder="E.g. New South Wales"
-              value={formData.state}
-              onChange={handleChange}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="ZIP / Postal Code"
-              name="zip"
-              placeholder="E.g. 2000"
-              value={formData.zip}
-              onChange={handleChange}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="Country"
-              name="country"
-              placeholder=""
-              value={formData.country}
-              onChange={handleChange}
-              margin="normal"
-            />
+            <Box
+                sx={{ 
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: '10px'
+                }}
+            >  
+                <TextField
+                fullWidth
+                label="City"
+                name="city"
+                placeholder="E.g. Sydney"
+                value={formData.city}
+                onChange={handleChange}
+                margin="normal"
+                />
+                {/* <TextField
+                fullWidth
+                label="State/Province"
+                name="state"
+                placeholder="E.g. New South Wales"
+                value={formData.state}
+                onChange={handleChange}
+                margin="normal"
+                /> */}
+                
+                <TextField
+                fullWidth
+                label="ZIP / Postal Code"
+                name="zip"
+                placeholder="E.g. 2000"
+                value={formData.zip}
+                onChange={handleChange}
+                margin="normal"
+                />
+            </Box>
 
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
               <Button variant="contained" color="primary" onClick={handleNext}>
