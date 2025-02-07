@@ -7,10 +7,10 @@ import {
   Checkbox,
   FormControlLabel,
   FormGroup,
+  Select,
   TextField,
   Typography
 } from '@mui/material';
-import { RegionDropdown } from 'react-country-region-selector';
 
 const Inquiries = () => {
   const [step, setStep] = useState(1);
@@ -78,7 +78,7 @@ const Inquiries = () => {
       Street Address: ${formData.streetAddress}
       Apartment: ${formData.apartment}
       City: ${formData.city}
-      State/Province: ${formData.state}
+      State: ${formData.state}
       ZIP/Postal Code: ${formData.zip}
       Country: ${formData.country}
 
@@ -232,15 +232,15 @@ const Inquiries = () => {
                 onChange={handleChange}
                 margin="normal"
                 />
-                {/* <TextField
+                
+                <Select
                 fullWidth
-                label="State/Province"
+                label="State"
                 name="state"
-                placeholder="E.g. New South Wales"
+                placeholder="New York"
                 value={formData.state}
                 onChange={handleChange}
-                margin="normal"
-                /> */}
+                />
                 
                 <TextField
                 fullWidth
