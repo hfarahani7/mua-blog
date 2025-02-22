@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import headshot from '/public/assets/headshot.JPEG';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -52,7 +53,10 @@ export default function Home() {
       </Head>
 
       <main style={sectionStyle}>
-        <h1 style={headingStyle}>Welcome to Jeanice Huang Bridal</h1>
+        <div className='homepage_title' style={{ display: "flex", height: "350px" }}>
+          <h1 style={headingStyle}>Welcome to Jeanice Huang Bridal</h1>
+          <img src={headshot} alt="Jeanice Huang Headshot"></img>
+        </div>
         <p style={subheadingStyle}>
           Enhancing your natural glow for the big day.
           From subtle elegance to show-stopping glam, 

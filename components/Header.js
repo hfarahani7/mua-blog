@@ -3,31 +3,35 @@ import Link from "next/link";
 export default function Header() {
     const navLinks = [
         {
-            label: "Inquiries",
-            href: "/inquiries",
-        },
-        {
             label: "About",
             href: "/about",
+            // subLinks: [
+            //     { label: "FAQ", href: "/inquiries#faq" },
+            //     { label: "About Me", href: "/inquiries#me" }
+            // ]
+        },
+        {
+            label: "Portfolio",
+            href: "/portfolio",
             subLinks: [
-                { label: "FAQ", href: "/inquiries#faq" },
-                { label: "About Me", href: "/inquiries#me" }
+                { label: "Bridal", href: "/inquiries#faq" },
+                { label: "Editorial", href: "/inquiries#editorial" }
             ]
         },
-        // {
-        //     label: "Reviews",
-        //     href: "/reviews"
-        // },
-        { //move to under about?
-            label: "Process",
-            href: "/process",
+        {
+            label: "Services",
+            href: "/services",
             subLinks: [
                 { label: "Travel", href: "/process#travel" },
                 { label: "Rates", href: "/process#rates" },
                 { label: "Cancellation", href: "/process#cancellation" },
                 { label: "Deposits", href: "/process#deposits" },
             ]
-        }
+        },
+        {
+            label: "Inquiries",
+            href: "/inquiries",
+        }, 
     ];
 
     const navStyle = {

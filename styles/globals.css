@@ -15,6 +15,13 @@ body {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
+  
+  color: #F7E7CE;
+  color: #85b670;
+  color: #1f5704;
+  color: #d4b3d4;
+  color: #c682c6;
+  color: #333333;
 }
 
 a {
@@ -30,3 +37,5 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+
