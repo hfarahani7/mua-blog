@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import headshot from '/public/assets/headshot.JPEG';
+import Image from 'next/image';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -10,8 +10,13 @@ export default function Home() {
     setMounted(true);
   }, []);
 
+  // useEffect(() => {
+  //   if (window.instgrm && mounted) {
+  //     window.instgrm.Embeds.process();
+  //   }
+  // }, [mounted]);
   useEffect(() => {
-    if (window.instgrm && mounted) {
+    if (typeof window !== 'undefined' && window.instgrm && mounted) {
       window.instgrm.Embeds.process();
     }
   }, [mounted]);
@@ -55,7 +60,7 @@ export default function Home() {
       <main style={sectionStyle}>
         <div className='homepage_title' style={{ display: "flex", height: "350px" }}>
           <h1 style={headingStyle}>Welcome to Jeanice Huang Bridal</h1>
-          <img src={headshot} alt="Jeanice Huang Headshot"></img>
+          <Image src="/assets/headshot.JPEG" alt="Jeanice Huang Headshot" width={200} height={200} />
         </div>
         <p style={subheadingStyle}>
           Enhancing your natural glow for the big day.

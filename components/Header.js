@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AppBar from '@mui/material/AppBar';
 
 export default function Header() {
     const navLinks = [
@@ -78,13 +79,13 @@ export default function Header() {
     };
 
     return(
-        <header
+        <AppBar
             style={{
                 display: 'flex',
                 alignItems: 'center',
                 height: '60px',
                 padding: '0 20px',
-                backgroundColor: '#f0f0f0'
+                backgroundColor: '#F7E7CE'
             }}>
 
             <div style={{ width: "30%" }}>
@@ -125,6 +126,6 @@ export default function Header() {
                     ))}
                 </ul>
             </nav>
-        </header>
+        </AppBar>
     )
 }
