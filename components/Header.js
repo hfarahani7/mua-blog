@@ -1,17 +1,14 @@
 import * as React from 'react';
 import Link from "next/link";
+
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-
-import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
-
-
 import { Toolbar } from "@mui/material";
 
 export default function Header() {
@@ -97,18 +94,6 @@ export default function Header() {
         position: "relative"
     };
 
-    // const handleMouseEnter = (e) => {
-    //     e.currentTarget.style.color = '#0070f3';
-    //     const dropdown = e.currentTarget.querySelector(".dropdown");
-    //     if (dropdown) dropdown.style.display = "block";
-    // };
-
-    // const handleMouseLeave = (e) => {
-    //     e.currentTarget.style.color = '#333';
-    //     const dropdown = e.currentTarget.querySelector(".dropdown");
-    //     if (dropdown) dropdown.style.display = "none";
-    // };
-
     return (
         <AppBar
             style={{
@@ -138,7 +123,7 @@ export default function Header() {
                             variant="h6"
                             noWrap
                             component="a"
-                            href="#app-bar-with-responsive-menu"
+                            href="/"
                             sx={{
                                 mr: 2,
                                 display: { xs: 'flex', md: 'flex' },
@@ -182,18 +167,13 @@ export default function Header() {
                             {navLinks.map((link) => (
                                 <MenuItem
                                     key={link.label}
-                                    // onMouseEnter={handleMouseEnter}
-                                    // onMouseLeave={handleMouseLeave}
+                                    href=""
                                     style={{
                                         position: "relative",
                                     }}
-                                //onClick={handleCloseNavMenu}
                                 >
-                                    <Typography sx={{ textAlign: 'center' }}>{link.label}</Typography>
-
-
-                                    <Link href={link.href} style={linkStyle}>
-                                        {link.label}
+                                    <Link href={ link.href }>
+                                        <Typography sx={{ textAlign: 'center' }}>{link.label}</Typography>
                                     </Link>
 
                                     {link.subLinks && (
