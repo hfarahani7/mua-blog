@@ -150,9 +150,16 @@ export default function Header() {
                             onClose={handleCloseNavMenu}
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
-                            <MenuItem>
-                                menu item 1
-                            </MenuItem>
+                            {navLinks.map((link) => (
+                                <MenuItem
+                                    key={link.label}
+                                    href={link.href}
+                                >
+                                    <Link href={ link.href }>
+                                        <Typography sx={{ textAlign: 'center' }}>{link.label}</Typography>
+                                    </Link>
+                                </MenuItem>
+                            ))}
                         </Menu>
                     </Box>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
