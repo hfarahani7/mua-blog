@@ -1,7 +1,38 @@
+import * as React from 'react';
 import Link from "next/link";
 import AppBar from '@mui/material/AppBar';
+import Container from '@mui/material/Container';
+import MenuItem from '@mui/material/MenuItem';
+import MenuIcon from '@mui/icons-material/Menu';
+
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Menu from '@mui/material/Menu';
+
+
+import { Toolbar } from "@mui/material";
 
 export default function Header() {
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
     const navLinks = [
         {
             label: "About",
@@ -32,15 +63,15 @@ export default function Header() {
         {
             label: "Inquiries",
             href: "/inquiries",
-        }, 
+        },
     ];
 
     const navStyle = {
         display: "flex",
-        justifyContent: "space-evenly", 
+        justifyContent: "space-evenly",
         alignItems: "center",
     };
- 
+
     const dropdownContainerStyle = {
         position: "absolute",
         top: "100%",
@@ -53,10 +84,10 @@ export default function Header() {
     };
 
     const dropdownItemStyle = {
-    display: "block",
-    textDecoration: "none",
-    color: "#333",
-    margin: "0.25rem 0",
+        display: "block",
+        textDecoration: "none",
+        color: "#333",
+        margin: "0.25rem 0",
     };
 
     const linkStyle = {
@@ -65,67 +96,124 @@ export default function Header() {
         transition: 'color 0.2s ease',
         position: "relative"
     };
-    
-    const handleMouseEnter = (e) => {
-        e.currentTarget.style.color = '#0070f3';
-        const dropdown = e.currentTarget.querySelector(".dropdown");
-        if (dropdown) dropdown.style.display = "block";
-    };
 
-    const handleMouseLeave = (e) => {
-        e.currentTarget.style.color = '#333';
-        const dropdown = e.currentTarget.querySelector(".dropdown");
-        if (dropdown) dropdown.style.display = "none";
-    };
+    // const handleMouseEnter = (e) => {
+    //     e.currentTarget.style.color = '#0070f3';
+    //     const dropdown = e.currentTarget.querySelector(".dropdown");
+    //     if (dropdown) dropdown.style.display = "block";
+    // };
 
-    return(
+    // const handleMouseLeave = (e) => {
+    //     e.currentTarget.style.color = '#333';
+    //     const dropdown = e.currentTarget.querySelector(".dropdown");
+    //     if (dropdown) dropdown.style.display = "none";
+    // };
+
+    return (
         <AppBar
             style={{
                 display: 'flex',
                 alignItems: 'center',
                 height: '60px',
                 padding: '0 20px',
-                backgroundColor: '#F7E7CE'
+                backgroundColor: '#F7E7CE',
+                postion: 'static'
             }}>
+            <Container maxWidth="xl">
+                <Toolbar disableGutters>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+                        <Button onClick={handleOpenNavMenu} color="inherit">
+                            <MenuIcon />
+                        </Button>
+                    </Box>
 
-            <div style={{ width: "30%" }}>
-                <Link href="/">
-                    <img src="/assets/logo.png" alt="Logo" style={{ height: "40px" }} />
-                </Link>
-            </div>
-
-            <nav style={{ width: "70%" }}>
-                <ul style={navStyle}>
-                    {navLinks.map((link) => (
-                        <li
-                            key={link.label}
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}
-                            style={{ 
-                                position: "relative", 
+                    <Box
+                        sx={{
+                            flexGrow: 1,
+                            display: 'flex',
+                            justifyContent: { xs: 'center', md: 'left' }
+                        }}
+                    >
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="a"
+                            href="#app-bar-with-responsive-menu"
+                            sx={{
+                                mr: 2,
+                                display: { xs: 'flex', md: 'flex' },
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                letterSpacing: '.3rem',
+                                color: 'inherit',
+                                textDecoration: 'none',
+                                textAlign: 'center',
+                                justifyContent: 'center',
+                                alignItems: 'center'
                             }}
                         >
-                            <Link href={link.href} style={linkStyle}>
-                                {link.label}
-                            </Link>
-                        
-                            {link.subLinks && (
-                                <div className="dropdown" style={dropdownContainerStyle}>
-                                    {link.subLinks.map((subLink) => (
-                                        <Link
-                                        key={subLink.label}
-                                        href={subLink.href}
-                                        style={dropdownItemStyle}
-                                        >
-                                        {subLink.label}
-                                        </Link>
-                                    ))}
-                                </div>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </AppBar>
+                            Jeanice Huang
+                        </Typography>
+                    </Box>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{ display: { xs: 'block', md: 'none' } }}
+                        >
+                            <MenuItem>
+                                menu item 1
+                            </MenuItem>
+                        </Menu>
+                    </Box>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+                            {navLinks.map((link) => (
+                                <MenuItem
+                                    key={link.label}
+                                    // onMouseEnter={handleMouseEnter}
+                                    // onMouseLeave={handleMouseLeave}
+                                    style={{
+                                        position: "relative",
+                                    }}
+                                //onClick={handleCloseNavMenu}
+                                >
+                                    <Typography sx={{ textAlign: 'center' }}>{link.label}</Typography>
+
+
+                                    <Link href={link.href} style={linkStyle}>
+                                        {link.label}
+                                    </Link>
+
+                                    {link.subLinks && (
+                                        <div className="dropdown" style={dropdownContainerStyle}>
+                                            {link.subLinks.map((subLink) => (
+                                                <Link
+                                                    key={subLink.label}
+                                                    href={subLink.href}
+                                                    style={dropdownItemStyle}
+                                                >
+                                                    {subLink.label}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
+                                </MenuItem>
+                            ))}
+                    </Box>
+                </Toolbar>
+            </Container >
+        </AppBar >
     )
 }
