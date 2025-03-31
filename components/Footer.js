@@ -3,7 +3,6 @@ import React from 'react';
 import Link from 'next/link';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
-import { Instagram } from '@mui/icons-material';
 
 export default function Footer() {
   const footerStyle = {
@@ -11,7 +10,10 @@ export default function Footer() {
     padding: '1rem',
     textAlign: 'center',
     marginTop: 'auto',
-    color: '#3E8440'
+    color: '#3E8440',
+    width: '100%',
+    bottom: '0',
+    height: '310px'
   };
 
   const footerContainerStyle = {

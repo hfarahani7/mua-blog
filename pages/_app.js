@@ -2,14 +2,23 @@
 import '../styles/globals.css';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
+import { Box, Container, ThemeProvider } from '@mui/material';
 
 function MuaApp({ Component, pageProps }) {
   return (
-    <>
+    <Box
+      display="flex"
+      flexDirection="column"
+      minHeight="100vh" // Full height of the viewport
+    >
       <Header />
-      <Component {...pageProps} />
+        <Box
+          height="calc(100%-310px)"
+        >
+          <Component {...pageProps} />
+        </Box>
       <Footer />
-    </>
+    </Box>
   );
 }
 
