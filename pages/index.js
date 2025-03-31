@@ -65,7 +65,7 @@ export default function Home() {
       <main style={sectionStyle}>
         <div className='homepage_title' style={{ display: "flex", height: "350px", marginTop: "50px" }}>
           <h1 style={headingStyle}>About Me</h1>
-          <Image src="/assets/headshot.JPEG" alt="Jeanice Huang Headshot" width={200} height={200} />
+          <Image src="https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4382.JPEG" alt="Jeanice Huang Headshot" width={200} height={200} />
         </div>
         <p style={subheadingStyle}>
           Enhancing your natural glow for the big day.
