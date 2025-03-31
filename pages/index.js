@@ -63,8 +63,8 @@ export default function Home() {
       </Head>
 
       <main style={sectionStyle}>
-        <div className='homepage_title' style={{ display: "flex", height: "350px" }}>
-          <h1 style={headingStyle}>Welcome to Jeanice Huang Bridal</h1>
+        <div className='homepage_title' style={{ display: "flex", height: "350px", marginTop: "50px" }}>
+          <h1 style={headingStyle}>About Me</h1>
           <Image src="/assets/headshot.JPEG" alt="Jeanice Huang Headshot" width={200} height={200} />
         </div>
         <p style={subheadingStyle}>

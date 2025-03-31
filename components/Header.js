@@ -26,14 +26,14 @@ export default function Header() {
     };
 
     const navLinks = [
-        {
-            label: "About",
-            href: "/about",
-            // subLinks: [
-            //     { label: "FAQ", href: "/inquiries#faq" },
-            //     { label: "About Me", href: "/inquiries#me" }
-            // ]
-        },
+        // {
+        //     label: "About",
+        //     href: "/about",
+        //     // subLinks: [
+        //     //     { label: "FAQ", href: "/inquiries#faq" },
+        //     //     { label: "About Me", href: "/inquiries#me" }
+        //     // ]
+        // },
         {
             label: "Portfolio",
             href: "/portfolio",
