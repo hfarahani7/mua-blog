@@ -3,6 +3,8 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 
+import '@fontsource/cormorant-upright'; 
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
 
@@ -26,11 +28,14 @@ export default function Home() {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '2rem',
+    backgroundColor: '#F7EFDA'
   };
 
   const headingStyle = {
     fontSize: '2rem',
     marginBottom: '1rem',
+    color: '#EFACA5',
+    fontFamily: 'Cormorant Upright'
   };
 
   const subheadingStyle = {

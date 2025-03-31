@@ -11,6 +11,9 @@ import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import { Toolbar } from "@mui/material";
 
+import '@fontsource/cormorant-upright';
+import '@fontsource/mr-de-haviland';
+
 export default function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -81,7 +84,7 @@ export default function Header() {
 
     const linkStyle = {
         textDecoration: 'none',
-        color: '#333',
+        color: 'EFACA5',
         transition: 'color 0.2s ease',
         position: "relative"
     };
@@ -93,14 +96,18 @@ export default function Header() {
                 alignItems: 'center',
                 height: '60px',
                 padding: '0 20px',
-                backgroundColor: '#F7E7CE',
+                // backgroundColor: '#F7E7CE',
+                // backgroundColor: '#1e4005',
+                // backgroundColor: '#EFACA5',
+                backgroundColor: '#BADD7F',
+                //8A9A5B not bad
                 postion: 'static'
             }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                         <Button onClick={handleOpenNavMenu} color="inherit">
-                            <MenuIcon />
+                            <MenuIcon sx={{ color: 'black' }}/>
                         </Button>
                     </Box>
 
@@ -120,13 +127,16 @@ export default function Header() {
                                 mr: 2,
                                 display: { xs: 'flex', md: 'flex' },
                                 fontFamily: 'monospace',
-                                fontWeight: 700,
+                                fontWeight: 1000,
                                 letterSpacing: '.3rem',
-                                color: 'inherit',
+                                color: '#3E8440',
                                 textDecoration: 'none',
                                 textAlign: 'center',
                                 justifyContent: 'center',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                // WebkitTextStroke: "1px black", // Border thickness and color
+                                fontFamily: "Mr De Haviland",
+                                fontSize: "2.5em",
                             }}
                         >
                             Jeanice Huang
@@ -156,7 +166,7 @@ export default function Header() {
                                     href={link.href}
                                 >
                                     <Link href={ link.href }>
-                                        <Typography sx={{ textAlign: 'center' }}>{link.label}</Typography>
+                                        <Typography sx={{ textAlign: 'center', color: '#EFACA5' }}>{link.label}</Typography>
                                     </Link>
                                 </MenuItem>
                             ))}
@@ -172,7 +182,9 @@ export default function Header() {
                                     }}
                                 >
                                     <Link href={ link.href }>
-                                        <Typography sx={{ textAlign: 'center' }}>{link.label}</Typography>
+                                        <Typography sx={{ textAlign: 'center', color: '#3E8440', fontSize: "1.5em", fontFamily: 'Cormorant Upright', fontWeight: '10000000'}}>
+                                            {link.label}
+                                        </Typography>
                                     </Link>
 
                                     {link.subLinks && (
