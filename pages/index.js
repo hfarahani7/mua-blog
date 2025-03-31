@@ -63,6 +63,10 @@ export default function Home() {
       </Head>
 
       <main style={sectionStyle}>
+        <div className='homepage_desc' style={{ display: "flex", backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG")`, backgroundSize: "cover", backgroundPosition: "center", width: "200px", height: "200px" }}>
+
+        </div>
+
         <div className='homepage_title' style={{ display: "flex", height: "350px", marginTop: "50px" }}>
           <h1 style={headingStyle}>About Me</h1>
           <Image src="https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4382.JPEG" alt="Jeanice Huang Headshot" width={200} height={200} />

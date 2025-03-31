@@ -26,14 +26,6 @@ export default function Header() {
     };
 
     const navLinks = [
-        // {
-        //     label: "About",
-        //     href: "/about",
-        //     // subLinks: [
-        //     //     { label: "FAQ", href: "/inquiries#faq" },
-        //     //     { label: "About Me", href: "/inquiries#me" }
-        //     // ]
-        // },
         {
             label: "Portfolio",
             href: "/portfolio",
@@ -58,36 +50,27 @@ export default function Header() {
         },
     ];
 
-    const navStyle = {
-        display: "flex",
-        justifyContent: "space-evenly",
-        alignItems: "center",
-    };
-
-    const dropdownContainerStyle = {
-        position: "absolute",
-        top: "100%",
-        left: 0,
-        display: "none",
-        backgroundColor: "#fff",
-        border: "1px solid #ccc",
-        padding: "0.5rem",
-        zIndex: 999,
-    };
-
-    const dropdownItemStyle = {
-        display: "block",
-        textDecoration: "none",
-        color: "#333",
-        margin: "0.25rem 0",
-    };
-
     const linkStyle = {
-        textDecoration: 'none',
-        color: 'EFACA5',
-        transition: 'color 0.2s ease',
-        position: "relative"
+        textAlign: 'center',
+        color: '#3E8440',
+        fontSize: '1.5em',
+        fontFamily: 'Cormorant Upright'
     };
+
+    const logoStyle = {
+        mr: 2,
+        display: { xs: 'flex', md: 'flex' },
+        fontFamily: 'monospace',
+        fontWeight: 1000,
+        letterSpacing: '.3rem',
+        color: '#3E8440',
+        textDecoration: 'none',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontFamily: "Mr De Haviland",
+        fontSize: "2.5em",
+    }
 
     return (
         <AppBar
@@ -96,18 +79,14 @@ export default function Header() {
                 alignItems: 'center',
                 height: '60px',
                 padding: '0 20px',
-                // backgroundColor: '#F7E7CE',
-                // backgroundColor: '#1e4005',
-                // backgroundColor: '#EFACA5',
                 backgroundColor: '#BADD7F',
-                //8A9A5B not bad
                 postion: 'static'
             }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                         <Button onClick={handleOpenNavMenu} color="inherit">
-                            <MenuIcon sx={{ color: 'black' }}/>
+                            <MenuIcon sx={{ color: 'black' }} />
                         </Button>
                     </Box>
 
@@ -123,21 +102,7 @@ export default function Header() {
                             noWrap
                             component="a"
                             href="/"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 1000,
-                                letterSpacing: '.3rem',
-                                color: '#3E8440',
-                                textDecoration: 'none',
-                                textAlign: 'center',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                // WebkitTextStroke: "1px black", // Border thickness and color
-                                fontFamily: "Mr De Haviland",
-                                fontSize: "2.5em",
-                            }}
+                            sx={logoStyle}
                         >
                             Jeanice Huang
                         </Typography>
@@ -165,43 +130,29 @@ export default function Header() {
                                     key={link.label}
                                     href={link.href}
                                 >
-                                    <Link href={ link.href }>
-                                        <Typography sx={{ textAlign: 'center', color: '#EFACA5' }}>{link.label}</Typography>
+                                    <Link href={link.href}>
+                                        <Typography sx={linkStyle}>{link.label}</Typography>
                                     </Link>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-                            {navLinks.map((link) => (
-                                <MenuItem
-                                    key={link.label}
-                                    href=""
-                                    style={{
-                                        position: "relative",
-                                    }}
-                                >
-                                    <Link href={ link.href }>
-                                        <Typography sx={{ textAlign: 'center', color: '#3E8440', fontSize: "1.5em", fontFamily: 'Cormorant Upright', fontWeight: '10000000'}}>
-                                            {link.label}
-                                        </Typography>
-                                    </Link>
-
-                                    {link.subLinks && (
-                                        <div className="dropdown" style={dropdownContainerStyle}>
-                                            {link.subLinks.map((subLink) => (
-                                                <Link
-                                                    key={subLink.label}
-                                                    href={subLink.href}
-                                                    style={dropdownItemStyle}
-                                                >
-                                                    {subLink.label}
-                                                </Link>
-                                            ))}
-                                        </div>
-                                    )}
-                                </MenuItem>
-                            ))}
+                        {navLinks.map((link) => (
+                            <MenuItem
+                                key={link.label}
+                                href=""
+                                style={{
+                                    position: "relative",
+                                }}
+                            >
+                                <Link href={link.href}>
+                                    <Typography sx={linkStyle}>
+                                        {link.label}
+                                    </Typography>
+                                </Link>
+                            </MenuItem>
+                        ))}
                     </Box>
                 </Toolbar>
             </Container >
