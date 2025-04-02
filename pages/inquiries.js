@@ -100,13 +100,13 @@ const Inquiries = () => {
 
     const name = `${formData.firstName} ${formData.lastName}`;
     const payload = {
-      name,
-      email: formData.email,
       message,
+      recipient: formData.email,
+      subject: `Inquiry from ${name}`
     };
 
     try {
-      const res = await fetch('https://9qdpq9cmyh.execute-api.us-east-2.amazonaws.com/default', {
+      const res = await fetch('https://9qdpq9cmyh.execute-api.us-east-2.amazonaws.com/prod/sendEmail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
