@@ -14,6 +14,7 @@ function MuaApp({ Component, pageProps }) {
       <Header />
         <Box
           height="calc(100%-310px)"
+          marginTop="60px"
         >
           <Component {...pageProps} />
         </Box>

@@ -106,7 +106,7 @@ const Inquiries = () => {
     };
 
     try {
-      const res = await fetch('/api/email', {
+      const res = await fetch('https://9qdpq9cmyh.execute-api.us-east-2.amazonaws.com/default', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
