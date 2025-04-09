@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
-import '@fontsource/cormorant-upright'; 
+import '@fontsource/cormorant-upright';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -12,11 +15,25 @@ export default function Home() {
     setMounted(true);
   }, []);
 
-  // useEffect(() => {
-  //   if (window.instgrm && mounted) {
-  //     window.instgrm.Embeds.process();
-  //   }
-  // }, [mounted]);
+  const gridImages = [
+    {
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG",
+      altText: "Jeanice doing makeup"
+    },
+    {
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG",
+      altText: "Bride with dress"
+    },
+    {
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_9555.PNG",
+      altText: "Image of finished makeup"
+    },
+    {
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8631.PNG",
+      altText: "Holding mirror up to finished makeup"
+    }
+  ];
+
   useEffect(() => {
     if (typeof window !== 'undefined' && window.instgrm && mounted) {
       window.instgrm.Embeds.process();
@@ -52,7 +69,7 @@ export default function Home() {
     justifyContent: 'center',
   };
 
-  return(
+  return (
     <div>
       <Head>
         <script
@@ -63,45 +80,92 @@ export default function Home() {
       </Head>
 
       <main style={sectionStyle}>
-        <div className='homepage_desc' style={{ display: "flex", backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG")`, backgroundSize: "cover", backgroundPosition: "center", width: "200px", height: "200px" }}>
+        <Box
+          sx={{
+            position: 'relative',
+            width: '60%',
+            height: '100vh', // full screen height, or change to '400px' etc
+            backgroundImage: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              backgroundColor: 'rgba(255, 255, 255, 0.6)', // white with 80% opacity
+              padding: '2rem',
+              borderRadius: '8px',
+              textAlign: 'center',
+              maxWidth: '600px',
+            }}
+          >
+            <Typography variant="h3" gutterBottom>
+              Welcome to Jeanice Huang MUA
+            </Typography>
+            <Typography variant="body1">
+              Enhancing your natural glow for the big day. From subtle elegance to show-stopping glam.
+            </Typography>
+          </Box>
+        </Box>
 
-        </div>
+        <Box sx={{ mt: 12, px: 4, mx: 'auto' }}>
+          <Grid container spacing={4} alignItems="center">
+            <Grid item xs={6} md={6} sx={{ textAlign: 'center' }}>
+              <Image
+                src="https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4382.JPEG"
+                alt="Jeanice Huang Headshot"
+                width={300}
+                height={400}
+                style={{ borderRadius: '8px' }}
+              />
+            </Grid>
+            <Grid item xs={6} md={6}>
+              <Box sx={{ textAlign: 'center' }}>
+                <Typography variant="h4" sx={{ mb: 2, color: '#E78E8E', fontWeight: 'bold' }}>
+                  About Me
+                </Typography>
+                <Typography variant="body1" sx={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                  Enhancing your natural glow for the big day.
+                  <br />
+                  From subtle elegance to show-stopping glam,
+                  I specialize in making brides feel confident, radiant, and absolutely stunning.
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
 
-        <div className='homepage_title' style={{ display: "flex", height: "350px", marginTop: "50px" }}>
-          <h1 style={headingStyle}>About Me</h1>
-          <Image src="https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4382.JPEG" alt="Jeanice Huang Headshot" width={200} height={200} />
-        </div>
-        <p style={subheadingStyle}>
-          Enhancing your natural glow for the big day.
-          From subtle elegance to show-stopping glam, 
-          I specialize in making brides feel confident, radiant, and absolutely stunning.
-        </p>
-
-        <h2 style={{ marginBottom: '1rem' }}>Recent Looks</h2>
-        {mounted && ( //make this a component and import?
-          <div style={instagramGridStyle}>
-          <blockquote
-            className="instagram-media"
-            data-instgrm-permalink="https://www.instagram.com/p/CpXXXXXXXXX/"
-            data-instgrm-version="14"
-            style={{ width: '300px', margin: 0 }}
-          ></blockquote>
-
-          <blockquote
-            className="instagram-media"
-            data-instgrm-permalink="https://www.instagram.com/p/CnXXXXXXXXX/"
-            data-instgrm-version="14"
-            style={{ width: '300px', margin: 0 }}
-          ></blockquote>
-
-          <blockquote
-            className="instagram-media"
-            data-instgrm-permalink="https://www.instagram.com/p/ClXXXXXXXXX/"
-            data-instgrm-version="14"
-            style={{ width: '300px', margin: 0 }}
-          ></blockquote>
-        </div>
-        )}
+        <h2>Recent Looks</h2>
+        <Box sx={{ px: 4, py: 6 }}>
+          <Grid container spacing={2}>
+            {gridImages.map(({link, altText}, index) => (
+              <Grid item xs={6} sm={4} md={3} key={index}>
+                <Box
+                  sx={{
+                    position: 'relative',
+                    width: '100%',
+                    borderRadius: 2,
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Image
+                    src={link}
+                    alt={altText}
+                    width={300}
+                    height={300}
+                    style={{
+                      objectFit: 'cover',
+                      borderRadius: '16px',
+                    }}
+                  />
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </main>
     </div>
   );

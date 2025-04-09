@@ -124,7 +124,20 @@ const Inquiries = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto', p: 2 }}>
+    <Box
+          sx={{
+            position: 'relative',
+            width: '60%',
+            height: '100vh', // full screen height, or change to '400px' etc
+            backgroundImage: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+    <Box sx={{ maxWidth: 600, mx: 'auto', p: 2, backgroundColor: 'rgba(255, 255, 255, 0.6)', }}>
       <form onSubmit={handleSubmit}>
         {step === 1 && (
           <Box>
@@ -133,15 +146,7 @@ const Inquiries = () => {
               Contact Information
             </Typography>
 
-            {/* Display your current Page 1 image */}
-            <Box sx={{ my: 2 }}>
-              <Image
-                src="/images/form-page1.png"  // Replace with your actual image path
-                alt="Form Page 1"
-                width={600}
-                height={400}
-              />
-            </Box>
+          
 
             <Box
                 sx={{ 
@@ -267,16 +272,6 @@ const Inquiries = () => {
               Service Details
             </Typography>
 
-            {/* Display your current Page 2 image */}
-            <Box sx={{ my: 2 }}>
-              <Image
-                src="/images/form-page2.png"  // Replace with your actual image path
-                alt="Form Page 2"
-                width={600}
-                height={400}
-              />
-            </Box>
-
             <Typography variant="h6" gutterBottom>
               Services (Check all that apply)
             </Typography>
@@ -395,6 +390,7 @@ const Inquiries = () => {
           </Box>
         )}
       </form>
+    </Box>
     </Box>
   );
 };
