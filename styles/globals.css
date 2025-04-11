@@ -33,8 +33,109 @@ a {
   box-sizing: border-box;
 }
 
+.wrapper {
+  background-color: "#F7EFDA";
+  height: '100vh';
+  display: 'flex';
+  align-items: 'center';
+  justify-content: 'center';
+  display: 'flex';
+  flex-direction: column;
+}
+
+/* .image-wrapper {
+  box-shadow: 5px 10px;
+} */
+
+.background {
+  position: relative;
+  width: 60%;
+  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  border-radius: 10px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 800px;
+    }  
+}
+
+.secondary {
+  background-color: 'green';
+}
+
 img {
   max-width: 100%;
   height: auto;
 }
 
+main {
+  background-color: #F7EFDA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+
+@media screen and (max-width: 992px) {
+  .wrapper {
+    background-color: "#F7EFDA";
+    height: '100vh';
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'center';
+  }
+  
+  .background {
+    width: '60%';
+    height: '100vh';
+    background-image: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)';
+    background-size: 'cover';
+    background-position: 'center';
+  }
+  
+  .secondary {
+    background-color: 'green';
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    background-color: "#F7EFDA";
+    height: '100vh';
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'center';
+  }
+  
+  .background {
+    width: '60%';
+    height: '100vh';
+    background-image: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)';
+    background-size: 'cover';
+    background-position: 'center';
+  }
+  
+  .secondary {
+    background-color: 'green';
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

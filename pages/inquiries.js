@@ -125,37 +125,48 @@ const Inquiries = () => {
 
   return (
     <Box
-          sx={{
-            position: 'relative',
-            width: '60%',
-            height: '100vh', // full screen height, or change to '400px' etc
-            backgroundImage: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-    <Box sx={{ maxWidth: 600, mx: 'auto', p: 2, backgroundColor: 'rgba(255, 255, 255, 0.6)', }}>
-      <form onSubmit={handleSubmit}>
-        {step === 1 && (
-          <Box>
+      sx={{
+        backgroundColor: '#F7EFDA',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
+      <Box
+        sx={{
+          // position: 'relative',
+          width: '60%',
+          height: '100vh', // full screen height, or change to '400px' etc
+          backgroundImage: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
 
-            <Typography variant="h4" gutterBottom>
-              Contact Information
-            </Typography>
+        }}
+      >
+        <Box sx={{ maxWidth: 600, mx: 'auto', p: 2, backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px'
+}}>
+          <form onSubmit={handleSubmit}>
+            {step === 1 && (
+              <Box>
 
-          
+                <Typography variant="h4" gutterBottom>
+                  Contact Information
+                </Typography>
 
-            <Box
-                sx={{ 
+
+
+                <Box
+                  sx={{
                     display: 'flex',
                     flexDirection: 'row',
                     gap: '10px'
-                }}
-            >  
-                <TextField
+                  }}
+                >
+                  <TextField
                     fullWidth
                     label="First Name"
                     name="firstName"
@@ -163,8 +174,8 @@ const Inquiries = () => {
                     value={formData.firstName}
                     onChange={handleChange}
                     margin="normal"
-                />
-                <TextField
+                  />
+                  <TextField
                     fullWidth
                     label="Last Name"
                     name="lastName"
@@ -172,225 +183,226 @@ const Inquiries = () => {
                     value={formData.lastName}
                     onChange={handleChange}
                     margin="normal"
-                />
+                  />
 
-            </Box>
-            
-            <Box
-                sx={{ 
+                </Box>
+
+                <Box
+                  sx={{
                     display: 'flex',
                     flexDirection: 'row',
                     gap: '10px'
-                }}
-            >  
+                  }}
+                >
+                  <TextField
+                    fullWidth
+                    required
+                    label="Email Address"
+                    name="email"
+                    placeholder="E.g. john@doe.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    margin="normal"
+                  />
+                  <TextField
+                    fullWidth
+                    label="Phone Number"
+                    name="phone"
+                    placeholder="E.g. +1 3004005000"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    margin="normal"
+                  />
+                </Box>
                 <TextField
-                fullWidth
-                required
-                label="Email Address"
-                name="email"
-                placeholder="E.g. john@doe.com"
-                value={formData.email}
-                onChange={handleChange}
-                margin="normal"
+                  fullWidth
+                  label="Street Address"
+                  name="streetAddress"
+                  placeholder="E.g. 42 Wallaby Way"
+                  value={formData.streetAddress}
+                  onChange={handleChange}
+                  margin="normal"
                 />
                 <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                placeholder="E.g. +1 3004005000"
-                value={formData.phone}
-                onChange={handleChange}
-                margin="normal"
+                  fullWidth
+                  label="Apartment, suite, etc"
+                  name="apartment"
+                  placeholder=""
+                  value={formData.apartment}
+                  onChange={handleChange}
+                  margin="normal"
                 />
-            </Box>
-            <TextField
-              fullWidth
-              label="Street Address"
-              name="streetAddress"
-              placeholder="E.g. 42 Wallaby Way"
-              value={formData.streetAddress}
-              onChange={handleChange}
-              margin="normal"
-            />
-            <TextField
-              fullWidth
-              label="Apartment, suite, etc"
-              name="apartment"
-              placeholder=""
-              value={formData.apartment}
-              onChange={handleChange}
-              margin="normal"
-            />
-            <Box
-                sx={{ 
+                <Box
+                  sx={{
                     display: 'flex',
                     flexDirection: 'row',
                     gap: '10px'
-                }}
-            >  
+                  }}
+                >
+                  <TextField
+                    fullWidth
+                    label="City"
+                    name="city"
+                    placeholder="E.g. Sydney"
+                    value={formData.city}
+                    onChange={handleChange}
+                    margin="normal"
+                  />
+
+                  <Select
+                    fullWidth
+                    label="State"
+                    name="state"
+                    placeholder="New York"
+                    value={formData.state}
+                    onChange={handleChange}
+                  />
+
+                  <TextField
+                    fullWidth
+                    label="ZIP / Postal Code"
+                    name="zip"
+                    placeholder="E.g. 2000"
+                    value={formData.zip}
+                    onChange={handleChange}
+                    margin="normal"
+                  />
+                </Box>
+
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+                  <Button variant="contained" color="primary" onClick={handleNext}>
+                    Next
+                  </Button>
+                </Box>
+              </Box>
+            )}
+
+            {step === 2 && (
+              <Box>
+                <Typography variant="h4" gutterBottom>
+                  Service Details
+                </Typography>
+
+                <Typography variant="h6" gutterBottom>
+                  Services (Check all that apply)
+                </Typography>
+                <FormGroup row>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.services.hair}
+                        onChange={handleCheckboxChange}
+                        name="hair"
+                      />
+                    }
+                    label="Hair"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.services.makeup}
+                        onChange={handleCheckboxChange}
+                        name="makeup"
+                      />
+                    }
+                    label="Makeup"
+                  />
+                </FormGroup>
+
                 <TextField
-                fullWidth
-                label="City"
-                name="city"
-                placeholder="E.g. Sydney"
-                value={formData.city}
-                onChange={handleChange}
-                margin="normal"
+                  fullWidth
+                  label="Wedding Date"
+                  name="weddingDate"
+                  type="date"
+                  value={formData.weddingDate}
+                  onChange={handleChange}
+                  margin="normal"
+                  InputLabelProps={{ shrink: true }}
                 />
-                
-                <Select
-                fullWidth
-                label="State"
-                name="state"
-                placeholder="New York"
-                value={formData.state}
-                onChange={handleChange}
-                />
-                
+
                 <TextField
-                fullWidth
-                label="ZIP / Postal Code"
-                name="zip"
-                placeholder="E.g. 2000"
-                value={formData.zip}
-                onChange={handleChange}
-                margin="normal"
+                  fullWidth
+                  label="Venue"
+                  name="venue"
+                  placeholder=""
+                  inputProps={{ maxLength: 30 }}
+                  value={formData.venue}
+                  onChange={handleChange}
+                  margin="normal"
                 />
-            </Box>
 
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                Next
-              </Button>
-            </Box>
-          </Box>
-        )}
+                <TextField
+                  fullWidth
+                  label="Getting Ready Location"
+                  name="gettingReadyLocation"
+                  placeholder=""
+                  inputProps={{ maxLength: 30 }}
+                  value={formData.gettingReadyLocation}
+                  onChange={handleChange}
+                  margin="normal"
+                />
 
-        {step === 2 && (
-          <Box>
-            <Typography variant="h4" gutterBottom>
-              Service Details
-            </Typography>
-
-            <Typography variant="h6" gutterBottom>
-              Services (Check all that apply)
-            </Typography>
-            <FormGroup row>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formData.services.hair}
-                    onChange={handleCheckboxChange}
-                    name="hair"
+                <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+                  Bridal Party Services
+                </Typography>
+                <TextField
+                  fullWidth
+                  label="How many guests will require additional services? (Do not include self)"
+                  name="bridalPartyGuests"
+                  type="number"
+                  value={formData.bridalPartyGuests}
+                  onChange={handleChange}
+                  margin="normal"
+                />
+                <FormGroup row>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.bridalPartyHair}
+                        onChange={handleCheckboxChange}
+                        name="bridalPartyHair"
+                      />
+                    }
+                    label="Hair"
                   />
-                }
-                label="Hair"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formData.services.makeup}
-                    onChange={handleCheckboxChange}
-                    name="makeup"
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formData.bridalPartyMakeup}
+                        onChange={handleCheckboxChange}
+                        name="bridalPartyMakeup"
+                      />
+                    }
+                    label="Makeup"
                   />
-                }
-                label="Makeup"
-              />
-            </FormGroup>
+                </FormGroup>
 
-            <TextField
-              fullWidth
-              label="Wedding Date"
-              name="weddingDate"
-              type="date"
-              value={formData.weddingDate}
-              onChange={handleChange}
-              margin="normal"
-              InputLabelProps={{ shrink: true }}
-            />
+                <TextField
+                  fullWidth
+                  label="Additional Info"
+                  name="additionalInfo"
+                  placeholder="Enter your message..."
+                  multiline
+                  rows={4}
+                  inputProps={{ maxLength: 180 }}
+                  value={formData.additionalInfo}
+                  onChange={handleChange}
+                  margin="normal"
+                />
 
-            <TextField
-              fullWidth
-              label="Venue"
-              name="venue"
-              placeholder=""
-              inputProps={{ maxLength: 30 }}
-              value={formData.venue}
-              onChange={handleChange}
-              margin="normal"
-            />
-
-            <TextField
-              fullWidth
-              label="Getting Ready Location"
-              name="gettingReadyLocation"
-              placeholder=""
-              inputProps={{ maxLength: 30 }}
-              value={formData.gettingReadyLocation}
-              onChange={handleChange}
-              margin="normal"
-            />
-
-            <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-              Bridal Party Services
-            </Typography>
-            <TextField
-              fullWidth
-              label="How many guests will require additional services? (Do not include self)"
-              name="bridalPartyGuests"
-              type="number"
-              value={formData.bridalPartyGuests}
-              onChange={handleChange}
-              margin="normal"
-            />
-            <FormGroup row>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formData.bridalPartyHair}
-                    onChange={handleCheckboxChange}
-                    name="bridalPartyHair"
-                  />
-                }
-                label="Hair"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formData.bridalPartyMakeup}
-                    onChange={handleCheckboxChange}
-                    name="bridalPartyMakeup"
-                  />
-                }
-                label="Makeup"
-              />
-            </FormGroup>
-
-            <TextField
-              fullWidth
-              label="Additional Info"
-              name="additionalInfo"
-              placeholder="Enter your message..."
-              multiline
-              rows={4}
-              inputProps={{ maxLength: 180 }}
-              value={formData.additionalInfo}
-              onChange={handleChange}
-              margin="normal"
-            />
-
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
-              <Button variant="outlined" onClick={handlePrevious}>
-                Previous
-              </Button>
-              <Button variant="contained" color="primary" type="submit">
-                Send Message
-              </Button>
-            </Box>
-          </Box>
-        )}
-      </form>
-    </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
+                  <Button variant="outlined" onClick={handlePrevious}>
+                    Previous
+                  </Button>
+                  <Button variant="contained" color="primary" type="submit">
+                    Send Message
+                  </Button>
+                </Box>
+              </Box>
+            )}
+          </form>
+        </Box>
+      </Box>
     </Box>
   );
 };

@@ -1,8 +1,6 @@
 // components/Footer.js
 import React from 'react';
 import Link from 'next/link';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import EmailIcon from '@mui/icons-material/Email';
 
 export default function Footer() {
   const footerStyle = {
@@ -20,49 +18,13 @@ export default function Footer() {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '0.5rem',
-  };
-
-  const socialLinksStyle = {
-    display: 'flex',
-    gap: '1rem',
-    justifyContent: 'center',
-  };
-
-  const handleMouseEnter = (e) => {
-    e.currentTarget.style.color = '#0070f3';
-  };
-
-  const handleMouseLeave = (e) => {
-    e.currentTarget.style.color = '#333';
+    // gap: '0.5rem',
   };
 
   return (
     <footer style={footerStyle}>
       <div style={footerContainerStyle}>
-        <p>&copy; {new Date().getFullYear()} Jeanice Huang MUA</p>
-
-        {/* Social / Contact Links */}
-        <div style={socialLinksStyle}>
-            <Link
-              href="https://www.instagram.com/mua__jeanice/"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <InstagramIcon />
-            </Link>
-          
-            <Link
-              href="mailto:mua.jeanice@gmail.com"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <EmailIcon />
-            </Link>
-          
-        </div>
+        <p>&copy; {new Date().getFullYear()} JEANICEHUANGMUA LLC</p>
 
         <p>All Rights Reserved</p>
         <p style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>

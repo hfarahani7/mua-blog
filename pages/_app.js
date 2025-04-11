@@ -2,6 +2,7 @@
 import '../styles/globals.css';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
+import Socials from '../components/Socials.js';
 import { Box, Container, ThemeProvider } from '@mui/material';
 
 function MuaApp({ Component, pageProps }) {
@@ -18,6 +19,7 @@ function MuaApp({ Component, pageProps }) {
         >
           <Component {...pageProps} />
         </Box>
+        <Socials />
       <Footer />
     </Box>
   );
