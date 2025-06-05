@@ -66,7 +66,7 @@ export default function Header() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {navLinks.map((link) => (
-                <MenuItem key={link.label}>
+                <MenuItem key={link.label} >
                   <Link href={link.href}>
                     <Typography className={styles.navLink}>{link.label}</Typography>
                   </Link>
