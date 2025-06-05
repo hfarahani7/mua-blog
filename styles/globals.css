@@ -1,3 +1,16 @@
+/* Site colors */
+:root {
+  --brand-green: #3E8440;
+  --pastel-bg: #BADD7F;
+  --accent-pink: #E78E8E;
+  --background:  #FDF8F4;
+  --background-off: #fdf8f4ad;
+  --body-font: 'Cormorant Upright', serif;
+  --text-body: #EFACA5;
+  --overlay: #FDF8F499;
+  --heading: #e78e8e;
+}
+
 html,
 body {
   padding: 0;
@@ -15,13 +28,6 @@ body {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
-  
-  color: #FDF8F4;
-  color: #F7EFDA;
-  color: #1f5704;
-  color: #E8D6C7;
-  color: #F4EDE4;
-  color: #3C3C3C;
 }
 
 a {
@@ -34,47 +40,13 @@ a {
 }
 
 .wrapper {
-  background-color: "#FDF8F4";
+  background-color: var(--background);
   height: '100vh';
   display: 'flex';
   align-items: 'center';
   justify-content: 'center';
   display: 'flex';
   flex-direction: column;
-}
-
-/* .image-wrapper {
-  box-shadow: 5px 10px;
-} */
-
-.background {
-  position: relative;
-  width: 60%;
-  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG);
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  border-radius: 10px;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.6);
-      padding: 2rem;
-      border-radius: 8px;
-      text-align: center;
-      max-width: 800px;
-    }  
-}
-
-.secondary {
-  background-color: 'green';
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
 
 main {
@@ -86,88 +58,4 @@ main {
 }
 
 
-@media screen and (max-width: 992px) {
-  .wrapper {
-    background-color: "#FDF8F4";
-    height: '100vh';
-    display: 'flex';
-    align-items: 'center';
-    justify-content: 'center';
-  }
-  
-  .background {
-    width: '60%';
-    height: '100vh';
-    background-image: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)';
-    background-size: 'cover';
-    background-position: 'center';
-  }
-  
-  .secondary {
-    background-color: 'FDF8F4';
-  }
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .wrapper {
-    background-color: "#F7EFDA";
-    height: '100vh';
-    display: 'flex';
-    align-items: 'center';
-    justify-content: 'center';
-  }
-  
-  .background {
-    width: '60%';
-    height: '100vh';
-    background-image: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)';
-    background-size: 'cover';
-    background-position: 'center';
-  }
-  
-  .secondary {
-    background-color: 'green';
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-/* Header.css */
-
-.appbar-custom {
-  display: flex;
-  align-items: center;
-  height: 60px;
-  padding: 0 20px;
-  background-color: #BADD7F;
-  position: static;
-}
-
-.logo {
-  font-family: 'Mr De Haviland', cursive;
-  font-weight: 1000;
-  font-size: 2.5em;
-  letter-spacing: 0.3rem;
-  color: #3E8440;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.nav-link {
-  text-align: center;
-  color: #3E8440;
-  font-size: 1.5em;
-  font-family: 'Cormorant Upright', serif;
-  cursor: pointer;
-}

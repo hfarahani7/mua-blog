@@ -1,0 +1,149 @@
+/* Index styles */
+.background {
+  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG);
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 2rem;
+  text-align: center;
+  border-radius:12px;
+}
+
+.overlay {
+  background-color: var(--overlay);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-body);
+  font-family: var(--body-font);
+}
+
+.subheading {
+  font-size: 1.2rem;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto 2rem auto;
+}
+
+.aboutWrapper {
+  margin-top: 4rem;
+  padding: 2rem;
+}
+
+.imageWrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.profileImage {
+  border-radius: 8px;
+}
+
+.textWrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--heading);
+  text-align: center;
+}
+
+.aboutText {
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.labelBox {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  color: white;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  height: 250px;
+}
+
+.recentHeading {
+  text-align: center;
+  font-family: var(--body-font);
+  color: var(--heading);
+  margin-top: 4rem;
+  font-size: 2rem;
+}
+
+.galleryWrapper {
+  padding: 2rem;
+}
+
+.galleryImageBox {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.galleryImage {
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: var(--accent-pink);
+  padding: 1rem;
+  text-align: center;
+  color: var(--background);
+  width: 100%;
+  bottom: 0;
+  height: 310px;
+  margin-top: auto;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Styles */
+.appbar {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  background-color: #e78e8e !important;
+  position: static;
+}
+
+.logo {
+  font-family: 'Mr De Haviland', cursive !important;
+  font-weight: 1000 !important;
+  font-size: 2.5em !important;
+  letter-spacing: 0.3rem !important;
+  color: #FDF8F4;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.navLink {
+  text-align: center;
+  color: #FDF8F4;
+  font-size: 2rem !important;
+  font-family: 'Cormorant Upright', serif !important;
+  cursor: pointer;
+  position: relative;
+}
