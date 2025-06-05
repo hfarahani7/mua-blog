@@ -97,13 +97,13 @@ export default function Index() {
 
                 <Link href="/portfolio#natural" className={styles.labelBox}>
 
-                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG")` }}>
+                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_185.jpg")` }}>
                     <Typography> Natural </Typography>
                   </Box>
                 </Link>
 
                 <Link href="/portfolio#studio" className={styles.labelBox}>
-                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG")` }}>
+                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6418.JPG")` }}>
                     <Typography> Studio </Typography>
                   </Box>
                 </Link>

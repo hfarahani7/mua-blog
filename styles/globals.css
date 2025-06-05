@@ -1,14 +1,12 @@
 /* Site colors */
 :root {
-  --brand-green: #3E8440;
-  --pastel-bg: #BADD7F;
   --accent-pink: #E78E8E;
   --background:  #FDF8F4;
   --background-off: #fdf8f4ad;
-  --body-font: 'Cormorant Upright', serif;
   --text-body: #EFACA5;
   --overlay: #FDF8F499;
   --heading: #e78e8e;
+  --body-font: 'Cormorant Upright', serif;
 }
 
 html,
