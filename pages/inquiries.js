@@ -1,7 +1,6 @@
 // components/MultiStepForm.js
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from '../styles/header.module.css';
 import Stack from '@mui/material/Stack';
 
 import styles from '../styles/header.module.css';
