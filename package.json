@@ -5,7 +5,8 @@
     "dev": "next dev",
     "start": "next start",
     "sync": "node image-sync.js",
-    "type": "module"
+    "type": "module",
+    "export": "next export"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.821.0",
