@@ -12,6 +12,8 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       S3_BUCKET: ${{ secrets.S3_BUCKET }}
       CF_DIST_ID: ${{ secrets.CF_DIST_ID }}
+      NEXT_PUBLIC_EMAIL_URL: ${{ secrets.NEXT_PUBLIC_EMAIL_URL }}
+
 
     steps:
       - name: 📥 Checkout code
