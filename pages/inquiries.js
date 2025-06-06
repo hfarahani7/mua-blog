@@ -4,6 +4,8 @@ import Image from 'next/image';
 import styles from '../styles/header.module.css';
 import Stack from '@mui/material/Stack';
 
+import styles from '../styles/header.module.css';
+
 import {
   Box,
   Button,
