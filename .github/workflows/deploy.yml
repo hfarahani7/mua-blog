@@ -28,6 +28,7 @@ jobs:
       - name: 🏗 Build site
         run: |
           npm run build
+          npm run export
 
       - name: ☁️ Deploy site to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
