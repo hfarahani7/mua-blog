@@ -1,6 +1,5 @@
 // components/MultiStepForm.js
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Stack from '@mui/material/Stack';
 
 import styles from '../styles/header.module.css';
@@ -96,6 +95,7 @@ const Inquiries = () => {
         }}
       >
         <Box
+          className={styles.formWrapper}
           sx={{
             width: '60%',
             height: '100vh',
@@ -107,8 +107,8 @@ const Inquiries = () => {
             justifyContent: 'center'
           }}
         >
-          <Box sx={{ maxWidth: 600, mx: 'auto', p: 2, backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: '10px' }}>
-            <form onSubmit={handleSubmit}>
+          <Box className={styles.overlayWrapper}>
+            <form className={styles.form} onSubmit={handleSubmit}>
               {step === 1 ? (
                 <StepOne formData={formData} handleChange={handleChange} handleNext={handleNext} />
               ) : (

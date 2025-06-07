@@ -149,3 +149,21 @@
 }
 
 /* Inquiries Styles */
+.formWrapper {
+  width: 80%;
+  height: 100vh;
+  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG);
+
+}
+
+.form {
+  padding: 20px;
+}
+
+.overlayWrapper {
+  background-color: var(--overlay);
+  max-width: 600px;
+  max-height: 800px;
+  border-radius: 10px;
+  box-shadow: #e78e8e;
+}
