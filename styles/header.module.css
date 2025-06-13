@@ -1,11 +1,13 @@
 /* Index styles */
 .background {
-  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG);
+  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_417.jpg);
   background-size: cover;
   background-position: center;
-  padding: 6rem 2rem;
+  /* padding: 6rem 2rem; */
   text-align: center;
-  border-radius:12px;
+  /* border-radius:12px; */
+  width: 100vw;
+  height: 100vh;
 }
 
 .overlay {
@@ -78,7 +80,7 @@
   text-align: center;
   font-family: var(--body-font);
   color: var(--heading);
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   font-size: 2rem;
 }
 
@@ -98,9 +100,20 @@
   border-radius: 16px;
 }
 
+.iconStyle {
+  color: var(--text-body);
+  font-size: 32px !important;
+  transition: 'color 0.3s ease';
+  cursor: 'pointer';
+}
+
+.iconStyle:hover {
+  color: '#0070f3';
+}
+
 /* Footer Styles */
 .footer {
-  background-color: var(--accent-pink);
+  background-color: var(--home-bar);
   padding: 1rem;
   text-align: center;
   color: var(--background);
@@ -122,8 +135,9 @@
   align-items: center;
   height: 60px;
   padding: 0 20px;
-  background-color: #e78e8e !important;
+  background: var(--home-bar) !important;
   position: static;
+  box-shadow: none !important;
 }
 
 .logo {
@@ -137,23 +151,43 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  mix-blend-mode: difference !important;
+  background: transparent;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+
 }
 
 .navLink {
   text-align: center;
-  color: '#E78E8E';
+  color: #FDF8F4 !important;
   font-size: 2rem !important;
   font-family: 'Cormorant Upright', serif !important;
   cursor: pointer;
   position: relative;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+
+}
+
+.linkBox {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 760px) {
+  .linkBox {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10%;
+  } 
 }
 
 /* Inquiries Styles */
 .formWrapper {
-  width: 80%;
+  width: 80% !important;
   height: 100vh;
   background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG);
-
 }
 
 .form {
@@ -166,4 +200,12 @@
   max-height: 800px;
   border-radius: 10px;
   box-shadow: #e78e8e;
+}
+
+@media (width <= 750px) {
+  .formWrapper {
+    width: 100% !important;
+  }
+
+    
 }

@@ -1,7 +1,7 @@
 /* Site colors */
 :root {
-  --accent-pink: #E78E8E;
-  --background:  #FDF8F4;
+  --home-bar: #D4C1B3CC;
+  --background:  #FDFBF8;
   --background-off: #fdf8f4ad;
   --text-body: #EFACA5;
   --overlay: #FDF8F499;
@@ -52,7 +52,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 
 

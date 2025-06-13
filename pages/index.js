@@ -1,4 +1,6 @@
 // pages/index.js
+import * as React from 'react';
+
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -8,12 +10,21 @@ import Typography from '@mui/material/Typography';
 import styles from '../styles/header.module.css';
 import Stack from '@mui/material/Stack';
 import Link from "next/link";
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 import '@fontsource/cormorant-upright';
 
 export default function Index() {
   const [mounted, setMounted] = useState(false);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -38,6 +49,12 @@ export default function Index() {
     }
   ];
 
+  const navLinks = [
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Services", href: "/services" },
+    { label: "Inquiries", href: "/inquiries" },
+  ];
+
   useEffect(() => {
     if (typeof window !== 'undefined' && window.instgrm && mounted) {
       window.instgrm.Embeds.process();
@@ -52,19 +69,56 @@ export default function Index() {
 
       <main>
         <Box className={styles.background}>
-          <Box className={styles.overlay}>
-            <Typography variant="h3" gutterBottom className={styles.heading}>
-              Welcome to Jeanice Huang MUA
+          <Box sx={{ flexGrow: 1, display: 'flex', marginLeft: '10%', justifyContent: { xs: 'center', md: 'left' } }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              className={styles.logo}
+            >
+              Jeanice Huang
             </Typography>
-            <Typography variant="body1" className={styles.subheading}>
-              Enhancing your natural glow for the big day. From subtle elegance to show-stopping glam.
-            </Typography>
+          </Box>
+          <Box className={styles.linkBox}>
+            {navLinks.map((link) => (
+                <Link href={link.href}>
+                  <Typography variant="inherit" className={styles.navLink}>{link.label}</Typography>
+                </Link>
+            ))}
           </Box>
         </Box>
 
+        <h2 className={styles.recentHeading}>Recent Looks {' '}
+          <Link
+            href="https://www.instagram.com/mua__jeanice/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <InstagramIcon
+              className={styles.iconStyle}
+            />
+          </Link>
+        </h2>
+        <Box className={styles.galleryWrapper}>
+          <Grid container spacing={2} sx={{ display: 'flex', justifyContent: 'center' }}>
+            {gridImages.map(({ link, altText }, index) => (
+              <Grid item xs={6} sm={4} md={3} key={index}>
+                <Box className={styles.galleryImageBox}>
+                  <Image
+                    src={link}
+                    alt={altText}
+                    width={300}
+                    height={300}
+                    className={styles.galleryImage}
+                  />
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
 
-        <Grid container spacing={4} className={styles.aboutWrapper} sx={{ display: 'flex', justifyContent: 'center' }}
-        >
+        <Grid container spacing={4} className={styles.aboutWrapper} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Grid item xs={12} sm={6} className={styles.imageWrapper} >
             <Image
               src="https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4382.JPEG"
@@ -78,9 +132,8 @@ export default function Index() {
           <Grid item xs={12} sm={6}>
             <Stack spacing={2}>
               <Box>
-                <Typography variant="h4" className={styles.aboutTitle}>
-                  About Me
-                </Typography>
+                <h2 className={styles.recentHeading}>About Me</h2>
+
                 <Typography variant="body1" className={styles.aboutText}>
                   Enhancing your natural glow for the big day.<br />
                   From subtle elegance to show-stopping glam,
@@ -110,28 +163,7 @@ export default function Index() {
               </Stack>
             </Stack>
           </Grid>
-
         </Grid>
-
-
-        <h2 className={styles.recentHeading}>Recent Looks</h2>
-        <Box className={styles.galleryWrapper}>
-          <Grid container spacing={2} sx={{ display: 'flex', justifyContent: 'center' }}>
-            {gridImages.map(({ link, altText }, index) => (
-              <Grid item xs={6} sm={4} md={3} key={index}>
-                <Box className={styles.galleryImageBox}>
-                  <Image
-                    src={link}
-                    alt={altText}
-                    width={300}
-                    height={300}
-                    className={styles.galleryImage}
-                  />
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
       </main>
     </div>
   );

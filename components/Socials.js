@@ -36,19 +36,7 @@ export default function Socials() {
 
     return (
         <div style={socialLinksStyle}>
-            <Link
-                href="https://www.instagram.com/mua__jeanice/"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <InstagramIcon
-                    style={iconStyle}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                />
-            </Link>
+            
 
             <Link
                 href="mailto:mua.jeanice@gmail.com"

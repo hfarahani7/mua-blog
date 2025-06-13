@@ -1,4 +1,3 @@
-// components/MultiStepForm.js
 import React, { useState } from 'react';
 import Stack from '@mui/material/Stack';
 
@@ -124,7 +123,7 @@ const Inquiries = () => {
 
 const StepOne = ({ formData, handleChange, handleNext }) => (
   <Box>
-    <Typography variant="h4" gutterBottom>Contact Information</Typography>
+    <Typography variant="h4" className={styles.aboutTitle} gutterBottom>Contact Information</Typography>
     <Box sx={{ display: 'flex', gap: '10px' }}>
       <TextField fullWidth label="First Name" name="firstName" value={formData.firstName} onChange={handleChange} margin="normal" />
       <TextField fullWidth label="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} margin="normal" />
@@ -149,12 +148,12 @@ const StepOne = ({ formData, handleChange, handleNext }) => (
 
 const StepTwo = ({ formData, handleChange, handleCheckboxChange, handlePrevious }) => (
   <Box>
-    <Typography variant="h4" gutterBottom>Services</Typography>
-    <Typography variant="body1" gutterBottom>(Check all that apply)</Typography>
-    <FormGroup row>
+    <Typography variant="h4" className={styles.aboutTitle} gutterBottom>Services</Typography>
+    <Typography variant="body1" className={styles.aboutText} gutterBottom>(Check all that apply)</Typography>
+    {/* <FormGroup row>
       <FormControlLabel control={<Checkbox checked={formData.services.hair} onChange={handleCheckboxChange} name="hair" />} label="Hair" />
       <FormControlLabel control={<Checkbox checked={formData.services.makeup} onChange={handleCheckboxChange} name="makeup" />} label="Makeup" />
-    </FormGroup>
+    </FormGroup> */}
     <TextField fullWidth label="Venue" name="venue" inputProps={{ maxLength: 30 }} value={formData.venue} onChange={handleChange} margin="normal" />
     <TextField fullWidth label="Getting Ready Location" name="gettingReadyLocation" inputProps={{ maxLength: 30 }} value={formData.gettingReadyLocation} onChange={handleChange} margin="normal" />
     <TextField fullWidth label="Guests Requiring Services" name="bridalPartyGuests" type="number" value={formData.bridalPartyGuests} onChange={handleChange} margin="normal" />

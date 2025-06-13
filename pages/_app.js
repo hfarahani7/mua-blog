@@ -1,4 +1,3 @@
-// pages/_app.js
 import '@fontsource/cormorant-upright';
 import '@fontsource/mr-de-haviland';
 
@@ -8,22 +7,28 @@ import Footer from '../components/Footer.js';
 import Socials from '../components/Socials.js';
 import { Box, Container, ThemeProvider } from '@mui/material';
 
+import { useRouter } from 'next/router';
 
 function MuaApp({ Component, pageProps }) {
+  const router = useRouter();
+  const isHome = router.pathname === '/';
+
   return (
     <Box
       display="flex"
       flexDirection="column"
       minHeight="100vh" // Full height of the viewport
     >
-      <Header />
+      {!isHome && <Header />}
         <Box
-          height="calc(100%-310px)"
-          marginTop="60px"
+          sx={{
+            paddingTop: isHome ? 0 : '60px'
+          }}
+          flex="1 0 auto"
         >
           <Component {...pageProps} />
         </Box>
-        <Socials />
+        {/* <Socials /> */}
       <Footer />
     </Box>
   );
