@@ -184,6 +184,13 @@
 }
 
 /* Inquiries Styles */
+.inqBackground {
+  background-color: var(--page-background);
+  height: '100vh';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .formWrapper {
   width: 80% !important;
   height: 100vh;
@@ -208,4 +215,21 @@
   }
 
     
+}
+
+/* Inquiries Styles */
+.modal {
+   position: 'absolute';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-off) !important;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.portfolioWrapper {
+  /* background-color: var(--home-bar); */
+  background-color: black;
 }

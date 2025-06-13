@@ -85,13 +85,7 @@ const Inquiries = () => {
   return (
     <Stack>
       <Box
-        sx={{
-          backgroundColor: '#F7EFDA',
-          height: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
+        className={styles.inqBackground}
       >
         <Box
           className={styles.formWrapper}
