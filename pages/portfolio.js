@@ -142,7 +142,26 @@ export default function Portfolio() {
 
   return (
     <Box className={styles.portfolioWrapper}>
+      <Box id="natural">
+      <Typography className={styles.navLink} >
+        Natural
+      </Typography>
+      <Gallery photos={photos} onClick={handleClick}/>
+      </Box>
+      <Box id="glam">
+        <Typography className={styles.navLink} >
+        Glam
+      </Typography>
       <Gallery photos={photos} onClick={handleClick} />
+      </Box>
+      <Box id="studio">
+    <Typography className={styles.navLink} >
+        Studio
+      </Typography>
+      <Gallery photos={photos} onClick={handleClick} id="studio"/>
+      </Box>
+      
+
       <Modal open={!!selected} onClose={handleClose} className={styles.modalStyle}>
         <Box sx={modalStyle}>
           {selected && (

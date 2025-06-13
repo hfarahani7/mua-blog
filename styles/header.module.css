@@ -185,7 +185,7 @@
 
 /* Inquiries Styles */
 .inqBackground {
-  background-color: var(--page-background);
+  background-color: var(--page-background) !important;
   height: '100vh';
   display: flex;
   align-items: center;
@@ -217,7 +217,7 @@
     
 }
 
-/* Inquiries Styles */
+/* Portfolio Styles */
 .modal {
    position: 'absolute';
   top: 50%;
