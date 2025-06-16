@@ -142,16 +142,9 @@ export default function Index() {
               </Box>
 
               <Stack spacing={2} direction="row" sx={{ width: '100%' }}>
-                <Link href="/portfolio#glam" className={styles.labelBox}>
+                <Link href="/portfolio#bridal" className={styles.labelBox}>
                   <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG")` }}>
-                    <Typography> Glam </Typography>
-                  </Box>
-                </Link>
-
-                <Link href="/portfolio#natural" className={styles.labelBox}>
-
-                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_185.jpg")` }}>
-                    <Typography> Natural </Typography>
+                    <Typography> Bridal </Typography>
                   </Box>
                 </Link>
 

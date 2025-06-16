@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-const photos = [
+const bridalPhotos = [
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG',
     width: 4,
@@ -73,49 +73,75 @@ const photos = [
     height: 3,
     title: 'Elegant dress – Photo: John Smith'
   },
-  {
-    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
-    width: 1,
-    height: 1,
-    title: 'Elegant dress – Photo: John Smith'
-  },
-  {
-    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
-    width: 2,
-    height: 3,
-    title: 'Elegant dress – Photo: John Smith'
-  },
-  {
-    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
-    width: 4,
-    height: 3,
-    title: 'Elegant dress – Photo: John Smith'
-  },
-  {
-    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
-    width: 4,
-    height: 3,
-    title: 'Elegant dress – Photo: John Smith'
-  },
-  {
-    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
-    width: 4,
-    height: 3,
-    title: 'Elegant dress – Photo: John Smith'
-  },
-  {
-    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
-    width: 4,
-    height: 3,
-    title: 'Elegant dress – Photo: John Smith'
-  },
-  {
-    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
-    width: 4,
-    height: 3,
-    title: 'Elegant dress – Photo: John Smith'
-  },
+];
 
+const studioPhotos = [
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG',
+    width: 4,
+    height: 3,
+    title: 'Soft glam – Photo: Jane Doe'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 4,
+    height: 3,
+    title: 'Elegant dress – Photo: John Smith'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 1,
+    height: 1,
+    title: 'Elegant dress – Photo: John Smith'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 2,
+    height: 3,
+    title: 'Elegant dress – Photo: John Smith'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 4,
+    height: 3,
+    title: 'Elegant dress – Photo: John Smith'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 4,
+    height: 3,
+    title: 'Elegant dress – Photo: John Smith'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 4,
+    height: 3,
+    title: 'Elegant dress – Photo: John Smith'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 4,
+    height: 3,
+    title: 'Elegant dress – Photo: John Smith'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 4,
+    height: 3,
+    title: 'Elegant dress – Photo: John Smith'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG',
+    width: 4,
+    height: 3,
+    title: 'Soft glam – Photo: Jane Doe'
+  },
+  {
+    src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG',
+    width: 4,
+    height: 3,
+    title: 'Elegant dress – Photo: John Smith'
+  },
 ];
 
 const modalStyle = {
@@ -142,23 +168,17 @@ export default function Portfolio() {
 
   return (
     <Box className={styles.portfolioWrapper}>
-      <Box id="natural">
+      <Box id="bridal">
       <Typography className={styles.navLink} >
-        Natural
+        Bridal
       </Typography>
-      <Gallery photos={photos} onClick={handleClick}/>
-      </Box>
-      <Box id="glam">
-        <Typography className={styles.navLink} >
-        Glam
-      </Typography>
-      <Gallery photos={photos} onClick={handleClick} />
+      <Gallery photos={bridalPhotos} onClick={handleClick}/>
       </Box>
       <Box id="studio">
     <Typography className={styles.navLink} >
         Studio
       </Typography>
-      <Gallery photos={photos} onClick={handleClick} id="studio"/>
+      <Gallery photos={studioPhotos} onClick={handleClick} id="studio"/>
       </Box>
       
 
