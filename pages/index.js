@@ -32,11 +32,11 @@ export default function Index() {
 
   const gridImages = [
     {
-      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG",
-      altText: "Jeanice doing makeup"
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6084.jpeg",
+      altText: "Jeanice doing makeup" //not this one
     },
     {
-      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG",
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4037.JPEG",
       altText: "Bride with dress"
     },
     {
@@ -44,8 +44,8 @@ export default function Index() {
       altText: "Image of finished makeup"
     },
     {
-      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8631.PNG",
-      altText: "Holding mirror up to finished makeup"
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG",
+      altText: "Holding mirror up to finished makeup" //not this one
     }
   ];
 
@@ -64,7 +64,16 @@ export default function Index() {
   return (
     <div>
       <Head>
-        <script async defer src="//www.instagram.com/embed.js"></script>
+        {/* <script async defer src="//www.instagram.com/embed.js"></script>
+        <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-5NJJ6EQXFL"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-5NJJ6EQXFL');
+</script> */}
       </Head>
 
       <main>
@@ -118,6 +127,10 @@ export default function Index() {
           </Grid>
         </Box>
 
+        <Box className={styles.lowerBackground}>
+        
+        </Box>
+
         <Grid container spacing={4} className={styles.aboutWrapper} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Grid item xs={12} sm={6} className={styles.imageWrapper} >
             <Image
@@ -143,13 +156,13 @@ export default function Index() {
 
               <Stack spacing={2} direction="row" sx={{ width: '100%' }}>
                 <Link href="/portfolio#bridal" className={styles.labelBox}>
-                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8636.JPEG")` }}>
+                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6087.jpeg")` }}>
                     <Typography> Bridal </Typography>
                   </Box>
                 </Link>
 
                 <Link href="/portfolio#studio" className={styles.labelBox}>
-                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6418.JPG")` }}>
+                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/C9FBB259-D95B-4990-9992-CFF20769905C.JPG")` }}>
                     <Typography> Studio </Typography>
                   </Box>
                 </Link>
