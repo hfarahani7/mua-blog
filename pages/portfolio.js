@@ -9,20 +9,20 @@ import Typography from '@mui/material/Typography';
 const bridalPhotos = [
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/0048.jpg',
-    width: 4,
-    height: 4,
+    width: 1,
+    height: 2,
     title: 'Elegant dress – Photo: John Smith'
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/0060.jpg',
-    width: 3,
-    height: 2,
+    width: 2,
+    height: 1.6,
     title: 'Elegant dress – Photo: John Smith'
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/0663.jpg',
     width: 2,
-    height: 4,
+    height: 3,
     title: `Studio image`
   },
   {
@@ -33,116 +33,116 @@ const bridalPhotos = [
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-21.JPEG',
-    width: 1,
-    height: 1,
+    width: 1.5,
+    height: 2,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG',
     width: 1,
-    height: 1,
+    height: 1.5,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-48.JPEG',
     width: 1,
-    height: 1,
+    height: 1.5,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-117.JPEG',
-    width: 1,
+    width: 1.5,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/DSCF7649.jpeg',
-    width: 1,
+    width: 1.5,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/DTC-14.jpg',
     width: 1,
-    height: 1,
+    height: 1.5,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/EJ-32.jpg',
-    width: 1,
+    width: 1.5,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/hl-16102776383.JPEG',
-    width: 1,
-    height: 1,
+    width: 2.5,
+    height: 1.5,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_3040.jpeg',
-    width: 1,
-    height: 1,
+    width: 1.5,
+    height: 2,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4037.JPEG',
     width: 1,
-    height: 1,
+    height: 1.5,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_5471.JPEG',
-    width: 1,
+    width: 1.5,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6008.JPEG',
-    width: 1,
-    height: 1,
+    width: 4,
+    height: 2.5,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6086.jpeg',
-    width: 1,
+    width: 2,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6093.jpeg',
-    width: 1,
-    height: 1,
+    width: 4,
+    height: 2,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8629.JPEG',
-    width: 1,
+    width: 1.5,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8630.JPEG',
-    width: 1,
+    width: 1.5,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_9073.JPG',
-    width: 1,
+    width: 1.75,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_9085.JPG',
     width: 1,
-    height: 1,
+    height: 1.75,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_9092.JPG',
     width: 1,
-    height: 1,
+    height: 1.6,
     title: `Studio image`
   },
   {
@@ -154,67 +154,67 @@ const bridalPhotos = [
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_060.jpg',
     width: 1,
-    height: 1,
+    height: 1.5,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_087.jpg',
-    width: 1,
+    width: 1.7,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_185.jpg',
     width: 1,
-    height: 1,
+    height: 1.6,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_527.jpg',
-    width: 1,
-    height: 1,
+    width: 2,
+    height: 1.3,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_603.jpg',
-    width: 1,
+    width: 1.4,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/pc-32.jpg',
     width: 1,
-    height: 1,
+    height: 1.5,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/pc-35.jpg',
     width: 1,
-    height: 1,
+    height: 1.4,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/pc-51+(1).jpg',
-    width: 1,
+    width: 1.4,
     height: 1,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/pc-67.jpg',
     width: 1,
-    height: 1,
+    height: 1.3,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/pc-74.jpg',
     width: 1,
-    height: 1,
+    height: 1.6,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/pc-81+(1).jpg',
-    width: 1,
-    height: 1,
+    width: 1.2,
+    height: 2,
     title: `Studio image`
   },
 ];
@@ -334,13 +334,13 @@ export default function Portfolio() {
       <Typography className={styles.navLink} >
         Bridal
       </Typography>
-      <Gallery photos={bridalPhotos} onClick={handleClick}/>
+      <Gallery photos={bridalPhotos} onClick={handleClick} direction='column'/>
       </Box>
       <Box id="studio">
     <Typography className={styles.navLink} >
         Studio
       </Typography>
-      <Gallery photos={studioPhotos} onClick={handleClick} id="studio"/>
+      <Gallery photos={studioPhotos} onClick={handleClick} id="studio" direction='column'/>
       </Box>
       
 
