@@ -48,7 +48,7 @@ export default function Header() {
               noWrap
               component="a"
               href="/"
-              className={styles.logo}
+              className={styles.headerLogo}
             >
               Jeanice Huang
             </Typography>
@@ -67,7 +67,7 @@ export default function Header() {
               {navLinks.map((link) => (
                 <MenuItem key={link.label} >
                   <Link href={link.href}>
-                    <Typography className={styles.navLink}>{link.label}</Typography>
+                    <Typography className={styles.headerLink}>{link.label}</Typography>
                   </Link>
                 </MenuItem>
               ))}
@@ -78,7 +78,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <MenuItem key={link.label}>
                 <Link href={link.href}>
-                  <Typography variant="inherit" className={styles.navLink}>{link.label}</Typography>
+                  <Typography variant="inherit" className={styles.headerLink}>{link.label}</Typography>
                 </Link>
               </MenuItem>
             ))}

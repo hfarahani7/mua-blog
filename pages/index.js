@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Box from '@mui/material/Box';
+import Box from '@mui/material/Box'; 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import styles from '../styles/header.module.css';
