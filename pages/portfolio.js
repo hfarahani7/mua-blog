@@ -222,14 +222,14 @@ const bridalPhotos = [
 const studioPhotos = [
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/1DC67769-7753-4D92-86BB-1C5AAA630CEF.JPG',
-    width: 4,
-    height: 3,
+    width: 1,
+    height: 1.3,
     title: 'Soft glam – Photo: Jane Doe'
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/3CFE1B70-5830-430E-A829-992DB953FAC7.JPG',
-    width: 4,
-    height: 3,
+    width: 1,
+    height: 1.3,
     title: 'Elegant dress – Photo: John Smith'
   },
   {
@@ -241,67 +241,67 @@ const studioPhotos = [
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/374AC1DE-0983-4B4F-A336-0AA0187C7E55.JPG',
     width: 1,
-    height: 1,
+    height: 1.6,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/4949BFE8-2684-49B7-A4A0-D4D103B941E0.JPEG',
     width: 1,
-    height: 1,
+    height: 1.3,
     title: `Studio image`
   }, 
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/C9FBB259-D95B-4990-9992-CFF20769905C.JPG',
     width: 1,
-    height: 1,
+    height: 1.6,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/D6420A2F-B705-4371-B6E9-DEBE128ECD87.JPG',
     width: 1,
-    height: 1,
+    height: 1.6,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/E6710887-BA74-4089-8D4D-D1677C468DFE.JPG',
     width: 1,
-    height: 1,
+    height: 1.4,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/EJ-24+(1).jpg',
     width: 1,
-    height: 1,
+    height: 1.4,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_0581.JPEG',
     width: 1,
-    height: 1,
+    height: 1.2,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_0600.JPEG',
     width: 1,
-    height: 1,
+    height: 1.2,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_0655.JPEG',
     width: 1,
-    height: 1,
+    height: 1.3,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6418.JPG',
     width: 1,
-    height: 1,
+    height: 1.6,
     title: `Studio image`
   },
   {
     src: 'https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_9677.JPG',
     width: 1,
-    height: 1,
+    height: 1.4,
     title: `Studio image`
   },
 ];
