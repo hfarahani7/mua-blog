@@ -1,5 +1,7 @@
 import '@fontsource/cormorant-upright';
 import '@fontsource/mr-de-haviland';
+// import { Cormorant_Upright } from 'next/font/google';
+// const cormorant = Cormorant_Upright({ subsets: ['latin'], weight: '400' });
 
 import '../styles/globals.css';
 import Header from '../components/Header.js';
@@ -18,6 +20,7 @@ function MuaApp({ Component, pageProps }) {
     <>
     <Head>
         <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
       </Head>
     <Box
       display="flex"
