@@ -71,7 +71,7 @@
 }
 
 .aboutTitle {
-  font-size: 2rem;
+  font-size: 2rem !important;
   margin-bottom: 1rem;
   color: var(--heading);
   text-align: center;
@@ -175,7 +175,7 @@
   text-align: center;
   mix-blend-mode: difference !important;
   background: transparent;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .navLink {
@@ -185,7 +185,7 @@
   font-family: var(--body-font) !important;
   cursor: pointer;
   position: relative;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .headerLink {
@@ -210,16 +210,17 @@
   align-items: center;
   text-align: center;
   background: transparent;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 @media (max-width: 760px) {
   .logo {
-  font-size: 3.5em !important;
+    font-size: 3.5em !important;
 
   }
+
   .navLink {
-      font-size: 2em !important;
+    font-size: 2em !important;
   }
 }
 
@@ -235,17 +236,18 @@
     flex-direction: column;
     align-items: flex-start;
     padding-left: 10%;
-  } 
+  }
 }
 
 /* Inquiries Styles */
 .inqBackground {
   background-color: var(--page-background) !important;
-  height: '100vh';
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .formWrapper {
   width: 80% !important;
   height: 100vh;
@@ -264,17 +266,17 @@
   box-shadow: #e78e8e;
 }
 
-@media (width <= 750px) {
+@media (width <=750px) {
   .formWrapper {
     width: 100% !important;
   }
 
-    
+
 }
 
 /* Portfolio Styles */
 .modal {
-   position: 'absolute';
+  position: 'absolute';
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -287,4 +289,38 @@
 .portfolioWrapper {
   /* background-color: var(--home-bar); */
   background-color: black;
+}
+
+/* Services Styles */
+.serviceWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+}
+.serviceBox {
+  width: 50%;
+  list-style-position: inside;
+  padding: 20px;
+}
+
+@media (width <=750px) {
+  .serviceWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .serviceBox {
+    width: 100%;
+  }
+
+}
+
+.serviceItem {
+  font-size: 1.5rem !important;
+}
+
+.serviceList {
+  text-align: left;
+  line-height: 2.5rem;
 }
