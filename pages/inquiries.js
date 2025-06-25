@@ -92,7 +92,7 @@ const Inquiries = () => {
           sx={{
             width: '60%',
             height: '100vh',
-            backgroundImage: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG)',
+            backgroundImage: 'url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             display: 'flex',

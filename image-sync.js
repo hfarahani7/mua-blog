@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { mkdir, readdir, readFile } from 'fs/promises';
 import { createWriteStream } from 'fs';
 import { pipeline } from 'stream/promises';
+import mime from 'mime-types';
 import {
   S3Client,
   ListObjectsV2Command,
@@ -53,9 +54,10 @@ async function downloadImagesFromS3() {
     const key = obj.Key;
     const fileName = path.basename(key);
     const filePath = path.join(IMAGE_DIR, fileName);
+    const contentType = mime.lookup(filePath) || 'application/octet-stream';
 
     try {
-      const response = await s3.send(new GetObjectCommand({ Bucket: BUCKET_NAME, Key: key }));
+      const response = await s3.send(new GetObjectCommand({ Bucket: BUCKET_NAME, Key: key, ContentType: contentType }));
 
       if (!response.Body) {
         console.warn(`⚠️ Skipped ${key} — no Body returned.`);

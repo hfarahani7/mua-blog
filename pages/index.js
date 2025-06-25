@@ -32,19 +32,19 @@ export default function Index() {
 
   const gridImages = [
     {
-      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6084.jpeg",
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6084.webp",
       altText: "Jeanice doing makeup" //not this one
     },
     {
-      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4037.JPEG",
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4037.webp",
       altText: "Bride with dress"
     },
     {
-      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_9555.PNG",
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_9555.webp",
       altText: "Image of finished makeup"
     },
     {
-      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.PNG",
+      link: "https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_8632.webp",
       altText: "Holding mirror up to finished makeup" //not this one
     }
   ];
@@ -134,7 +134,7 @@ export default function Index() {
         <Grid container spacing={4} className={styles.aboutWrapper} sx={{ display: 'flex', justifyContent: 'center' }}>
           <Grid item xs={12} sm={6} className={styles.imageWrapper} >
             <Image
-              src="https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4382.JPEG"
+              src="https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_4382.webp"
               alt="Jeanice Huang Headshot"
               width={300}
               height={400}
@@ -156,13 +156,13 @@ export default function Index() {
 
               <Stack spacing={2} direction="row" sx={{ width: '100%' }}>
                 <Link href="/portfolio#bridal" className={styles.labelBox}>
-                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6087.jpeg")` }}>
+                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6087.webp")` }}>
                     <Typography> Bridal </Typography>
                   </Box>
                 </Link>
 
                 <Link href="/portfolio#studio" className={styles.labelBox}>
-                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/C9FBB259-D95B-4990-9992-CFF20769905C.JPG")` }}>
+                  <Box className={styles.labelBox} sx={{ backgroundImage: `url("https://jeanice-mua.s3.us-east-2.amazonaws.com/images/C9FBB259-D95B-4990-9992-CFF20769905C.webp")` }}>
                     <Typography> Studio </Typography>
                   </Box>
                 </Link>

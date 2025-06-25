@@ -11,7 +11,7 @@
 }
 
 .lowerBackground {
-  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6091.jpeg);
+  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6091.webp);
   background-size: cover;
   background-position: center;
   /* padding: 6rem 2rem; */
@@ -251,7 +251,7 @@
 .formWrapper {
   width: 80% !important;
   height: 100vh;
-  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.JPEG);
+  background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Dana-28.webp);
 }
 
 .form {
