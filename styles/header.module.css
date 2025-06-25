@@ -297,11 +297,19 @@
   flex-direction: row;
   width: 100%;
   text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 20px;
 }
+
 .serviceBox {
   width: 50%;
   list-style-position: inside;
-  padding: 20px;
+  /* padding: 20px; */
+  background-size: 'cover';
+  background-position: 'center';
+  display: 'flex';
+  padding-bottom: 20px;
 }
 
 @media (width <=750px) {
@@ -310,6 +318,7 @@
     flex-direction: column;
     width: 100%;
   }
+
   .serviceBox {
     width: 100%;
   }

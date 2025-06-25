@@ -18,7 +18,8 @@ export default function Services() {
       </Typography> */}
 
       <Box className={styles.serviceWrapper}>
-        <Box className={styles.serviceBox}>
+        <Box className={styles.serviceBox} >
+          {/* sx={{backgroundImage: `url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_9076.JPG)`}} */}
           <Typography variant="h5" gutterBottom className={styles.aboutTitle}>Hair Services</Typography>
           <Divider />
           <ul className={styles.serviceList} >
@@ -30,8 +31,9 @@ export default function Services() {
             <li className={styles.serviceItem}>Clip-In Extension Styling</li>
             <li className={styles.serviceItem}>Textured/Curly Hair Styling</li>
           </ul>
-        </Box>
-        <Box className={styles.serviceBox}>
+        </Box> 
+        <Box className={styles.serviceBox} > 
+          {/* sx={{backgroundImage: `url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/A7BA88FE-E4A7-46F8-9833-18DF2FD1F2EA.JPG)`}} */}
           <Typography variant="h5" gutterBottom className={styles.aboutTitle}>Makeup Services</Typography>
           <Divider />
           <ul className={styles.serviceList}>
@@ -46,7 +48,7 @@ export default function Services() {
         </Box>
       </Box>
 
-      <Box>
+      <Box sx={{paddingTop: "20px", paddingBottom: "20px"}}>
         <Typography variant="h5" gutterBottom className={styles.aboutTitle}>Frequently Asked Questions</Typography>
         <Divider sx={{ mb: 2 }} />
 
