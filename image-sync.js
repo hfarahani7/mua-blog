@@ -14,6 +14,8 @@ import {
 
 dotenv.config();
 
+//for %i in (*.jpg *.jpeg *.heic *.PNG) do magick "%i" -quality 100 "%~ni.webp"
+
 // Resolve __dirname for ESModules
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const IMAGE_DIR = path.join(__dirname, 'public', 'images');
