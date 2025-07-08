@@ -194,7 +194,7 @@ const bridalPhotos = [
     title: `Studio image`
   },
   {
-    src: 'https://dwxk3eiesmmgs.cloudfront.net/images/pc-51+(1).webp',
+    src: 'https://dwxk3eiesmmgs.cloudfront.net/images/pc-51%2B%281%29.webp',
     width: 1.4,
     height: 1,
     title: `Studio image`
@@ -212,7 +212,7 @@ const bridalPhotos = [
     title: `Studio image`
   },
   {
-    src: 'https://dwxk3eiesmmgs.cloudfront.net/images/pc-81+(1).webp',
+    src: 'https://dwxk3eiesmmgs.cloudfront.net/images/pc-81%2B%281%29.webp',
     width: 1.2,
     height: 2,
     title: `Studio image`
@@ -269,7 +269,7 @@ const studioPhotos = [
     title: `Studio image`
   },
   {
-    src: 'https://dwxk3eiesmmgs.cloudfront.net/images/EJ-24+(1).webp',
+    src: 'https://dwxk3eiesmmgs.cloudfront.net/images/EJ-24%2B%281%29.webp',
     width: 1,
     height: 1.4,
     title: `Studio image`
