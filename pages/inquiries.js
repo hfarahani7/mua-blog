@@ -7,8 +7,11 @@ import {
   Box,
   Button,
   Checkbox,
+  FormControl,
   FormControlLabel,
   FormGroup,
+  InputLabel,
+  MenuItem,
   Select,
   TextField,
   Typography
@@ -20,9 +23,16 @@ import {
   sendInquiry
 } from '../api/sendEmail';
 
+const US_STATES = [
+  'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+  'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+  'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+  'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+  'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+];
+
 const Inquiries = () => {
   const [step, setStep] = useState(1);
-  const [region, setRegion] = useState('');
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -32,7 +42,7 @@ const Inquiries = () => {
     streetAddress: '',
     apartment: '',
     city: '',
-    state: region,
+    state: '',
     zip: '',
     country: '',
     services: {
@@ -130,7 +140,21 @@ const StepOne = ({ formData, handleChange, handleNext }) => (
     <TextField fullWidth label="Apartment, suite, etc" name="apartment" value={formData.apartment} onChange={handleChange} margin="normal" />
     <Box sx={{ display: 'flex', gap: '10px' }}>
       <TextField fullWidth label="City" name="city" value={formData.city} onChange={handleChange} margin="normal" />
-      <Select fullWidth name="state" value={formData.state} onChange={handleChange} />
+      <FormControl fullWidth margin="normal">
+        <InputLabel id="state-select-label">State</InputLabel>
+        <Select
+          labelId="state-select-label"
+          id="state-select"
+          name="state"
+          value={formData.state}
+          label="State"
+          onChange={handleChange}
+        >
+          {US_STATES.map((st) => (
+            <MenuItem key={st} value={st}>{st}</MenuItem>
+          ))}
+        </Select>
+      </FormControl>
       <TextField fullWidth label="ZIP / Postal Code" name="zip" value={formData.zip} onChange={handleChange} margin="normal" />
     </Box>
     <TextField fullWidth label="Wedding Date" name="weddingDate" type="date" value={formData.weddingDate} onChange={handleChange} margin="normal" InputLabelProps={{ shrink: true }} />
