@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/header.module.css';
+import Image from 'next/image';
 
-import Gallery from 'react-photo-gallery';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -331,18 +331,86 @@ export default function Portfolio() {
   return (
     <Box className={styles.portfolioWrapper}>
       <Box id="bridal">
-      <Typography className={styles.navLink} >
-        Bridal
-      </Typography>
-      <Gallery photos={bridalPhotos} onClick={handleClick} direction='column'/>
+        <Typography className={styles.navLink}>
+          Bridal
+        </Typography>
+        <Box sx={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gap: '1rem',
+          padding: '2rem'
+        }}>
+          {bridalPhotos.map((photo, idx) => (
+            <Box 
+              key={idx}
+              onClick={() => handleClick(null, { photo })}
+              sx={{ 
+                cursor: 'pointer',
+                position: 'relative',
+                paddingBottom: `${(photo.height / photo.width) * 100}%`,
+                overflow: 'hidden',
+                borderRadius: '4px',
+                '&:hover img': { opacity: 0.8 }
+              }}
+            >
+              <img
+                src={photo.src}
+                alt={photo.title}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transition: 'opacity 0.2s'
+                }}
+              />
+            </Box>
+          ))}
+        </Box>
       </Box>
+
       <Box id="studio">
-    <Typography className={styles.navLink} >
-        Studio
-      </Typography>
-      <Gallery photos={studioPhotos} onClick={handleClick} id="studio" direction='column'/>
+        <Typography className={styles.navLink}>
+          Studio
+        </Typography>
+        <Box sx={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gap: '1rem',
+          padding: '2rem'
+        }}>
+          {studioPhotos.map((photo, idx) => (
+            <Box 
+              key={idx}
+              onClick={() => handleClick(null, { photo })}
+              sx={{ 
+                cursor: 'pointer',
+                position: 'relative',
+                paddingBottom: `${(photo.height / photo.width) * 100}%`,
+                overflow: 'hidden',
+                borderRadius: '4px',
+                '&:hover img': { opacity: 0.8 }
+              }}
+            >
+              <img
+                src={photo.src}
+                alt={photo.title}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transition: 'opacity 0.2s'
+                }}
+              />
+            </Box>
+          ))}
+        </Box>
       </Box>
-      
 
       <Modal open={!!selected} onClose={handleClose} className={styles.modalStyle}>
         <Box sx={modalStyle}>

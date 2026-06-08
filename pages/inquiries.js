@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Stack from '@mui/material/Stack';
 
 import styles from '../styles/header.module.css';
@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 
 import {
+  initializeEmailJS,
   formatInquiryMessage,
   buildInquiryPayload,
   sendInquiry
@@ -33,6 +34,12 @@ const US_STATES = [
 
 const Inquiries = () => {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    // Initialize EmailJS when component mounts
+    initializeEmailJS();
+  }, []);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -75,21 +82,59 @@ const Inquiries = () => {
     }
   };
 
-  const handleNext = () => setStep(2);
-  const handlePrevious = () => setStep(1);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const message = formatInquiryMessage(formData);
-    const payload = buildInquiryPayload(formData, message);
+    setIsSubmitting(true);
 
     try {
+      const message = formatInquiryMessage(formData);
+      const payload = buildInquiryPayload(formData, message);
       await sendInquiry(payload);
-      alert('Email sent successfully!');
+      alert('Inquiry sent successfully!');
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        streetAddress: '',
+        apartment: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: '',
+        services: {
+          hair: false,
+          makeup: false,
+        },
+        weddingDate: '',
+        venue: '',
+        gettingReadyLocation: '',
+        bridalPartyGuests: '',
+        bridalPartyHair: false,
+        bridalPartyMakeup: false,
+        additionalInfo: '',
+      });
+      setStep(1);
     } catch (error) {
-      console.error('Error sending email:', error);
-      alert('An error occurred while sending your message.');
+      console.error('Error sending inquiry:', error);
+      alert('An error occurred while sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
+  };
+
+  const handleNext = () => {
+    setStep(step + 1);
+  };
+
+  const handlePrevious = () => {
+    setStep(step - 1);
+  };
+
+  const handleConfirm = async (e) => {
+    e.preventDefault();
+    await handleSubmit(e);
   };
 
   return (
@@ -111,11 +156,15 @@ const Inquiries = () => {
           }}
         >
           <Box className={styles.overlayWrapper}>
-            <form className={styles.form} onSubmit={handleSubmit}>
-              {step === 1 ? (
+            <form className={styles.form} onSubmit={step === 3 ? handleConfirm : (e) => e.preventDefault()}>
+              {step === 1 && (
                 <StepOne formData={formData} handleChange={handleChange} handleNext={handleNext} />
-              ) : (
-                <StepTwo formData={formData} handleChange={handleChange} handleCheckboxChange={handleCheckboxChange} handlePrevious={handlePrevious} />
+              )}
+              {step === 2 && (
+                <StepTwo formData={formData} handleChange={handleChange} handleCheckboxChange={handleCheckboxChange} handlePrevious={handlePrevious} handleNext={handleNext} />
+              )}
+              {step === 3 && (
+                <StepThree formData={formData} handlePrevious={handlePrevious} isSubmitting={isSubmitting} />
               )}
             </form>
           </Box>
@@ -164,7 +213,7 @@ const StepOne = ({ formData, handleChange, handleNext }) => (
   </Box>
 );
 
-const StepTwo = ({ formData, handleChange, handleCheckboxChange, handlePrevious }) => (
+const StepTwo = ({ formData, handleChange, handleCheckboxChange, handlePrevious, handleNext }) => (
   <Box>
     <Typography variant="h4" className={styles.aboutTitle} gutterBottom>Services</Typography>
     <Typography variant="body1" className={styles.aboutText} gutterBottom>(Check all that apply)</Typography>
@@ -182,7 +231,53 @@ const StepTwo = ({ formData, handleChange, handleCheckboxChange, handlePrevious 
     <TextField fullWidth label="Additional Info" name="additionalInfo" multiline rows={4} inputProps={{ maxLength: 180 }} value={formData.additionalInfo} onChange={handleChange} margin="normal" />
     <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
       <Button variant="outlined" onClick={handlePrevious}>Previous</Button>
-      <Button variant="contained" color="primary" type="submit">Send Message</Button>
+      <Button variant="contained" color="primary" onClick={handleNext}>Review</Button>
+    </Box>
+  </Box>
+);
+
+const StepThree = ({ formData, handlePrevious, isSubmitting }) => (
+  <Box>
+    <Typography variant="h4" className={styles.aboutTitle} gutterBottom>Confirm Your Information</Typography>
+    <Typography variant="body2" className={styles.aboutText} gutterBottom sx={{ mb: 3 }}>Please review your details before submitting</Typography>
+    
+    <Box sx={{ mb: 3 }}>
+      <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>Contact Information</Typography>
+      <Box sx={{ backgroundColor: 'rgba(255,255,255,0.1)', p: 2, borderRadius: 1 }}>
+        <Typography variant="body2"><strong>Name:</strong> {formData.firstName} {formData.lastName}</Typography>
+        <Typography variant="body2"><strong>Email:</strong> {formData.email}</Typography>
+        <Typography variant="body2"><strong>Phone:</strong> {formData.phone}</Typography>
+        <Typography variant="body2"><strong>Address:</strong> {formData.streetAddress} {formData.apartment && `${formData.apartment}`}</Typography>
+        <Typography variant="body2"><strong>City:</strong> {formData.city}, {formData.state} {formData.zip}</Typography>
+      </Box>
+    </Box>
+
+    <Box sx={{ mb: 3 }}>
+      <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>Wedding Details</Typography>
+      <Box sx={{ backgroundColor: 'rgba(255,255,255,0.1)', p: 2, borderRadius: 1 }}>
+        <Typography variant="body2"><strong>Wedding Date:</strong> {formData.weddingDate}</Typography>
+        <Typography variant="body2"><strong>Venue:</strong> {formData.venue}</Typography>
+        <Typography variant="body2"><strong>Getting Ready Location:</strong> {formData.gettingReadyLocation}</Typography>
+        <Typography variant="body2"><strong>Guests Requiring Services:</strong> {formData.bridalPartyGuests}</Typography>
+      </Box>
+    </Box>
+
+    <Box sx={{ mb: 3 }}>
+      <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>Services</Typography>
+      <Box sx={{ backgroundColor: 'rgba(255,255,255,0.1)', p: 2, borderRadius: 1 }}>
+        <Typography variant="body2"><strong>Hair:</strong> {formData.bridalPartyHair ? 'Yes' : 'No'}</Typography>
+        <Typography variant="body2"><strong>Makeup:</strong> {formData.bridalPartyMakeup ? 'Yes' : 'No'}</Typography>
+        {formData.additionalInfo && (
+          <Typography variant="body2"><strong>Additional Info:</strong> {formData.additionalInfo}</Typography>
+        )}
+      </Box>
+    </Box>
+
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+      <Button variant="outlined" onClick={handlePrevious} disabled={isSubmitting}>Previous</Button>
+      <Button variant="contained" color="primary" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Sending...' : 'Send Message'}
+      </Button>
     </Box>
   </Box>
 );
