@@ -91,7 +91,7 @@ export default function Index() {
           </Box>
           <Box className={styles.linkBox}>
             {navLinks.map((link) => (
-                <Link href={link.href}>
+                <Link href={link.href} key={link.href}>
                   <Typography variant="inherit" className={styles.navLink}>{link.label}</Typography>
                 </Link>
             ))}
@@ -120,6 +120,7 @@ export default function Index() {
                     width={300}
                     height={300}
                     className={styles.galleryImage}
+                    loading="lazy"
                   />
                 </Box>
               </Grid>
@@ -139,6 +140,7 @@ export default function Index() {
               width={300}
               height={400}
               className={styles.profileImage}
+              loading="lazy"
             />
           </Grid>
 

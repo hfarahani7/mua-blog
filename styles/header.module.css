@@ -3,22 +3,28 @@
   background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_417.webp);
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   /* padding: 6rem 2rem; */
   text-align: center;
   /* border-radius:12px; */
   width: 100vw;
   height: 100vh;
+  /* Fallback color while image loads */
+  background-color: #D4C1B3;
 }
 
 .lowerBackground {
   background-image: url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/IMG_6091.webp);
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   /* padding: 6rem 2rem; */
   text-align: center;
   /* border-radius:12px; */
   width: 100vw;
   height: 100vh;
+  /* Fallback color while image loads */
+  background-color: #F7EFDA;
 }
 
 @media (max-width: 760px) {

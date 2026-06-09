@@ -20,7 +20,9 @@ function MuaApp({ Component, pageProps }) {
     <>
     <Head>
         <link rel="icon" href="/favicon.ico" />
-          <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+        {/* Preload hero background image for faster LCP */}
+        <link rel="preload" as="image" href="https://jeanice-mua.s3.us-east-2.amazonaws.com/images/Kath_Matt_JeanLaurentGaudy_417.webp" type="image/webp" />
       </Head>
     <Box
       display="flex"
