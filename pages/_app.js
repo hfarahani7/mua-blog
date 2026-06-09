@@ -19,6 +19,7 @@ function MuaApp({ Component, pageProps }) {
   return (
     <>
     <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
         {/* Preload hero background image for faster LCP */}
