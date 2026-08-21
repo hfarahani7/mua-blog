@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from '../styles/header.module.css';
 import Image from 'next/image';
 
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const bridalPhotos = [
   {
@@ -319,96 +322,138 @@ const modalStyle = {
   overflow: 'auto'
 };
 
-export default function Portfolio() {
+function ScrollableGallery({ title, photos }) {
+  const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
   const [selected, setSelected] = useState(null);
 
-  const handleClick = (_, { photo }) => {
-    setSelected(photo);
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      setCanScrollLeft(scrollRef.current.scrollLeft > 0);
+      setCanScrollRight(
+        scrollRef.current.scrollLeft < 
+        scrollRef.current.scrollWidth - scrollRef.current.clientWidth - 10
+      );
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 400;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+      setTimeout(checkScroll, 300);
+    }
   };
 
   const handleClose = () => setSelected(null);
 
   return (
-    <Box className={styles.portfolioWrapper}>
-      <Box id="bridal">
-        <Typography className={styles.navLink}>
-          Bridal
+    <>
+      <Box id={title.toLowerCase()}>
+        <Typography className={styles.navLink} sx={{ textAlign: 'center', margin: '2rem 0 1rem' }}>
+          {title}
         </Typography>
         <Box sx={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-          gap: '1rem',
-          padding: '2rem'
+          position: 'relative',
+          padding: '0 2rem'
         }}>
-          {bridalPhotos.map((photo, idx) => (
-            <Box 
-              key={idx}
-              onClick={() => handleClick(null, { photo })}
-              sx={{ 
-                cursor: 'pointer',
-                position: 'relative',
-                paddingBottom: `${(photo.height / photo.width) * 100}%`,
-                overflow: 'hidden',
-                borderRadius: '4px',
-                '&:hover img': { opacity: 0.8 }
+          {canScrollLeft && (
+            <IconButton
+              onClick={() => scroll('left')}
+              sx={{
+                position: 'absolute',
+                left: 0,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 10,
+                bgcolor: 'rgba(255, 255, 255, 0.8)',
+                '&:hover': { bgcolor: 'rgba(255, 255, 255, 1)' }
               }}
             >
-              <img
-                src={photo.src}
-                alt={photo.title}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'opacity 0.2s'
-                }}
-              />
-            </Box>
-          ))}
-        </Box>
-      </Box>
-
-      <Box id="studio">
-        <Typography className={styles.navLink}>
-          Studio
-        </Typography>
-        <Box sx={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-          gap: '1rem',
-          padding: '2rem'
-        }}>
-          {studioPhotos.map((photo, idx) => (
-            <Box 
-              key={idx}
-              onClick={() => handleClick(null, { photo })}
-              sx={{ 
-                cursor: 'pointer',
-                position: 'relative',
-                paddingBottom: `${(photo.height / photo.width) * 100}%`,
-                overflow: 'hidden',
-                borderRadius: '4px',
-                '&:hover img': { opacity: 0.8 }
+              <ChevronLeftIcon />
+            </IconButton>
+          )}
+          {canScrollRight && (
+            <IconButton
+              onClick={() => scroll('right')}
+              sx={{
+                position: 'absolute',
+                right: 0,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 10,
+                bgcolor: 'rgba(255, 255, 255, 0.8)',
+                '&:hover': { bgcolor: 'rgba(255, 255, 255, 1)' }
               }}
             >
-              <img
-                src={photo.src}
-                alt={photo.title}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'opacity 0.2s'
+              <ChevronRightIcon />
+            </IconButton>
+          )}
+          <Box
+            ref={scrollRef}
+            onScroll={checkScroll}
+            sx={{
+              display: 'flex',
+              gap: '1.5rem',
+              overflowX: 'auto',
+              scrollBehavior: 'smooth',
+              paddingBottom: '1rem',
+              '&::-webkit-scrollbar': {
+                height: '8px'
+              },
+              '&::-webkit-scrollbar-track': {
+                background: '#f1f1f1',
+                borderRadius: '10px'
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: '#D4C1B3',
+                borderRadius: '10px',
+                '&:hover': {
+                  background: '#c4b1a3'
+                }
+              }
+            }}
+          >
+            {photos.map((photo, idx) => (
+              <Box
+                key={idx}
+                onClick={() => setSelected(photo)}
+                sx={{
+                  flex: '0 0 350px',
+                  height: '300px',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  borderRadius: '8px',
+                  '&:hover img': { 
+                    transform: 'scale(1.05)',
+                  }
                 }}
-              />
-            </Box>
-          ))}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+                  loading="lazy"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.3s ease'
+                  }}
+                />
+              </Box>
+            ))}
+          </Box>
         </Box>
       </Box>
 
@@ -426,6 +471,15 @@ export default function Portfolio() {
           )}
         </Box>
       </Modal>
+    </>
+  );
+}
+
+export default function Portfolio() {
+  return (
+    <Box className={styles.portfolioWrapper} sx={{ pb: 4 }}>
+      <ScrollableGallery title="Bridal" photos={bridalPhotos} />
+      <ScrollableGallery title="Studio" photos={studioPhotos} />
     </Box>
   );
 }

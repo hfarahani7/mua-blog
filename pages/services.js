@@ -23,29 +23,14 @@ export default function Services() {
           <Typography variant="h5" gutterBottom className={styles.aboutTitle}>Hair Services</Typography>
           <Divider />
           <ul className={styles.serviceList} >
-            <li className={styles.serviceItem}>Bridal Hair Styling</li>
-            <li className={styles.serviceItem}>Bridesmaid Hair</li>
-            <li className={styles.serviceItem}>Mother of the Bride/Groom Hair</li>
-            <li className={styles.serviceItem}>Flower Girl Styling</li>
-            <li className={styles.serviceItem}>Hair Trials & Consultations</li>
-            <li className={styles.serviceItem}>Clip-In Extension Styling</li>
-            <li className={styles.serviceItem}>Textured/Curly Hair Styling</li>
+            <li className={styles.serviceItem}>Bridal hair and makeup</li>
+            <li className={styles.serviceItem}>Bridal party hair and makeup</li>
+            <li className={styles.serviceItem}>Mother of the bride/groom hair</li>
+            <li className={styles.serviceItem}>Hair and makeup trials</li>
+            <li className={styles.serviceItem}>Clip-in hair extension application</li>
+            <li className={styles.serviceItem}>Event/photoshoot hair and makeup</li>
           </ul>
         </Box> 
-        <Box className={styles.serviceBox} > 
-          {/* sx={{backgroundImage: `url(https://jeanice-mua.s3.us-east-2.amazonaws.com/images/A7BA88FE-E4A7-46F8-9833-18DF2FD1F2EA.JPG)`}} */}
-          <Typography variant="h5" gutterBottom className={styles.aboutTitle}>Makeup Services</Typography>
-          <Divider />
-          <ul className={styles.serviceList}>
-            <li className={styles.serviceItem}>Bridal Makeup (Traditional or Airbrush)</li>
-            <li className={styles.serviceItem}>Bridesmaid Makeup</li>
-            <li className={styles.serviceItem}>Mother of the Bride/Groom Makeup</li>
-            <li className={styles.serviceItem}>Flower Girl Light Application</li>
-            <li className={styles.serviceItem}>False Lash Application</li>
-            <li className={styles.serviceItem}>Makeup Trials & Consultations</li>
-            <li className={styles.serviceItem}>Touch-up Kits & On-Location Services</li>
-          </ul>
-        </Box>
       </Box>
 
       <Box sx={{paddingTop: "20px", paddingBottom: "20px"}}>
@@ -58,14 +43,14 @@ export default function Services() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography className={styles.serviceItem}>
-              Yes! Hair and makeup trials are encouraged and available by appointment. It's a great way to preview your look and make any adjustments in advance.
+              Yes! Hair and makeup trials are encouraged and are booked after contracts are signed.
             </Typography>
           </AccordionDetails>
         </Accordion>
 
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={styles.serviceItem}>Do you travel to the venue?</Typography>
+            <Typography className={styles.serviceItem}>Do you travel?</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography className={styles.serviceItem}>
@@ -76,11 +61,11 @@ export default function Services() {
 
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={styles.serviceItem}>How far in advance should I book?</Typography>
+            <Typography className={styles.serviceItem}>Do you require a deposit?</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography className={styles.serviceItem}>
-              As soon as you have your date set! Popular weekends fill up quickly, so we recommend booking 6–12 months in advance.
+              Yes, a non-refundable deposit is made after initial consultation.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -91,7 +76,18 @@ export default function Services() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography className={styles.serviceItem}>
-              Clean, dry hair and a freshly moisturized face work best. Avoid heavy products or washing your hair right before your session unless otherwise instructed.
+              A prep guide will be send via email after booking.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography className={styles.serviceItem}>Where are your services provided?</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography className={styles.serviceItem}>
+              We work on-location.
             </Typography>
           </AccordionDetails>
         </Accordion>

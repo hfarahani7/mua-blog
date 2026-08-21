@@ -33,7 +33,8 @@ function MuaApp({ Component, pageProps }) {
       {!isHome && <Header />}
         <Box
           sx={{
-            paddingTop: isHome ? 0 : '70px'
+            paddingTop: 0,
+            backgroundColor: isHome ? 'transparent' : 'transparent'
           }}
           flex="1 0 auto"
         >
