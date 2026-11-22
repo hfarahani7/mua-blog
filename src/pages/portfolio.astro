@@ -1,16 +1,43 @@
 ---
+// Portfolio: intro + Bridal/Studio jump links (anchors, not filters), then the two galleries.
+// #bridal and #studio are kept because the home page links to them.
 import Base from '../layouts/Base.astro';
-// Phase 3 placeholder. Rebuilt in Phase 4.
+import Gallery from '../components/Gallery.astro';
+import InquiryPrompt from '../components/InquiryPrompt.astro';
+import { BRIDAL, STUDIO } from '../data/photos';
+
+const chips = [
+  { label: 'Bridal', href: '#bridal', count: BRIDAL.length },
+  { label: 'Studio', href: '#studio', count: STUDIO.length },
+];
 ---
 
-<!-- TODO: title and description drafted; owner to approve. -->
+{/* TODO: title and description drafted; owner to approve. */}
 <Base
   title="Portfolio"
-  description="Bridal and studio hair and makeup by Jeanice Huang: real brides and studio looks."
+  description="Bridal and studio hair and makeup by Jeanice Huang: real brides and studio looks, on location throughout Long Island and NYC."
 >
-  <section class="container-site py-section">
-    <h1 class="text-display-lg-mobile md:text-display-lg">Portfolio</h1>
-    <h2 id="bridal" class="mt-12 text-headline-lg-mobile md:text-headline-lg">Bridal</h2>
-    <h2 id="studio" class="mt-12 text-headline-lg-mobile md:text-headline-lg">Studio</h2>
+  <section class="container-site pt-16 pb-12 md:pt-24 md:pb-16">
+    <div class="hero-rise">
+      <h1 class="text-display-lg-mobile md:text-display-lg">Portfolio</h1>
+      <nav aria-label="Portfolio sections" class="mt-8">
+        <ul class="flex flex-wrap gap-3">
+          {chips.map((c) => (
+            <li>
+              <a
+                href={c.href}
+                class="inline-flex min-h-11 items-center gap-2 border border-line px-5 text-label-sm uppercase text-ink-soft transition-colors hover:border-ink hover:text-ink"
+              >
+                {c.label} <span class="tabular-nums">({c.count})</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   </section>
+
+  <Gallery id="bridal" title="Bridal" photos={BRIDAL} altPrefix="Bridal hair and makeup by Jeanice Huang" eagerCount={2} tone="low" />
+  <Gallery id="studio" title="Studio" photos={STUDIO} altPrefix="Studio hair and makeup by Jeanice Huang" />
+  <InquiryPrompt tone="low" />
 </Base>

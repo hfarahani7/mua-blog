@@ -17,6 +17,8 @@ interface Props {
   eager?: boolean;
   /** From md up, ignore `aspect` and fill the grid row's height (to line up with a neighbour). */
   fillRow?: boolean;
+  /** Use the photo's own aspect ratio, uncropped (masonry galleries). Overrides `aspect`. */
+  natural?: boolean;
   class?: string;
 }
 
@@ -28,12 +30,16 @@ const {
   framed = false,
   eager = false,
   fillRow = false,
+  natural = false,
   class: className,
 } = Astro.props;
 ---
 
 <div class:list={[framed && 'border border-line bg-card p-2 md:p-3', fillRow && 'md:flex md:flex-col', className]}>
-  <div class:list={['photo-zoom relative overflow-hidden bg-canvas-mid', aspect, fillRow && 'md:aspect-auto md:flex-1']}>
+  <div
+    class:list={['photo-zoom relative overflow-hidden bg-canvas-mid', !natural && aspect, fillRow && 'md:aspect-auto md:flex-1']}
+    style={natural ? `aspect-ratio: ${photo.width} / ${photo.height}` : undefined}
+  >
     <img
       src={photoUrl(photo)}
       width={photo.width}
