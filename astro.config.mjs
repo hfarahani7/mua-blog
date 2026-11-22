@@ -25,5 +25,10 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      // Don't let `npm run dev` watch the build output. On Windows the watcher can lock files
+      // in dist/ and make a parallel `npm run build` fail with EBUSY.
+      watch: { ignored: ['**/dist/**'] },
+    },
   },
 });

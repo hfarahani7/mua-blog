@@ -115,6 +115,13 @@
   --default-transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
 /* ---- Base styles ---- */
 @layer base {
   html {
@@ -158,6 +165,47 @@
     height: auto;
   }
 
+  /* Photo hover zoom (DESIGN.md → Image frame): 1.025 over 600ms, pointer devices only. */
+  .photo-zoom img {
+    transition: transform 600ms var(--ease-editorial);
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .photo-zoom:hover img,
+    a:hover .photo-zoom img,
+    a:focus-visible .photo-zoom img {
+      transform: scale(1.025);
+    }
+  }
+
+  /* A link-underline inside a larger link (e.g. photo + label) grows when the whole link is hovered. */
+  a:hover .link-underline,
+  a:focus-visible .link-underline {
+    background-size: 100% 1px;
+  }
+
+  /* Home hero text: fades in and rises 16px once on load. */
+  .hero-rise {
+    animation: rise 600ms var(--ease-editorial) both;
+  }
+
+  /* Sections fade in and rise 16px as they scroll into view. Browsers without
+     scroll-driven animations simply show the section. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: rise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 35%;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-rise {
+      animation: none;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -198,6 +246,54 @@
   &:hover,
   &:focus-visible {
     background-size: 100% 1px;
+  }
+}
+
+/* Buttons (DESIGN.md → Components). Square, uppercase label-md, 44px+ tall. */
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 1rem 2.25rem;
+  background-color: var(--color-ink);
+  color: var(--color-on-ink);
+  font-size: var(--text-label-md);
+  line-height: var(--text-label-md--line-height);
+  letter-spacing: var(--text-label-md--letter-spacing);
+  font-weight: var(--text-label-md--font-weight);
+  text-transform: uppercase;
+  text-align: center;
+  transition: background-color 300ms var(--ease-editorial);
+  &:hover {
+    background-color: var(--color-ink-hover);
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+}
+
+@utility btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 1rem 2rem;
+  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
+  font-size: var(--text-label-md);
+  line-height: var(--text-label-md--line-height);
+  letter-spacing: var(--text-label-md--letter-spacing);
+  font-weight: var(--text-label-md--font-weight);
+  text-transform: uppercase;
+  text-align: center;
+  transition: background-color 300ms var(--ease-editorial), color 300ms var(--ease-editorial);
+  &:hover {
+    background-color: var(--color-ink);
+    color: var(--color-on-ink);
   }
 }
 
