@@ -1,0 +1,357 @@
+---
+// The inquiry form: one page, same fields as the old 3-step form, sent with @emailjs/browser.
+// Honeypot, labels on every field, loading / success / error states, button disabled while
+// sending. See CLAUDE.md → Forms and DESIGN.md → Form.
+const US_STATES = [
+  'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+  'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+  'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+  'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+  'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY',
+];
+
+const field = 'field w-full border-0 border-b border-line-strong bg-transparent px-0 py-3 text-body-md text-ink';
+const label = 'block text-label-sm uppercase text-ink-soft';
+const legend = 'font-display text-headline-sm text-ink';
+---
+
+<div class="border border-line bg-card p-6 shadow-float sm:p-8 md:p-12">
+  <form id="inquiry-form" novalidate class="space-y-12" aria-describedby="form-status">
+    <fieldset class="space-y-8">
+      <legend class={legend}>Contact Information</legend>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="space-y-2">
+          <label for="firstName" class={label}>First name</label>
+          <input id="firstName" name="firstName" type="text" autocomplete="given-name" class={field} />
+        </div>
+        <div class="space-y-2">
+          <label for="lastName" class={label}>Last name</label>
+          <input id="lastName" name="lastName" type="text" autocomplete="family-name" class={field} />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="space-y-2">
+          <label for="email" class={label}>Email address <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            aria-describedby="email-error"
+            class={field}
+          />
+          <p id="email-error" class="field-error hidden text-body-sm text-error" data-error-for="email"></p>
+        </div>
+        <div class="space-y-2">
+          <label for="phone" class={label}>Phone number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" class={field} />
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <label for="streetAddress" class={label}>Street address</label>
+        <input id="streetAddress" name="streetAddress" type="text" autocomplete="address-line1" class={field} />
+      </div>
+      <div class="space-y-2">
+        <label for="apartment" class={label}>Apartment, suite, etc.</label>
+        <input id="apartment" name="apartment" type="text" autocomplete="address-line2" class={field} />
+      </div>
+
+      <div class="grid grid-cols-1 items-end gap-8 md:grid-cols-[3fr_2fr_2fr]">
+        <div class="space-y-2">
+          <label for="city" class={label}>City</label>
+          <input id="city" name="city" type="text" autocomplete="address-level2" class={field} />
+        </div>
+        <div class="space-y-2">
+          <label for="state" class={label}>State</label>
+          <select id="state" name="state" autocomplete="address-level1" class:list={[field, 'select']}>
+            <option value=""></option>
+            {US_STATES.map((st) => <option value={st}>{st}</option>)}
+          </select>
+        </div>
+        <div class="space-y-2">
+          <label for="zip" class={label}>ZIP / Postal code</label>
+          <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" class={field} />
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="space-y-8">
+      <legend class={legend}>Wedding Details</legend>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="space-y-2">
+          <label for="weddingDate" class={label}>Wedding date</label>
+          <input id="weddingDate" name="weddingDate" type="date" class={field} />
+        </div>
+        <div class="space-y-2">
+          <label for="bridalPartyGuests" class={label}>Guests requiring services</label>
+          <input
+            id="bridalPartyGuests"
+            name="bridalPartyGuests"
+            type="number"
+            min="0"
+            step="1"
+            inputmode="numeric"
+            aria-describedby="bridalPartyGuests-error"
+            class={field}
+          />
+          <p id="bridalPartyGuests-error" class="field-error hidden text-body-sm text-error" data-error-for="bridalPartyGuests"></p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="space-y-2">
+          <label for="venue" class={label}>Venue</label>
+          <input id="venue" name="venue" type="text" maxlength="30" class={field} />
+        </div>
+        <div class="space-y-2">
+          <label for="gettingReadyLocation" class={label}>Getting ready location</label>
+          <input id="gettingReadyLocation" name="gettingReadyLocation" type="text" maxlength="30" class={field} />
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="space-y-6">
+      <legend class={legend}>Services</legend>
+      <p class="-mt-2 text-body-sm">Check all that apply</p>
+      <div class="flex flex-wrap gap-x-10 gap-y-4">
+        <label class="inline-flex min-h-11 cursor-pointer items-center gap-3 text-body-md text-ink">
+          <input name="bridalPartyHair" type="checkbox" class="size-5 accent-ink" />
+          Hair
+        </label>
+        <label class="inline-flex min-h-11 cursor-pointer items-center gap-3 text-body-md text-ink">
+          <input name="bridalPartyMakeup" type="checkbox" class="size-5 accent-ink" />
+          Makeup
+        </label>
+      </div>
+
+      <div class="space-y-2">
+        <label for="additionalInfo" class={label}>Additional info</label>
+        <textarea
+          id="additionalInfo"
+          name="additionalInfo"
+          rows="4"
+          maxlength="180"
+          aria-describedby="additionalInfo-count"
+          class:list={[field, 'resize-y']}
+        ></textarea>
+        <p id="additionalInfo-count" class="text-right text-body-sm tabular-nums" data-count-for="additionalInfo">0 / 180</p>
+      </div>
+    </fieldset>
+
+    {/* Honeypot: hidden from people and screen readers; bots that fill it get a fake success. */}
+    <div class="honeypot" aria-hidden="true">
+      <label for="company">Company</label>
+      <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="space-y-4">
+      <button type="submit" class="btn-primary w-full" data-submit>
+        <span data-submit-label>Send Message</span>
+      </button>
+      <p id="form-status" role="status" aria-live="polite" class="text-body-sm empty:hidden" data-status></p>
+    </div>
+  </form>
+
+  <div id="inquiry-success" class="hidden space-y-4 py-8 text-center" tabindex="-1">
+    {/* TODO: success message; owner to approve (the old site said "Inquiry sent successfully!"). */}
+    <p class="font-display text-headline-md text-ink">Thank you</p>
+    <p class="text-body-md">Your inquiry was sent successfully.</p>
+  </div>
+</div>
+
+<style>
+  .field {
+    border-radius: 0;
+    transition: border-color 200ms var(--ease-editorial), box-shadow 200ms var(--ease-editorial);
+  }
+  .field:focus {
+    outline: none;
+    border-bottom-color: var(--color-ink);
+    box-shadow: 0 2px 0 0 var(--color-champagne);
+  }
+  /* Keyboard users also get the ring. */
+  .field:focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+  .field[aria-invalid='true'] {
+    border-bottom-color: var(--color-error);
+  }
+  .select {
+    appearance: none;
+    padding-right: 1.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%231a1715' stroke-width='1.25'%3E%3Cpath d='M2 4.5l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+  }
+  .honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  import emailjs from '@emailjs/browser';
+  import { formatInquiryMessage, buildInquiryPayload, type InquiryData } from '../lib/inquiry';
+
+  const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+  const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+  const OWNER_EMAIL = import.meta.env.PUBLIC_OWNER_EMAIL;
+  const configured = Boolean(PUBLIC_KEY && SERVICE_ID && TEMPLATE_ID && OWNER_EMAIL);
+
+  const form = document.getElementById('inquiry-form') as HTMLFormElement | null;
+  const success = document.getElementById('inquiry-success') as HTMLElement | null;
+
+  if (form && success) {
+    const button = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+    const buttonLabel = form.querySelector<HTMLElement>('[data-submit-label]')!;
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    // TODO: error wording drafted; owner to approve.
+    const SEND_ERROR =
+      "Sorry, your inquiry couldn't be sent. Please try again in a moment, or message @mua__jeanice on Instagram.";
+
+    if (configured) emailjs.init({ publicKey: PUBLIC_KEY });
+
+    // Live character count for "Additional info" (max 180, as on the old site).
+    const info = form.elements.namedItem('additionalInfo') as HTMLTextAreaElement;
+    const count = form.querySelector<HTMLElement>('[data-count-for="additionalInfo"]')!;
+    const updateCount = () => (count.textContent = `${info.value.length} / ${info.maxLength}`);
+    info.addEventListener('input', updateCount);
+
+    const showError = (name: string, message: string) => {
+      const input = form.elements.namedItem(name) as HTMLInputElement;
+      const el = form.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
+      input.setAttribute('aria-invalid', 'true');
+      if (el) {
+        el.textContent = message;
+        el.classList.remove('hidden');
+      }
+    };
+    const clearErrors = () => {
+      form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+      form.querySelectorAll<HTMLElement>('.field-error').forEach((el) => {
+        el.textContent = '';
+        el.classList.add('hidden');
+      });
+    };
+
+    // Plain-language validation messages under the fields.
+    const validate = (): HTMLElement | null => {
+      clearErrors();
+      let first: HTMLElement | null = null;
+      const email = form.elements.namedItem('email') as HTMLInputElement;
+      if (!email.value.trim()) {
+        showError('email', 'Please enter your email address so I can reply.');
+        first ??= email;
+      } else if (email.validity.typeMismatch) {
+        showError('email', 'That email address doesn’t look right. Please check it.');
+        first ??= email;
+      }
+      const guests = form.elements.namedItem('bridalPartyGuests') as HTMLInputElement;
+      if (guests.validity.badInput || guests.validity.rangeUnderflow || guests.validity.stepMismatch) {
+        showError('bridalPartyGuests', 'Please enter a whole number, like 3.');
+        first ??= guests;
+      }
+      return first;
+    };
+
+    // Clear a field's error as soon as it's edited.
+    form.addEventListener('input', (e) => {
+      const t = e.target as HTMLInputElement;
+      if (t.getAttribute('aria-invalid')) {
+        t.removeAttribute('aria-invalid');
+        const el = form.querySelector<HTMLElement>(`[data-error-for="${t.name}"]`);
+        el?.classList.add('hidden');
+      }
+    });
+
+    const read = (): InquiryData => {
+      const fd = new FormData(form);
+      const text = (k: string) => String(fd.get(k) ?? '').trim();
+      return {
+        firstName: text('firstName'),
+        lastName: text('lastName'),
+        email: text('email'),
+        phone: text('phone'),
+        streetAddress: text('streetAddress'),
+        apartment: text('apartment'),
+        city: text('city'),
+        state: text('state'),
+        zip: text('zip'),
+        country: '',
+        services: { hair: false, makeup: false },
+        weddingDate: text('weddingDate'),
+        venue: text('venue'),
+        gettingReadyLocation: text('gettingReadyLocation'),
+        bridalPartyGuests: text('bridalPartyGuests'),
+        bridalPartyHair: fd.get('bridalPartyHair') !== null,
+        bridalPartyMakeup: fd.get('bridalPartyMakeup') !== null,
+        additionalInfo: text('additionalInfo'),
+      };
+    };
+
+    const setSending = (sending: boolean) => {
+      button.disabled = sending;
+      button.setAttribute('aria-busy', String(sending));
+      buttonLabel.textContent = sending ? 'Sending...' : 'Send Message';
+    };
+
+    const showSuccess = () => {
+      form.reset();
+      updateCount();
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+      success.focus();
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      status.classList.remove('text-error');
+
+      const invalid = validate();
+      if (invalid) {
+        invalid.focus();
+        return;
+      }
+
+      // Honeypot filled: almost certainly a bot. Pretend it worked, send nothing.
+      if ((form.elements.namedItem('company') as HTMLInputElement).value) {
+        showSuccess();
+        return;
+      }
+
+      if (!configured) {
+        console.error('EmailJS is not configured: set the PUBLIC_EMAILJS_* and PUBLIC_OWNER_EMAIL variables.');
+        status.textContent = SEND_ERROR;
+        status.classList.add('text-error');
+        return;
+      }
+
+      setSending(true);
+      status.textContent = 'Sending your inquiry…';
+      try {
+        const data = read();
+        const payload = buildInquiryPayload(data, formatInquiryMessage(data), OWNER_EMAIL);
+        await emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...payload });
+        status.textContent = '';
+        showSuccess();
+      } catch (error) {
+        console.error('EmailJS Error:', error);
+        status.textContent = SEND_ERROR;
+        status.classList.add('text-error');
+      } finally {
+        setSending(false);
+      }
+    });
+  }
+</script>
