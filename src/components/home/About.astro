@@ -1,0 +1,48 @@
+---
+// "About Me": Stitch's portrait (5 cols) + text (7 cols) split, with the two image links
+// into the portfolio (Bridal / Studio) from the old home page.
+import Photo from '../Photo.astro';
+import Arrow from '../Arrow.astro';
+import { photo } from '../../data/photos';
+
+const categories = [
+  { label: 'Bridal', href: '/portfolio#bridal', photo: photo('IMG_6087.webp'), position: '50% 35%' },
+  { label: 'Studio', href: '/portfolio#studio', photo: photo('C9FBB259-D95B-4990-9992-CFF20769905C.webp'), position: '50% 25%' },
+];
+---
+
+<section class="reveal container-site py-section md:py-section-desktop" aria-labelledby="about">
+  <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-grid-gap">
+    <figure class="lg:col-span-5">
+      <Photo photo={photo('IMG_4382.webp')} alt="Jeanice Huang" aspect="aspect-[3/4]" position="50% 30%" />
+      <figcaption class="mt-5">
+        <span class="block font-display text-headline-sm text-ink">Jeanice Huang</span>
+        {/* TODO: role line drafted; owner to approve. */}
+        <span class="mt-1 block text-label-sm uppercase text-ink-soft">Hair &amp; makeup artist</span>
+      </figcaption>
+    </figure>
+
+    <div class="space-y-8 lg:col-span-7">
+      <h2 id="about" class="text-display-lg-mobile md:text-headline-lg">About Me</h2>
+      {/* TODO: drafted from facts already on the site (Services + FAQ). The old About text is now
+           the home hero. Owner to replace with a short real bio. */}
+      <p class="max-w-measure text-body-lg">
+        I offer bridal hair and makeup, bridal party services and trials, on location throughout Long Island and NYC.
+      </p>
+
+      <ul class="grid grid-cols-2 gap-4 pt-2 md:gap-6">
+        {categories.map((c) => (
+          <li>
+            <a href={c.href} class="block">
+              <Photo photo={c.photo} alt="" aspect="aspect-[4/5]" position={c.position} />
+              <span class="mt-4 inline-flex items-center gap-3 text-label-md uppercase text-ink">
+                <span class="link-underline">{c.label}</span>
+                <Arrow />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

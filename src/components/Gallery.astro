@@ -1,0 +1,48 @@
+---
+// CSS-only masonry gallery (CSS columns; no JavaScript, no library).
+// Photos keep their own aspect ratio, each in a white hairline frame with the hover zoom.
+// Column order runs top-to-bottom, then left-to-right.
+import Photo from './Photo.astro';
+import type { Photo as PhotoData } from '../data/photos';
+
+interface Props {
+  id: string;
+  title: string;
+  photos: PhotoData[];
+  /** Alt text prefix, e.g. "Bridal hair and makeup by Jeanice Huang". */
+  altPrefix: string;
+  /** Load the first N photos immediately (only for the gallery at the top of the page). */
+  eagerCount?: number;
+  tone?: 'low' | 'canvas';
+}
+
+const { id, title, photos, altPrefix, eagerCount = 0, tone = 'canvas' } = Astro.props;
+---
+
+<section
+  id={id}
+  aria-labelledby={`${id}-title`}
+  class:list={['scroll-mt-20 border-t border-line py-section md:scroll-mt-24 md:py-section-desktop', tone === 'low' ? 'bg-canvas-low' : 'bg-canvas']}
+>
+  <div class="container-site">
+    <div class="mb-10 flex items-baseline justify-between gap-6 md:mb-14">
+      <h2 id={`${id}-title`} class="text-headline-lg-mobile md:text-headline-lg">{title}</h2>
+      <p class="text-label-sm uppercase text-ink-soft tabular-nums">{photos.length} photos</p>
+    </div>
+
+    <ul class="columns-1 gap-6 sm:columns-2 lg:columns-3 lg:gap-8">
+      {photos.map((p, i) => (
+        <li class="mb-6 break-inside-avoid lg:mb-8">
+          {/* TODO: generic alt text; owner to provide real descriptions / photographer credits. */}
+          <Photo
+            photo={p}
+            alt={`${altPrefix}, photo ${i + 1} of ${photos.length}`}
+            natural
+            framed
+            eager={i < eagerCount}
+          />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

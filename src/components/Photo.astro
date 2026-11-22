@@ -1,0 +1,55 @@
+---
+// A photo from CloudFront in a fixed-aspect, overflow-hidden frame (DESIGN.md → Image frame).
+// Plain <img> with real width/height (no astro:assets: the photos are remote).
+import { photoUrl, type Photo } from '../data/photos';
+
+interface Props {
+  photo: Photo;
+  /** Meaningful alt text, or "" when the photo is decorative (e.g. inside a labelled link). */
+  alt: string;
+  /** Tailwind aspect classes, e.g. "aspect-[4/5] md:aspect-[3/4]". */
+  aspect?: string;
+  /** CSS object-position for the crop, e.g. "50% 30%". */
+  position?: string;
+  /** White card frame with a hairline border and 12px padding. */
+  framed?: boolean;
+  /** Load immediately (the largest photo above the fold only). */
+  eager?: boolean;
+  /** From md up, ignore `aspect` and fill the grid row's height (to line up with a neighbour). */
+  fillRow?: boolean;
+  /** Use the photo's own aspect ratio, uncropped (masonry galleries). Overrides `aspect`. */
+  natural?: boolean;
+  class?: string;
+}
+
+const {
+  photo,
+  alt,
+  aspect = 'aspect-[4/5]',
+  position,
+  framed = false,
+  eager = false,
+  fillRow = false,
+  natural = false,
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={[framed && 'border border-line bg-card p-2 md:p-3', fillRow && 'md:flex md:flex-col', className]}>
+  <div
+    class:list={['photo-zoom relative overflow-hidden bg-canvas-mid', !natural && aspect, fillRow && 'md:aspect-auto md:flex-1']}
+    style={natural ? `aspect-ratio: ${photo.width} / ${photo.height}` : undefined}
+  >
+    <img
+      src={photoUrl(photo)}
+      width={photo.width}
+      height={photo.height}
+      alt={alt}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : undefined}
+      decoding="async"
+      class="absolute inset-0 size-full object-cover"
+      style={position ? `object-position: ${position}` : undefined}
+    />
+  </div>
+</div>

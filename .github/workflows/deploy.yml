@@ -1,55 +1,183 @@
-name: Deploy to S3 and CloudFront
+# Builds the Astro site on every pull request and manual run, and builds + deploys to the
+# existing S3 bucket / CloudFront distribution on push to master.
+#
+# Existing repository SECRETS (unchanged, do not rename):
+#   AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION   IAM user used for deploys
+#   S3_BUCKET                                              site bucket (holds images/ too)
+#   CF_DIST_ID                                             CloudFront distribution ID
+#
+# Repository VARIABLES (Settings → Secrets and variables → Actions → Variables):
+#   PUBLIC_EMAILJS_PUBLIC_KEY, PUBLIC_EMAILJS_SERVICE_ID,
+#   PUBLIC_EMAILJS_TEMPLATE_ID, PUBLIC_OWNER_EMAIL
+#   These are public by design (they end up in the browser bundle).
+#
+# SAFETY: the bucket's images/ folder holds every portfolio photo and is NOT in this repo.
+# Every `aws s3 sync` below excludes "images/*", including the final --delete sync.
+
+name: Build and deploy
 
 on:
   push:
-    branches: [master]  # change if your deploy branch is different
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
 
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Check EmailJS variables
+        env:
+          PUBLIC_EMAILJS_PUBLIC_KEY: ${{ vars.PUBLIC_EMAILJS_PUBLIC_KEY }}
+          PUBLIC_EMAILJS_SERVICE_ID: ${{ vars.PUBLIC_EMAILJS_SERVICE_ID }}
+          PUBLIC_EMAILJS_TEMPLATE_ID: ${{ vars.PUBLIC_EMAILJS_TEMPLATE_ID }}
+          PUBLIC_OWNER_EMAIL: ${{ vars.PUBLIC_OWNER_EMAIL }}
+          IS_DEPLOY: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        run: |
+          missing=""
+          for v in PUBLIC_EMAILJS_PUBLIC_KEY PUBLIC_EMAILJS_SERVICE_ID PUBLIC_EMAILJS_TEMPLATE_ID PUBLIC_OWNER_EMAIL; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            if [ "$IS_DEPLOY" = "true" ]; then
+              echo "::error::Missing repository variables:$missing. The inquiry form would not work, so the deploy is stopped."
+              exit 1
+            fi
+            echo "::warning::Missing repository variables:$missing. The inquiry form won't send in this build."
+          fi
+
+      - name: Build
+        run: npm run build
+        env:
+          PUBLIC_EMAILJS_PUBLIC_KEY: ${{ vars.PUBLIC_EMAILJS_PUBLIC_KEY }}
+          PUBLIC_EMAILJS_SERVICE_ID: ${{ vars.PUBLIC_EMAILJS_SERVICE_ID }}
+          PUBLIC_EMAILJS_TEMPLATE_ID: ${{ vars.PUBLIC_EMAILJS_TEMPLATE_ID }}
+          PUBLIC_OWNER_EMAIL: ${{ vars.PUBLIC_OWNER_EMAIL }}
+
+      - name: Check build output
+        run: |
+          for f in index.html 404.html portfolio.html services.html inquiries.html; do
+            test -f "dist/$f" || { echo "::error::dist/$f is missing"; exit 1; }
+          done
+          if [ -e dist/images ]; then
+            echo "::error::dist/images exists. Photos must never be deployed from this repo (check public/images)."
+            exit 1
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          retention-days: 7
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
-      AWS_REGION: ${{ secrets.AWS_REGION }}
       S3_BUCKET: ${{ secrets.S3_BUCKET }}
       CF_DIST_ID: ${{ secrets.CF_DIST_ID }}
-      NEXT_PUBLIC_EMAIL_URL: ${{ secrets.NEXT_PUBLIC_EMAIL_URL }}
-
-
     steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v3
-
-      - name: 🧱 Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/download-artifact@v4
         with:
-          node-version: 20
+          name: site
+          path: dist
 
-      - name: 📦 Install dependencies
-        run: npm install --legacy-peer-deps
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: 🏗 Build site
+      - name: Safety checks
         run: |
-          npm run build
+          test -n "$S3_BUCKET" || { echo "::error::secrets.S3_BUCKET is empty"; exit 1; }
+          test -f dist/index.html || { echo "::error::dist/index.html missing"; exit 1; }
+          if [ -e dist/images ]; then
+            echo "::error::dist/images exists; refusing to deploy."
+            exit 1
+          fi
 
-      - name: ☁️ Deploy site to S3
-        uses: jakejarvis/s3-sync-action@v0.5.1
-        with:
-          args: --delete --exclude "images/*"
-        env:
-          NEXT_PUBLIC_EMAIL_URL: ${{ secrets.NEXT_PUBLIC_EMAIL_URL }}
-          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: "out"
+      # The bucket is served through its S3 *website* endpoint, which maps "/services" to an
+      # object named exactly "services" — it does not try "services.html". So each page
+      # (except index and 404) is also stored without the extension, with an HTML content type.
+      - name: Add extensionless copies of pages
+        run: |
+          : > pages.txt
+          for f in dist/*.html; do
+            name="$(basename "$f" .html)"
+            case "$name" in index|404) continue ;; esac
+            cp "$f" "dist/$name"
+            echo "$name" >> pages.txt
+          done
+          echo "Extensionless pages:"; cat pages.txt
 
-      - name: 🚀 Invalidate CloudFront Cache
+      # Upload order matters: assets first, HTML last, so a visitor never gets a new page
+      # that points at files that haven't been uploaded yet.
+
+      - name: Upload hashed assets (cache for 1 year)
+        if: hashFiles('dist/_astro/**') != ''
+        run: |
+          aws s3 sync dist/_astro "s3://$S3_BUCKET/_astro" \
+            --exclude "images/*" \
+            --cache-control "public, max-age=31536000, immutable" \
+            --only-show-errors
+
+      - name: Upload other static files (cache for 1 hour)
+        run: |
+          excl=(); while read -r p; do excl+=(--exclude "$p"); done < pages.txt
+          aws s3 sync dist "s3://$S3_BUCKET" \
+            --exclude "*.html" --exclude "_astro/*" "${excl[@]}" \
+            --exclude "images/*" \
+            --cache-control "public, max-age=3600" \
+            --only-show-errors
+
+      - name: Upload HTML (always revalidate)
+        run: |
+          incl=(); while read -r p; do incl+=(--include "$p"); done < pages.txt
+          aws s3 sync dist "s3://$S3_BUCKET" \
+            --exclude "*" --include "*.html" "${incl[@]}" \
+            --exclude "images/*" \
+            --cache-control "public, max-age=0, must-revalidate" \
+            --content-type "text/html; charset=utf-8" \
+            --only-show-errors
+
+      # Removes old files (e.g. the Next.js _next/ folder). Everything in dist/ was uploaded
+      # above, so --size-only stops this step from re-uploading files and losing their
+      # Content-Type / Cache-Control. images/* is excluded, so photos are never deleted.
+      - name: Remove files that no longer exist
+        run: |
+          aws s3 sync dist "s3://$S3_BUCKET" \
+            --delete --size-only \
+            --exclude "images/*" \
+            --only-show-errors
+
+      # Not waiting for completion: the deploy IAM user may not have cloudfront:GetInvalidation.
+      - name: Invalidate CloudFront cache
         if: env.CF_DIST_ID != ''
         run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CF_DIST_ID }} \
-            --paths "/*"
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          id=$(aws cloudfront create-invalidation \
+            --distribution-id "$CF_DIST_ID" \
+            --paths "/*" \
+            --query Invalidation.Id --output text)
+          echo "Invalidation $id started (usually finishes within a few minutes)"

@@ -1,0 +1,36 @@
+---
+// Home hero: Stitch "editorial split" — copy left (6 cols), 4:5 photo right (6 cols)
+// with the offset hairline frame. No stats row, no gradient, no badge (DESIGN.md → Banned).
+import Photo from '../Photo.astro';
+import Eyebrow from '../Eyebrow.astro';
+import { photo } from '../../data/photos';
+---
+
+<section class="container-site overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32">
+  <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-grid-gap">
+    <div class="hero-rise space-y-8 lg:col-span-6">
+      {/* TODO: eyebrow drafted from the FAQ ("on-location services throughout Long Island and NYC"); owner to approve. */}
+      <Eyebrow>Bridal hair &amp; makeup · Long Island &amp; NYC</Eyebrow>
+      <h1 class="text-display-lg-mobile md:text-display-lg">Enhancing your natural glow for the big day.</h1>
+      <p class="max-w-measure text-body-lg">
+        From subtle elegance to show-stopping glam, I specialize in making brides feel confident, radiant, and absolutely stunning.
+      </p>
+      <div class="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
+        <a href="/inquiries" class="btn-primary">Inquire</a>
+        <a href="/portfolio" class="btn-secondary">View portfolio</a>
+      </div>
+    </div>
+
+    <div class="relative lg:col-span-6">
+      {/* TODO: alt text written from the photo; owner to check. */}
+      <Photo
+        photo={photo('Kath_Matt_JeanLaurentGaudy_417.webp')}
+        alt="A bride in a fitted strapless gown with a long train, seen from behind on a dark staircase"
+        aspect="aspect-[4/5]"
+        position="50% 60%"
+        eager
+      />
+      <div aria-hidden="true" class="pointer-events-none absolute -right-6 -bottom-6 -z-10 hidden size-full border border-line md:block"></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAISON VISAGE — Haute Beauté &amp; Artistry by Camille Laurent</title>
+<!-- Material Symbols Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Editorial Typography: Bodoni Moda & Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 Script -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration Inject -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed": "#2a1706",
+            "inverse-primary": "#ccc5c1",
+            "surface-tint": "#625d5b",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#ccc5c1",
+            "background": "#fcf9f4",
+            "on-tertiary-fixed-variant": "#5d4030",
+            "error": "#ba1a1a",
+            "tertiary": "#000000",
+            "surface-container-highest": "#e5e2dd",
+            "tertiary-fixed-dim": "#e7bea9",
+            "secondary-fixed": "#ffdcc1",
+            "on-tertiary-container": "#a07c69",
+            "surface-container": "#f0ede9",
+            "surface": "#fcf9f4",
+            "on-primary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed": "#2c1609",
+            "outline": "#7e7570",
+            "tertiary-fixed": "#ffdbca",
+            "primary-container": "#1e1b19",
+            "surface-container-high": "#ebe8e3",
+            "on-surface": "#1c1c19",
+            "on-primary-fixed-variant": "#4a4643",
+            "outline-variant": "#d0c4be",
+            "on-secondary-fixed-variant": "#5a422d",
+            "primary": "#000000",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#2c1609",
+            "on-error": "#ffffff",
+            "surface-bright": "#fcf9f4",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#e9e1dd",
+            "inverse-surface": "#31302d",
+            "surface-dim": "#dcdad5",
+            "inverse-on-surface": "#f3f0eb",
+            "secondary-fixed-dim": "#e3c0a5",
+            "secondary-container": "#fdd9bd",
+            "secondary": "#745943",
+            "on-surface-variant": "#4d4540",
+            "surface-container-low": "#f6f3ee",
+            "on-primary-fixed": "#1e1b19",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#785d47",
+            "surface-variant": "#e5e2dd",
+            "on-primary-container": "#888380",
+            "on-background": "#1c1c19"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "2.5rem",
+            "margin-desktop": "4rem",
+            "space-xs": "0.375rem",
+            "margin": "1.25rem",
+            "space-md": "1.25rem",
+            "gutter": "1.5rem",
+            "space-xl": "3.75rem",
+            "space-2xl": "6rem",
+            "space-lg": "2.25rem",
+            "space-sm": "0.75rem",
+            "margin-tablet": "2.5rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Bodoni Moda"],
+            "display-xl": ["Bodoni Moda"],
+            "label-lg": ["Manrope"],
+            "body-sm": ["Manrope"],
+            "body-md": ["Manrope"],
+            "body-lg": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "headline-sm": ["Bodoni Moda"],
+            "display-lg": ["Bodoni Moda"],
+            "label-md": ["Manrope"],
+            "headline-lg": ["Bodoni Moda"],
+            "display-lg-mobile": ["Bodoni Moda"],
+            "headline-md": ["Bodoni Moda"],
+            "display-xl-mobile": ["Bodoni Moda"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-xl": ["5rem", { "lineHeight": "5.5rem", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.08em", "fontWeight": "500" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0.015em", "fontWeight": "400" }],
+            "body-md": ["1rem", { "lineHeight": "1.625rem", "letterSpacing": "0.01em", "fontWeight": "300" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "300" }],
+            "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.16em", "fontWeight": "600" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "display-lg": ["3.75rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.015em", "fontWeight": "400" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.12em", "fontWeight": "600" }],
+            "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-xl-mobile": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .hairline-border {
+      border-color: rgba(26, 23, 21, 0.08);
+    }
+    .hairline-border-dark {
+      border-color: rgba(26, 23, 21, 0.2);
+    }
+    .custom-editorial-shadow {
+      box-shadow: 0 24px 48px -12px rgba(26, 23, 21, 0.06), 0 4px 12px -2px rgba(26, 23, 21, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-fixed">
+<!-- ========================================================================= -->
+<!-- SHARED COMPONENT: TopNavBar                                               -->
+<!-- ========================================================================= -->
+<header class="bg-surface/90 dark:bg-surface-container-lowest/90 backdrop-blur-md docked full-width top-0 sticky z-50 border-b border-outline-variant/30 dark:border-outline/20">
+<div class="flex justify-between items-center w-full px-6 md:px-16 max-w-7xl mx-auto py-5">
+<!-- Brand Logo Anchor -->
+<a class="font-headline-md text-headline-md tracking-tight text-primary dark:text-on-surface uppercase flex items-center gap-2" href="#">
+<span>MAISON VISAGE</span>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center space-x-10">
+<!-- Active destination determined by context: Portfolio -->
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary dark:text-inverse-primary border-b border-primary dark:border-inverse-primary pb-1 transition-all duration-300 ease-out" href="#portfolio">
+          Portfolio
+        </a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors pb-1" href="#services">
+          Services
+        </a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors pb-1" href="#philosophy">
+          Philosophy
+        </a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors pb-1" href="#testimonials">
+          Testimonials
+        </a>
+</nav>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center space-x-4 md:space-x-6">
+<a class="hidden sm:inline-flex items-center font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-200" href="#inquiry">
+          Inquire
+        </a>
+<a class="inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-none font-label-md text-label-md uppercase tracking-widest hover:opacity-80 transition-opacity duration-300" href="#inquiry">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>Reserve Session</span>
+</a>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- HERO SECTION: Editorial Split Showcase                                    -->
+<!-- ========================================================================= -->
+<section class="relative max-w-7xl mx-auto px-6 md:px-16 pt-12 md:pt-20 pb-20 md:pb-32 overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter-desktop items-center">
+<!-- Left Editorial Copy Block (Desktop: 6 Cols) -->
+<div class="lg:col-span-6 flex flex-col justify-center space-y-8 z-10">
+<!-- Eyebrow Tagline -->
+<div class="inline-flex items-center gap-3">
+<span class="w-8 h-[1px] bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">
+            Haute Beauté &amp; Artistry by Camille Laurent
+          </span>
+</div>
+<!-- Headline -->
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight leading-[1.08]">
+          Artistry in Light, Skin &amp; Form.
+        </h1>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl font-light">
+          Bespoke red carpet, bridal, and high-fashion editorial aesthetics curated to elevate natural bone structure. Celebrating radiant, hyper-detailed skin textures through Parisian ateliers and New York runway discipline.
+        </p>
+<!-- CTA Actions & Stats Badge -->
+<div class="pt-4 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+<a class="w-full sm:w-auto text-center bg-primary text-on-primary px-9 py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-[#322E2B] transition-colors duration-300" href="#inquiry">
+            Book Consultation
+          </a>
+<a class="w-full sm:w-auto text-center border border-primary text-primary px-8 py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors duration-300" href="#portfolio">
+            Explore Portfolio
+          </a>
+</div>
+<!-- Accolade Micro-Badge -->
+<div class="pt-8 border-t hairline-border grid grid-cols-2 gap-8">
+<div>
+<p class="font-headline-sm text-headline-sm text-primary">10+ Years</p>
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-outline mt-1">Paris &amp; NYC Fashion Weeks</p>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary">500+</p>
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-outline mt-1">Bridal Elegance Commissions</p>
+</div>
+</div>
+</div>
+<!-- Right Editorial Visual Composition (Desktop: 6 Cols) -->
+<div class="lg:col-span-6 relative">
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden group">
+<img class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]" data-alt="An ultra close-up high-fashion editorial portrait of a model showcasing flawless dewy skin texture and luminous champagne highlighter on cheekbones. The lighting is soft diffused natural atelier window light capturing delicate skin pores and a subtle glossy nude lip. Clean warm alabaster background with quiet luxury Parisian aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuQku_JD6yP0VDhGGEqV8tISvoWCslZ_YDJyUrVcbsfezsr_1GV1-uS9SIMgb2NYc0QujI3ISGO3HPNgTeVSVEL7c_M_10tqHpSwGFxrM4Vw97JXjqoznuqlFffQXBBnsH0cjz-B83HSC6gEZO06b9x-wvwyalX3tNrgemuTeBkg9gZ5OSN0sQCy0qdco6iHIwFeqd7Jj9OYp_38UwqWTgLkJg1oaPA6rNvgGVtZk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent pointer-events-none"></div>
+<!-- Bottom Floating Floating Badge -->
+<div class="absolute bottom-6 left-6 right-6 p-5 bg-surface-container-lowest/90 backdrop-blur-md border hairline-border flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block">Parisian Signature</span>
+<span class="font-headline-sm text-headline-sm text-primary block mt-0.5">La Peau Diaphane Glow</span>
+</div>
+<span class="material-symbols-outlined text-primary text-2xl font-light">lens_blur</span>
+</div>
+</div>
+<!-- Offset Decorative Frame Backdrop -->
+<div class="absolute -bottom-6 -right-6 w-full h-full border hairline-border -z-10 pointer-events-none hidden md:block"></div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- PORTFOLIO GALLERY: Curated Editorial Bento Grid                           -->
+<!-- ========================================================================= -->
+<section class="bg-surface-container-low py-24 md:py-32 border-t hairline-border" id="portfolio">
+<div class="max-w-7xl mx-auto px-6 md:px-16">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-3">Curated Lookbook</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Featured Portfolio Archives</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md font-light">
+          An intentional study of luminous skin reflections, sculptural contouring, and modern romantic bridal elegance.
+        </p>
+</div>
+<!-- Category Filter Pills -->
+<div class="flex flex-wrap gap-2 md:gap-3 mb-12">
+<button class="bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest px-5 py-2.5 transition-colors">
+          All Works (24)
+        </button>
+<button class="border hairline-border bg-transparent text-on-surface-variant hover:text-primary hover:border-primary font-label-sm text-label-sm uppercase tracking-widest px-5 py-2.5 transition-colors">
+          Bridal Luminance
+        </button>
+<button class="border hairline-border bg-transparent text-on-surface-variant hover:text-primary hover:border-primary font-label-sm text-label-sm uppercase tracking-widest px-5 py-2.5 transition-colors">
+          Editorial &amp; Runway
+        </button>
+<button class="border hairline-border bg-transparent text-on-surface-variant hover:text-primary hover:border-primary font-label-sm text-label-sm uppercase tracking-widest px-5 py-2.5 transition-colors">
+          Red Carpet Glamour
+        </button>
+<button class="border hairline-border bg-transparent text-on-surface-variant hover:text-primary hover:border-primary font-label-sm text-label-sm uppercase tracking-widest px-5 py-2.5 transition-colors">
+          Clean Dewy Glow
+        </button>
+</div>
+<!-- Asymmetrical Editorial Image Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Item 1: Tall Vertical Feature (7 Columns) -->
+<div class="md:col-span-7 bg-surface-container-lowest border hairline-border p-3 group">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" data-alt="An ethereal high-fashion bridal makeup portrait featuring soft winged smokey liner and translucent champagne highlighter on the cheekbones. The bride wears a bespoke lace veil caught in soft motion under warm studio lights with delicate gold accents. High fashion editorial lighting against an ivory backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKLm9DRjSt6G_6muAHuDsegknghTcZqGEOda5yRfsWxLxjgYr4_ZgNMSpXG3QCPqjvwcC5a9xci-LNqwc6Hxoa8fAaplFPvqpiSpAIbUh4NF-K0Pm6LWCLCtIimaDlEcJcc5oS6MJMqOcAq6Vw5Rpm4Zo5Iwv7-WqzIrVkaRU1nlbfdm1Mbp3S4lTp_MLzLuc36R2-OGnaAubJVYJpju06nGgU5Uvk07nQixUG75M"/>
+</div>
+<div class="pt-6 pb-2 px-2 flex justify-between items-baseline">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block">Bridal Luminance</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-1">The Lake Como Nuptials</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Editorial for Vogue Weddings</span>
+</div>
+</div>
+<!-- Item 2: Vertical Beauty Close-up (5 Columns) -->
+<div class="md:col-span-5 bg-surface-container-lowest border hairline-border p-3 group">
+<div class="relative overflow-hidden aspect-[3/4] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" data-alt="A striking beauty macro photograph highlighting glazed skin finish and defined brushed up feathery eyebrows. Subtle bronze cream eyeshadow with glossy skin texture and micro-fine pearl pigments on temple bones. Shot with crisp editorial studio flash for Vogue Paris beauty issue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA643ypxBZ2St8jwLnZRGP-9AP-9y6gjMBnxHkE-2bb3MkyZ50cs-F7wm2AReTPLbhwB9UTOAV8Mh1k7H6rdn1hiksFQQdqGRgyASF5pwgVXNs3jk0MMECGctl5hijs4YTOucEStzyD_UZWX-TudxGA3sj01qqz4b9Ebi5YrRhEQVBLULbkgojx6Vm_1NFeXA2pTgyD5sEUW0NvtHxmxqpiycsi0SSyNooawJfyKE"/>
+</div>
+<div class="pt-6 pb-2 px-2 flex justify-between items-baseline">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block">Editorial &amp; Avant-Garde</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-1">L'Or Minéral Editorial</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Harper's Bazaar France</span>
+</div>
+</div>
+<!-- Item 3: Square Beauty Portrait (5 Columns) -->
+<div class="md:col-span-5 bg-surface-container-lowest border hairline-border p-3 group">
+<div class="relative overflow-hidden aspect-square bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" data-alt="A refined celebrity red carpet beauty look featuring a velvet crimson bold matte lip, satin finish porcelain skin, and clean cat-eye liquid liner. The model is poised against a muted slate background under flattering red carpet tungsten and soft studio fill light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8XM11e9u3OwfyXgVXRWhVF66A1IgXS7LnmyQ8y015eME-9HkHK4Nn09rZpkVsbyr2Ps8AV10VHQ7dyI3ShaDwEA_vOftWyB7t-vBiPZNRrH43N3i-RQ1aOZ1fGtYbv87-Jtr5duTadKKrRMR54x6twOkcm9Hw3OCPClQ1EdADnpzQc9T-MRu8EekQvkxwLezaSjVVaZvcPC20Rje7hYSD93izVGLD2g1onExZGno"/>
+</div>
+<div class="pt-6 pb-2 px-2 flex justify-between items-baseline">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block">Red Carpet Glamour</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-1">Cannes Film Premiere</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Gala Premiere</span>
+</div>
+</div>
+<!-- Item 4: Landscape Wide Composition (7 Columns) -->
+<div class="md:col-span-7 bg-surface-container-lowest border hairline-border p-3 group">
+<div class="relative overflow-hidden aspect-[16/10] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" data-alt="Backstage fashion week beauty look showing natural luminous skin with glass finish and muted rosewater stained lips. Soft bokeh in background reveals backstage hair styling gear and warm Parisian atelier runway mirrors. Soft organic lighting reflecting high-end clean girl beauty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIuIDMof_D7ZNtk6gjPAJ9il5f2mLUhCrz7upfLtQtTtXO77nJeemfTm9SyTte1E3skyCYicy0AKzzm6bARQNy9em3H28-3jSj0XLnq0R-kphNM154qZ9XxMQkFAjJ0S3Q-T0bu1nn-pfCZSREOUCBxyfXDLRGUjS0b8dralJla6181oul1bhiTZuI2A1JaxAUyJ2mJD_EVHZP2BKco5--MclNHWNzlUPz5wJqbjw"/>
+</div>
+<div class="pt-6 pb-2 px-2 flex justify-between items-baseline">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block">Clean Dewy Glow</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-1">Paris Fashion Week Backstage</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline">SS25 Runway Atelier</span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="mt-16 text-center">
+<a class="inline-flex items-center gap-3 font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors duration-200" href="#inquiry">
+<span>Inquire for Complete Lookbook &amp; Archive Book</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- THE ARTIST & PHILOSOPHY: Camille Laurent                                  -->
+<!-- ========================================================================= -->
+<section class="py-24 md:py-32 max-w-7xl mx-auto px-6 md:px-16" id="philosophy">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter-desktop items-center">
+<!-- Portrait Column (5 cols) -->
+<div class="lg:col-span-5">
+<div class="relative aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover filter grayscale contrast-105" data-alt="An intimate black and white portrait of makeup artist Camille Laurent in her minimalist SoHo studio. She wears a tailored linen blazer holding a professional synthetic makeup brush thoughtfully. Soft natural directional sunlight streams across her cheekbones creating high contrast editorial shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQCsQ3V-tZHCQOG9Er70EiEhh1z0LLp1ZdNHBUkhT0-pK2giZf00C8Qb4sb_OwXwV6_YdKJ3Nq4g17ZWZkiMdoaBer-vkOqXvzCXNbNM9n52Uhx9ZWuwIzPq3Fme274NJZa8BJ1MqNpniyNGpQ5mVWWs8ChZeqAwjrQJ5364BGu_ozKZ3bFKvERRtQsNnvgItZXlxUkKzl4zlaojvj8aTWmPX2euTYFkY6KowYNDk"/>
+<div class="absolute bottom-4 left-4 right-4 bg-surface-container-lowest/90 backdrop-blur-md p-4 border hairline-border">
+<p class="font-headline-sm text-headline-sm text-primary">Camille Laurent</p>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline mt-0.5">Founder &amp; Creative Lead Artist</p>
+</div>
+</div>
+</div>
+<!-- Narrative & Philosophy Column (7 cols) -->
+<div class="lg:col-span-7 space-y-8">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-3">The Atelier Ethos</span>
+<h2 class="font-display-lg text-display-lg-mobile md:text-headline-lg text-primary leading-tight">
+            "Makeup should never mask identity. It reveals bone structure through light."
+          </h2>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light">
+          Trained classically in Paris under renowned master cosmetologists and seasoned across European runway seasons, Camille approaches the face as living architecture. Rather than heavy foundation blankets, her philosophy favors skin preparation, micro-layering, and custom shade alchemy.
+        </p>
+<!-- Brand Pillars Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+<div class="p-6 bg-surface-container-low border hairline-border">
+<span class="material-symbols-outlined text-primary text-2xl mb-3">auto_awesome</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-2">Architectural Illumination</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Precision skin prep and light manipulation designed to photograph impeccably under natural sun and harsh studio flashes.</p>
+</div>
+<div class="p-6 bg-surface-container-low border hairline-border">
+<span class="material-symbols-outlined text-primary text-2xl mb-3">sanitizer</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-2">Hospital-Grade Asepsis</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Single-use spatulas, UV sanitized brush sets, and decanted pigments adhering to the most stringent medical-grade protocols.</p>
+</div>
+</div>
+<!-- Master Kit Curation -->
+<div class="pt-6 border-t hairline-border">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline block mb-4">Atelier Kit Selection</span>
+<div class="flex flex-wrap items-center gap-6 opacity-75">
+<span class="font-label-md text-label-md tracking-wider font-semibold uppercase">Dior Beauty</span>
+<span class="text-outline/40">/</span>
+<span class="font-label-md text-label-md tracking-wider font-semibold uppercase">Charlotte Tilbury</span>
+<span class="text-outline/40">/</span>
+<span class="font-label-md text-label-md tracking-wider font-semibold uppercase">Chanel Beauté</span>
+<span class="text-outline/40">/</span>
+<span class="font-label-md text-label-md tracking-wider font-semibold uppercase">Pat McGrath Labs</span>
+<span class="text-outline/40">/</span>
+<span class="font-label-md text-label-md tracking-wider font-semibold uppercase">Augustinus Bader</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SIGNATURE SERVICES & PRICING: Editorial Cards                            -->
+<!-- ========================================================================= -->
+<section class="py-24 md:py-32 bg-surface-container-low border-t hairline-border" id="services">
+<div class="max-w-7xl mx-auto px-6 md:px-16">
+<div class="text-center max-w-2xl mx-auto mb-20">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-3">Bespoke Engagements</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Signature Services &amp; Rates</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4 font-light">
+          Every commission includes detailed consultation, skin typology preparation, and curated touch-up provisions.
+        </p>
+</div>
+<!-- Service Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1: Bridal Experience -->
+<div class="bg-surface-container-lowest border hairline-border p-8 flex flex-col justify-between hover:border-primary transition-colors duration-300">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-2">Most Requested</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">The Couture Bridal Experience</h3>
+<div class="my-6">
+<span class="font-headline-lg text-headline-lg text-primary">$850</span>
+<span class="font-label-sm text-label-sm text-outline block mt-1">Full Day Dedication</span>
+</div>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant border-t hairline-border pt-6">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Comprehensive 2.5-hour trial session</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Wedding day skincare infusion prep</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Custom lash mapping &amp; placement</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Deluxe touch-up kit (lip stain, powder)</span>
+</li>
+</ul>
+</div>
+<div class="mt-8 pt-6 border-t hairline-border">
+<a class="block w-full text-center bg-primary text-on-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:opacity-80 transition-opacity" href="#inquiry">
+              Reserve Date
+            </a>
+</div>
+</div>
+<!-- Card 2: Red Carpet & Galas -->
+<div class="bg-surface-container-lowest border hairline-border p-8 flex flex-col justify-between hover:border-primary transition-colors duration-300">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline block mb-2">Evening Glamour</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Red Carpet &amp; Galas</h3>
+<div class="my-6">
+<span class="font-headline-lg text-headline-lg text-primary">$350</span>
+<span class="font-label-sm text-label-sm text-outline block mt-1">90 Minutes Session</span>
+</div>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant border-t hairline-border pt-6">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>High-definition camera ready complexion</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Contour sculpting &amp; highlight balance</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Evening flash photography optimization</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Individual mink-alternative lash styling</span>
+</li>
+</ul>
+</div>
+<div class="mt-8 pt-6 border-t hairline-border">
+<a class="block w-full text-center border border-primary text-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors" href="#inquiry">
+              Reserve Session
+            </a>
+</div>
+</div>
+<!-- Card 3: Commercial & Editorial -->
+<div class="bg-surface-container-lowest border hairline-border p-8 flex flex-col justify-between hover:border-primary transition-colors duration-300">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline block mb-2">Production</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Commercial &amp; Editorial</h3>
+<div class="my-6">
+<span class="font-headline-lg text-headline-lg text-primary">$1,200</span>
+<span class="font-label-sm text-label-sm text-outline block mt-1">Full 8-Hour Day Rate</span>
+</div>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant border-t hairline-border pt-6">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Continuous on-set touch-ups &amp; adjustments</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Multiple look transitions per call sheet</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Kit fee, body makeup &amp; disposables</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Collaboration with creative director</span>
+</li>
+</ul>
+</div>
+<div class="mt-8 pt-6 border-t hairline-border">
+<a class="block w-full text-center border border-primary text-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors" href="#inquiry">
+              Book Production
+            </a>
+</div>
+</div>
+<!-- Card 4: Private Masterclass -->
+<div class="bg-surface-container-lowest border hairline-border p-8 flex flex-col justify-between hover:border-primary transition-colors duration-300">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline block mb-2">Private Mentorship</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Private Masterclass</h3>
+<div class="my-6">
+<span class="font-headline-lg text-headline-lg text-primary">$450</span>
+<span class="font-label-sm text-label-sm text-outline block mt-1">2-Hour 1-on-1 Studio</span>
+</div>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant border-t hairline-border pt-6">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Comprehensive personal makeup bag audit</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Tailored facial architecture techniques</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Curated shade shopping guide</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-base">check</span>
+<span>Custom step-by-step beauty blueprint</span>
+</li>
+</ul>
+</div>
+<div class="mt-8 pt-6 border-t hairline-border">
+<a class="block w-full text-center border border-primary text-primary py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors" href="#inquiry">
+              Schedule Class
+            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SEAMLESS BOOKING & DATE INQUIRY SECTION                                    -->
+<!-- ========================================================================= -->
+<section class="py-24 md:py-32 max-w-7xl mx-auto px-6 md:px-16" id="inquiry">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter-desktop items-start">
+<!-- Inquiry Copy Left (5 cols) -->
+<div class="lg:col-span-5 space-y-6">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block">Availability Calendar</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary leading-tight">
+          Reserve Your Atelier Session
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant font-light">
+          Due to high editorial and bridal demand, reservations are reviewed on a rolling basis. Camille personally accommodates a maximum of 18 premier weddings per season.
+        </p>
+<!-- Studio Details Card -->
+<div class="p-6 bg-surface-container-low border hairline-border space-y-4 mt-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Atelier Flagship</p>
+<p class="font-body-sm text-body-sm font-medium text-primary">482 Broome Street, SoHo, New York, NY</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Hours of Artistry</p>
+<p class="font-body-sm text-body-sm font-medium text-primary">Wednesday – Sunday: By Appointment Only</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">mail</span>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Direct Dispatch</p>
+<p class="font-body-sm text-body-sm font-medium text-primary">concierge@maisonvisage.com</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Booking Form Card (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest border hairline-border p-8 md:p-12 custom-editorial-shadow">
+<form class="space-y-8" onsubmit="event.preventDefault(); alert('Merci. Your inquiry has been forwarded to the atelier desk.');">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant block">Full Name</label>
+<input class="w-full bg-transparent border-b hairline-border-dark border-t-0 border-x-0 px-0 py-3 text-body-md text-primary focus:border-primary focus:ring-0 placeholder:text-outline/40" placeholder="Elena Vance" required="" type="text"/>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant block">Email Address</label>
+<input class="w-full bg-transparent border-b hairline-border-dark border-t-0 border-x-0 px-0 py-3 text-body-md text-primary focus:border-primary focus:ring-0 placeholder:text-outline/40" placeholder="elena@editorial.com" required="" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Commission Type -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant block">Commission Nature</label>
+<select class="w-full bg-transparent border-b hairline-border-dark border-t-0 border-x-0 px-0 py-3 text-body-md text-primary focus:border-primary focus:ring-0">
+<option>The Couture Bridal Experience</option>
+<option>Red Carpet &amp; Galas</option>
+<option>Commercial &amp; Editorial Campaign</option>
+<option>Private Masterclass</option>
+<option>Custom Commission</option>
+</select>
+</div>
+<!-- Event Location -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant block">Event Location / City</label>
+<input class="w-full bg-transparent border-b hairline-border-dark border-t-0 border-x-0 px-0 py-3 text-body-md text-primary focus:border-primary focus:ring-0 placeholder:text-outline/40" placeholder="e.g. New York, Paris, Destination" type="text"/>
+</div>
+</div>
+<!-- Interactive Date Selection -->
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant block">Target Event Date</label>
+<span class="font-label-sm text-label-sm text-outline">Selected: Oct 24, 2025</span>
+</div>
+<!-- Tabular Mini Calendar Grid -->
+<div class="border hairline-border p-4 bg-surface-container-low">
+<div class="flex justify-between items-center mb-3 px-2">
+<span class="font-headline-sm text-headline-sm text-primary">October 2025</span>
+<div class="flex space-x-2">
+<button class="p-1 hover:text-primary text-outline" type="button"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 hover:text-primary text-outline" type="button"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center font-label-sm text-label-sm text-outline mb-2">
+<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center font-body-sm text-body-sm">
+<span class="p-2 text-outline/30">29</span>
+<span class="p-2 text-outline/30">30</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">1</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">2</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">3</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">4</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">5</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">6</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">7</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">8</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">9</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">10</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">11</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">12</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">13</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">14</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">15</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">16</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">17</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">18</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">19</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">20</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">21</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">22</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">23</span>
+<!-- Active Day Tile -->
+<span class="p-2 bg-primary text-on-primary font-medium cursor-pointer">24</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">25</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">26</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">27</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">28</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">29</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">30</span>
+<span class="p-2 hover:bg-surface-container cursor-pointer">31</span>
+<span class="p-2 text-outline/30">1</span>
+<span class="p-2 text-outline/30">2</span>
+</div>
+</div>
+</div>
+<!-- Notes -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant block">Commission Specifics / Vision</label>
+<textarea class="w-full bg-transparent border-b hairline-border-dark border-t-0 border-x-0 px-0 py-2 text-body-md text-primary focus:border-primary focus:ring-0 placeholder:text-outline/40" placeholder="Tell us about the atmosphere, attire, schedule, or specific aesthetic desires..." rows="3"></textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary text-on-primary py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-[#322E2B] transition-colors duration-300 flex items-center justify-center gap-3" type="submit">
+<span>Check Availability &amp; Transmit Request</span>
+<span class="material-symbols-outlined text-[18px]">east</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- CLIENT ACCOLADES & PRESS                                                  -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-surface-container-low border-t hairline-border" id="testimonials">
+<div class="max-w-7xl mx-auto px-6 md:px-16">
+<!-- Press Mentions Bar -->
+<div class="mb-20 text-center">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline block mb-6">As Featured &amp; Profiled In</span>
+<div class="flex flex-wrap items-center justify-center gap-10 md:gap-20 opacity-60">
+<span class="font-display-lg text-3xl font-serif tracking-widest">VOGUE</span>
+<span class="font-display-lg text-3xl font-serif tracking-widest italic">Harper's BAZAAR</span>
+<span class="font-display-lg text-3xl font-serif tracking-widest">ELLE</span>
+<span class="font-display-lg text-3xl font-serif tracking-widest">L'OFFICIEL</span>
+<span class="font-display-lg text-3xl font-serif tracking-widest italic">Madame Figaro</span>
+</div>
+</div>
+<!-- Testimonial Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-8 border hairline-border flex flex-col justify-between">
+<p class="font-body-md text-body-md text-on-surface-variant font-light italic leading-relaxed">
+            "Camille gave me the exact skin of my dreams for our Florence wedding. It held through 14 hours of tears, dancing, and Italian heat without ever feeling like heavy cake. Pure magic."
+          </p>
+<div class="mt-8 pt-6 border-t hairline-border">
+<p class="font-headline-sm text-headline-sm text-primary">Lady Genevieve Sinclair</p>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline mt-1">Bridal Client, Villa Cetinale</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 border hairline-border flex flex-col justify-between">
+<p class="font-body-md text-body-md text-on-surface-variant font-light italic leading-relaxed">
+            "An unmatched eye for light and camera reflection. Working with Camille Laurent on set guarantees that post-production retouching is virtually unnecessary. A master of skin texture."
+          </p>
+<div class="mt-8 pt-6 border-t hairline-border">
+<p class="font-headline-sm text-headline-sm text-primary">Marc Rozier</p>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline mt-1">Senior Creative Director, Paris</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 border hairline-border flex flex-col justify-between">
+<p class="font-body-md text-body-md text-on-surface-variant font-light italic leading-relaxed">
+            "Her backstage discipline during New York Fashion Week was calm, clinical, and extraordinarily chic. She elevates whatever face is in front of her into high editorial art."
+          </p>
+<div class="mt-8 pt-6 border-t hairline-border">
+<p class="font-headline-sm text-headline-sm text-primary">Sora Chen</p>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline mt-1">Fashion Editor, NYC</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SHARED COMPONENT: Footer                                                  -->
+<!-- ========================================================================= -->
+<footer class="bg-surface-container dark:bg-primary-container border-t border-outline-variant/20 dark:border-outline/10 docked full-width bottom-0">
+<div class="w-full px-6 md:px-16 max-w-7xl mx-auto py-16">
+<!-- Top Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+<!-- Atelier Brand Identity -->
+<div class="md:col-span-5 space-y-4">
+<p class="font-headline-md text-headline-md tracking-tight text-primary dark:text-on-surface uppercase">
+            MAISON VISAGE
+          </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline max-w-sm">
+            Haute Beauté and bespoke editorial makeup artistry by Camille Laurent. Private appointments curated in SoHo, New York and available worldwide for destination bridal commissions.
+          </p>
+<div class="pt-2 flex items-center space-x-4">
+<a class="font-label-sm text-label-sm uppercase tracking-wider text-primary dark:text-inverse-primary hover:opacity-75 transition-opacity" href="https://instagram.com" target="_blank">
+              Instagram @maisonvisage
+            </a>
+<span class="text-outline/40">/</span>
+<a class="font-label-sm text-label-sm uppercase tracking-wider text-primary dark:text-inverse-primary hover:opacity-75 transition-opacity" href="https://pinterest.com" target="_blank">
+              Pinterest Moodboard
+            </a>
+</div>
+</div>
+<!-- Links Column 1: Studio Guidelines -->
+<div class="md:col-span-3 space-y-3">
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-primary dark:text-inverse-primary font-semibold mb-4">
+            Navigation &amp; Studio
+          </p>
+<ul class="space-y-2">
+<li>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#services">
+                Bridal Rates
+              </a>
+</li>
+<li>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#philosophy">
+                Studio Guidelines
+              </a>
+</li>
+<li>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#testimonials">
+                Press &amp; Features
+              </a>
+</li>
+<li>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#inquiry">
+                Contact Studio
+              </a>
+</li>
+</ul>
+</div>
+<!-- Links Column 2: Inquiries & Terms -->
+<div class="md:col-span-4 space-y-3">
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-primary dark:text-inverse-primary font-semibold mb-4">
+            Studio Policies
+          </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline font-light">
+            Retainers are required to secure bespoke calendar locks. Inquiries are answered within 24 business hours by our concierge desk.
+          </p>
+<div class="pt-4">
+<a class="inline-flex items-center gap-2 font-label-sm text-label-sm uppercase tracking-widest text-primary dark:text-inverse-primary border-b border-primary dark:border-inverse-primary pb-1" href="#inquiry">
+<span>Request Private Consultation</span>
+<span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Bottom Hairline Separator & Copyright -->
+<div class="pt-8 border-t border-outline-variant/20 dark:border-outline/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant dark:text-outline text-center md:text-left">
+          © 2025 MAISON VISAGE ATELIER. ALL RIGHTS RESERVED. HAUTE BEAUTÉ &amp; EDITORIAL ARTISTRY.
+        </p>
+<div class="flex items-center space-x-6">
+<a class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">
+            Privacy Policy
+          </a>
+<a class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">
+            Studio Guidelines
+          </a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
