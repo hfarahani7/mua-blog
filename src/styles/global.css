@@ -183,6 +183,24 @@
   }
 }
 
+/*
+ * Text link with a 1px underline 4px below the text that grows from 0 to full width on
+ * hover/focus (DESIGN.md → Text link). The "gradient" is a single solid color: it's only
+ * a way to draw a line whose width can animate.
+ */
+@utility link-underline {
+  padding-bottom: 4px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 300ms var(--ease-editorial);
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
 /* Skip link: hidden until focused. */
 @utility skip-link {
   position: absolute;
