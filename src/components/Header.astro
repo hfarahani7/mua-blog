@@ -1,0 +1,31 @@
+---
+// Phase 3 placeholder: working links only. The Stitch header (sticky bar, Inquire button,
+// mobile menu) is built in Phase 4.
+const links = [
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Services', href: '/services' },
+  { label: 'Inquiries', href: '/inquiries' },
+];
+const current = Astro.url.pathname.replace(/\.html$/, '');
+---
+
+<header class="border-b border-line bg-canvas">
+  <div class="container-site flex items-center justify-between py-5">
+    <a href="/" class="font-display text-headline-md uppercase tracking-tight text-ink">Jeanice Huang</a>
+    <nav aria-label="Main">
+      <ul class="flex gap-6">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={current === link.href ? 'page' : undefined}
+              class="text-label-md uppercase text-ink-soft hover:text-ink aria-[current=page]:text-ink"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

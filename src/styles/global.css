@@ -1,0 +1,198 @@
+/* Fonts: self-hosted variable fonts (font-display: swap is set by @fontsource). */
+@import "@fontsource-variable/bodoni-moda/opsz.css";
+@import "@fontsource-variable/bodoni-moda/opsz-italic.css";
+@import "@fontsource-variable/manrope/wght.css";
+
+@import "tailwindcss";
+
+/*
+ * Design tokens. These mirror DESIGN.md exactly; change DESIGN.md first, then here.
+ * Tailwind's default colors, shadows and radii are cleared so only these exist
+ * (no gray-*, slate-*, rounded-2xl, shadow-lg ...).
+ */
+@theme {
+  /* ---- Colors ---- */
+  --color-*: initial;
+  --color-canvas: #fcf9f4;
+  --color-canvas-low: #f6f3ee;
+  --color-canvas-mid: #f0ede9;
+  --color-card: #ffffff;
+  --color-ink: #1a1715;
+  --color-ink-hover: #322e2b;
+  --color-ink-soft: #4d4540;
+  --color-umber: #745943;
+  --color-champagne: #c9a88e;
+  --color-muted: #7e7570;
+  --color-line: rgb(26 23 21 / 0.08);
+  --color-line-strong: rgb(26 23 21 / 0.2);
+  --color-error: #ba1a1a;
+  --color-on-ink: #fcf9f4;
+
+  /* ---- Fonts ---- */
+  --font-*: initial;
+  --font-display: "Bodoni Moda Variable", Georgia, "Times New Roman", serif;
+  --font-body: "Manrope Variable", "Helvetica Neue", Arial, sans-serif;
+
+  /* ---- Type scale: size / line-height / tracking / weight ---- */
+  --text-display-lg: 3.75rem;
+  --text-display-lg--line-height: 4.25rem;
+  --text-display-lg--letter-spacing: -0.015em;
+  --text-display-lg--font-weight: 400;
+
+  --text-display-lg-mobile: 2.25rem;
+  --text-display-lg-mobile--line-height: 2.75rem;
+  --text-display-lg-mobile--letter-spacing: -0.01em;
+  --text-display-lg-mobile--font-weight: 400;
+
+  --text-headline-lg: 2.5rem;
+  --text-headline-lg--line-height: 3rem;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg--font-weight: 400;
+
+  --text-headline-lg-mobile: 1.75rem;
+  --text-headline-lg-mobile--line-height: 2.25rem;
+  --text-headline-lg-mobile--letter-spacing: 0em;
+  --text-headline-lg-mobile--font-weight: 400;
+
+  --text-headline-md: 1.75rem;
+  --text-headline-md--line-height: 2.25rem;
+  --text-headline-md--letter-spacing: 0em;
+  --text-headline-md--font-weight: 400;
+
+  --text-headline-sm: 1.25rem;
+  --text-headline-sm--line-height: 1.75rem;
+  --text-headline-sm--letter-spacing: 0.01em;
+  --text-headline-sm--font-weight: 500;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.875rem;
+  --text-body-lg--letter-spacing: 0.01em;
+  --text-body-lg--font-weight: 300;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.625rem;
+  --text-body-md--letter-spacing: 0.01em;
+  --text-body-md--font-weight: 300;
+
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.375rem;
+  --text-body-sm--letter-spacing: 0.015em;
+  --text-body-sm--font-weight: 400;
+
+  --text-label-md: 0.75rem;
+  --text-label-md--line-height: 1rem;
+  --text-label-md--letter-spacing: 0.12em;
+  --text-label-md--font-weight: 600;
+
+  --text-label-sm: 0.6875rem;
+  --text-label-sm--line-height: 0.875rem;
+  --text-label-sm--letter-spacing: 0.16em;
+  --text-label-sm--font-weight: 600;
+
+  /* ---- Spacing (Tailwind's 4px base scale stays; these are named extras) ---- */
+  --spacing-gutter: 1.5rem;          /* px-gutter: mobile side padding */
+  --spacing-gutter-desktop: 4rem;    /* md:px-gutter-desktop */
+  --spacing-grid-gap: 2.5rem;        /* lg:gap-grid-gap */
+  --spacing-section: 6rem;           /* py-section */
+  --spacing-section-desktop: 8rem;   /* md:py-section-desktop */
+
+  /* ---- Widths ---- */
+  --container-site: 80rem;           /* max-w-site (1280px) */
+  --container-measure: 36rem;        /* max-w-measure: body text */
+
+  /* ---- Radius: everything is square ---- */
+  --radius-*: initial;
+  --radius-none: 0;
+  --radius-round: 50%;
+
+  /* ---- Shadow: only the form card ---- */
+  --shadow-*: initial;
+  --shadow-float: 0 24px 48px -12px rgb(26 23 21 / 0.06), 0 4px 12px -2px rgb(26 23 21 / 0.03);
+
+  /* ---- Motion ---- */
+  --ease-editorial: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ---- Base styles ---- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink-soft);
+    font-family: var(--font-body);
+    font-size: var(--text-body-md);
+    line-height: var(--text-body-md--line-height);
+    letter-spacing: var(--text-body-md--letter-spacing);
+    font-weight: var(--text-body-md--font-weight);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-champagne);
+    color: var(--color-ink);
+  }
+
+  /* Visible keyboard focus everywhere; mouse clicks don't show it. */
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ---- Small shared utilities ---- */
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-site);
+  padding-inline: var(--spacing-gutter);
+  @media (width >= 48rem) {
+    padding-inline: var(--spacing-gutter-desktop);
+  }
+}
+
+/* Skip link: hidden until focused. */
+@utility skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  background-color: var(--color-ink);
+  color: var(--color-on-ink);
+  padding: 0.75rem 1.25rem;
+  &:focus {
+    top: 1rem;
+  }
+}

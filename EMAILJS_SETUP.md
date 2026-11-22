@@ -1,6 +1,6 @@
 # EmailJS Setup Guide
 
-This project now uses **EmailJS** to handle form submissions and send emails. Follow these steps to set it up:
+The inquiry form on `/inquiries` sends email from the browser through **EmailJS**. There is no backend.
 
 ## 1. Create an EmailJS Account
 
@@ -23,7 +23,8 @@ This project now uses **EmailJS** to handle form submissions and send emails. Fo
 1. Go to **Email Templates** in the dashboard
 2. Click **Create New Template**
 3. Name it something like "Inquiry Form Template"
-4. Replace the template content with this:
+4. Set **To Email** to `{{to_email}}` and **Reply To** to `{{reply_to_email}}`
+5. Replace the template content with this:
 
 ```
 From: {{from_email}} ({{from_name}})
@@ -35,64 +36,60 @@ Subject: {{subject}}
 {{message}}
 ```
 
-5. Click **Save**
-6. Copy your **Template ID** (looks like `template_xxxxx`)
+6. Click **Save**
+7. Copy your **Template ID** (looks like `template_xxxxx`)
 
-## 4. Get Your API Keys
+The site sends exactly these template parameters: `to_email`, `from_name`, `from_email`, `subject`, `message`, `reply_to_email`. Don't rename them in the template.
+
+## 4. Get Your Public Key
 
 1. Go to **Account** > **API Keys**
 2. Copy your **Public Key** (it's safe to expose publicly in your app)
 
-## 5. Configure Environment Variables
+## 5. Configure the values
 
-1. Copy `.env.local.example` to `.env.local`
-   ```bash
-   cp .env.local.example .env.local
-   ```
-
-2. Fill in the values:
-   ```
-   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_from_step_4
-   NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id_from_step_2
-   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id_from_step_3
-   NEXT_PUBLIC_OWNER_EMAIL=your-email@example.com
-   ```
-
-## 6. Install Dependencies
+### Locally
 
 ```bash
-npm install --legacy-peer-deps
+cp .env.example .env
 ```
 
-## 7. Test the Form
+Fill in:
 
-1. Run the development server:
-   ```bash
-   npm run dev
-   ```
+```
+PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_from_step_4
+PUBLIC_EMAILJS_SERVICE_ID=your_service_id_from_step_2
+PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id_from_step_3
+PUBLIC_OWNER_EMAIL=your-email@example.com
+```
 
-2. Navigate to the Inquiries page (`/inquiries`)
-3. Fill out and submit a test form
-4. Check your email inbox for the inquiry
+### On GitHub (production)
 
-## How It Works
+The deploy workflow reads the same four names from **repository variables** (not secrets):
+**Settings → Secrets and variables → Actions → Variables → New repository variable.**
+A push to `master` fails the build if any of them is missing, so a broken form is never deployed.
 
-- When a user submits the form, it sends the data directly to EmailJS (client-side)
-- EmailJS processes the request and sends an email to your address
-- No backend server needed!
-- The form data is formatted nicely and sent as an email
+## 6. Test the Form
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:4321/inquiries`, send a test inquiry and check your inbox.
 
 ## Troubleshooting
 
-### "Failed to send inquiry" error
-- Check that all environment variables are correctly set in `.env.local`
-- Verify your email service is properly authenticated in EmailJS dashboard
-- Check browser console for more detailed error messages
+### "Sorry, your inquiry couldn't be sent" error
+- Check that all four `PUBLIC_EMAILJS_*` / `PUBLIC_OWNER_EMAIL` values are set (in `.env` locally, or as GitHub variables)
+- Restart `npm run dev` after editing `.env`
+- Verify your email service is properly authenticated in the EmailJS dashboard
+- Check the browser console for the detailed EmailJS error
 
 ### Email not received
 - Check your spam/junk folder
-- Verify the NEXT_PUBLIC_OWNER_EMAIL is correct
+- Verify `PUBLIC_OWNER_EMAIL` and the template's **To Email** field
 - Make sure your email service in EmailJS is active and verified
 
 ### Rate Limiting
-- EmailJS free tier has rate limits. If you hit them, upgrade your plan or wait for the limit to reset
+- The EmailJS free tier has rate limits. If you hit them, upgrade your plan or wait for the limit to reset

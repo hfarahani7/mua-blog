@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jeanicehuangbridal.com/sitemap-index.xml
