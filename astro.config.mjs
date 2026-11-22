@@ -30,5 +30,11 @@ export default defineConfig({
       // in dist/ and make a parallel `npm run build` fail with EBUSY.
       watch: { ignored: ['**/dist/**'] },
     },
+    // Pre-bundle the form's dependency when the dev server starts, instead of re-optimizing
+    // mid-session the first time /inquiries is opened (that re-run is where Windows Defender
+    // can lock node_modules/.vite and crash the dev server with EBUSY).
+    optimizeDeps: {
+      include: ['@emailjs/browser'],
+    },
   },
 });
