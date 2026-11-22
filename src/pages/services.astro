@@ -1,6 +1,42 @@
 ---
+// Services: centered intro, services as a typographic list with hairline rows, FAQ as
+// Stitch "Service & Pricing Accords" (<details> rows). Copy is the existing site copy.
+// No prices, no cards (DESIGN.md → Page plan / Banned).
 import Base from '../layouts/Base.astro';
-// Phase 3 placeholder. Rebuilt in Phase 4.
+import InquiryPrompt from '../components/InquiryPrompt.astro';
+
+const services = [
+  'Bridal hair and makeup',
+  'Bridal party hair and makeup',
+  'Mother of the bride/groom hair',
+  'Hair and makeup trials',
+  'Clip-in hair extension application',
+  'Event/photoshoot hair and makeup',
+];
+
+const faqs = [
+  {
+    q: 'Do you offer trials before the big day?',
+    a: 'Yes! Hair and makeup trials are encouraged and are booked after contracts are signed.',
+  },
+  {
+    q: 'Do you travel?',
+    a: 'Absolutely — we specialize in on-location services throughout Long Island and NYC. Travel fees may apply depending on distance.',
+  },
+  {
+    q: 'Do you require a deposit?',
+    a: 'Yes, a non-refundable deposit is made after initial consultation.',
+  },
+  {
+    q: 'How should I prepare my skin and hair?',
+    // Typo fixed from the old site ("will be send").
+    a: 'A prep guide will be sent via email after booking.',
+  },
+  {
+    q: 'Where are your services provided?',
+    a: 'We work on-location.',
+  },
+];
 ---
 
 <!-- TODO: title and description drafted from existing copy; owner to approve. -->
@@ -8,7 +44,90 @@ import Base from '../layouts/Base.astro';
   title="Services & FAQ"
   description="Bridal hair and makeup, bridal party, trials, clip-in extensions and event looks. On location throughout Long Island and NYC."
 >
-  <section class="container-site py-section">
-    <h1 class="text-display-lg-mobile md:text-display-lg">Services</h1>
+  <section class="container-site pt-16 pb-section md:pt-24 md:pb-section-desktop">
+    <div class="hero-rise mx-auto max-w-2xl text-center">
+      <h1 class="text-display-lg-mobile md:text-display-lg">Services</h1>
+      <!-- TODO: intro line drafted from the FAQ; owner to approve. -->
+      <p class="mx-auto mt-6 max-w-measure text-body-lg">On location throughout Long Island and NYC.</p>
+    </div>
+
+    <ol class="mx-auto mt-16 max-w-3xl border-t border-line md:mt-20">
+      {services.map((service, i) => (
+        <li class="flex items-baseline gap-6 border-b border-line py-6 md:gap-10 md:py-8">
+          <span aria-hidden="true" class="w-6 shrink-0 text-label-sm text-umber tabular-nums">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <span class="font-display text-headline-sm text-ink md:text-headline-md">{service}</span>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-12 text-center md:mt-16">
+      <a href="/inquiries" class="btn-primary">Inquire</a>
+    </div>
   </section>
+
+  <section class="reveal border-t border-line bg-canvas-low py-section md:py-section-desktop" aria-labelledby="faq">
+    <div class="container-site grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-grid-gap">
+      <h2 id="faq" class="text-headline-lg-mobile md:text-headline-lg lg:col-span-4">Frequently Asked Questions</h2>
+
+      <div class="border-t border-line lg:col-span-8">
+        {faqs.map((item) => (
+          <details class="faq border-b border-line">
+            <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 py-6 font-display text-headline-sm text-ink">
+              <span>{item.q}</span>
+              <span aria-hidden="true" class="faq-icon relative size-4 shrink-0"></span>
+            </summary>
+            <p class="max-w-measure pb-8 text-body-md">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <InquiryPrompt tone="canvas" />
 </Base>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  /* Thin plus that turns into a minus when open. */
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transition: transform 300ms var(--ease-editorial);
+  }
+  .faq-icon::after {
+    transform: rotate(90deg);
+  }
+  .faq[open] .faq-icon::after {
+    transform: rotate(0deg);
+  }
+  .faq summary:hover {
+    color: var(--color-ink-hover);
+  }
+
+  /* Smooth open/close where supported (Chrome 131+); elsewhere it just opens. */
+  @supports (interpolate-size: allow-keywords) {
+    .faq {
+      interpolate-size: allow-keywords;
+    }
+    .faq::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size 300ms var(--ease-editorial),
+        content-visibility 300ms allow-discrete;
+    }
+    .faq[open]::details-content {
+      block-size: auto;
+    }
+  }
+</style>

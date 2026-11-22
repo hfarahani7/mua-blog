@@ -1,9 +1,17 @@
 ---
 // Closing call to action: a short centered statement + the primary button (DESIGN.md → Layout:
 // centered only for a single short statement or the final call to action).
+interface Props {
+  /** Background: "low" (canvas-low, default) or "canvas", to alternate with the section above. */
+  tone?: 'low' | 'canvas';
+}
+const { tone = 'low' } = Astro.props;
 ---
 
-<section class="reveal border-t border-line bg-canvas-low py-section md:py-section-desktop" aria-labelledby="inquire">
+<section
+  class:list={['reveal border-t border-line py-section md:py-section-desktop', tone === 'low' ? 'bg-canvas-low' : 'bg-canvas']}
+  aria-labelledby="inquire"
+>
   <div class="container-site mx-auto max-w-2xl text-center">
     <!-- TODO: heading and line drafted; owner to approve. -->
     <h2 id="inquire" class="text-headline-lg-mobile md:text-headline-lg">Planning your wedding?</h2>
