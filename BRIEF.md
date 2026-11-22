@@ -28,7 +28,7 @@ Every page should make the primary action obvious within the first screen on a p
 - **Three words:** TODO, TODO, TODO (the old site was soft, romantic and feminine: muted rose and pastel)
 - **It should never feel:** TODO
 - **Sites, brands or places with the right feeling:** the Google Stitch design in `references/stitch/`
-- **Existing brand assets:** no logo file. The wordmark "Jeanice Huang" was set in the script font Mr De Haviland, with Cormorant Upright for text. Photos: about 200 portfolio images in S3 (see `CLAUDE.md` → Images).
+- **Existing brand assets:** no logo file. The old wordmark "Jeanice Huang" was set in the script font Mr De Haviland, with Cormorant Upright for text; the new Stitch-based design replaces both with Bodoni Moda + Manrope (see `DESIGN.md`). Photos: about 200 portfolio images in S3 (see `CLAUDE.md` → Images).
 
 ## 5. Pages and sections
 
