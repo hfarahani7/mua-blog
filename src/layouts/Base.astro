@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getImage } from 'astro:assets';
+import { photo } from '../data/photos';
 
 interface Props {
   /** Page title; " | Jeanice Huang" is appended unless `fullTitle` is set. */
@@ -20,11 +22,22 @@ const {
   title,
   description,
   fullTitle = false,
-  // TODO: S3 serves .webp files with Content-Type image/jpeg, and some social sites
-  // don't accept WebP previews. A 1200×630 JPEG in images/ would be more reliable.
-  ogImage = 'https://dwxk3eiesmmgs.cloudfront.net/images/Kath_Matt_JeanLaurentGaudy_417.webp',
+  ogImage: ogImageProp,
   noindex = false,
 } = Astro.props;
+
+// Default social preview: the home hero photo as a 1200×630 JPEG (JPEG because some social
+// sites don't accept WebP previews).
+const ogDefault = await getImage({
+  src: photo('kath-matt-jeanlaurentgaudy-417.webp'),
+  width: 1200,
+  height: 630,
+  fit: 'cover',
+  position: 'center',
+  format: 'jpg',
+  quality: 80,
+});
+const ogImage = ogImageProp ?? new URL(ogDefault.src, Astro.site).href;
 
 const siteName = 'Jeanice Huang';
 const pageTitle = fullTitle ? title : `${title} | ${siteName}`;

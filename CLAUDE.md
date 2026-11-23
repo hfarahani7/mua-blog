@@ -39,6 +39,8 @@ src/
   layouts/          Base.astro (head, fonts, meta, header, footer)
   components/       one component per section (Header.astro, Footer.astro, Gallery.astro, ...)
   styles/global.css Tailwind import + @theme tokens + base styles
+  assets/photos/    website photos (optimized by Astro at build time)
+  data/photos.ts    photo lookup + gallery order
 public/             favicon, og image, robots.txt (never images/ — see below)
 image-sync.js       manual tool: syncs portfolio photos between S3 and a local folder (npm run sync)
 .github/workflows/  deploy.yml
@@ -46,12 +48,15 @@ image-sync.js       manual tool: syncs portfolio photos between S3 and a local f
 
 ## Images
 
-All photos live in the S3 bucket under `images/` and are served from CloudFront at `https://dwxk3eiesmmgs.cloudfront.net/images/<file>`. They are **not** in this repo.
+**Website photos live in `src/assets/photos/`** (WebP, max 2000px on the long edge, lowercase hyphenated filenames). Astro optimizes them at build time into 400–1600px WebP versions under `dist/_astro/`, which the deploy uploads with one-year caching.
 
-- Use plain `<img>` tags with the full CloudFront URL, explicit `width` and `height` (the real pixel size, or at least the correct aspect ratio), meaningful `alt` text and `loading="lazy"`. The one exception is the image that's largest above the fold on each page: give it `loading="eager"` and `fetchpriority="high"` instead.
-- Don't use `astro:assets` / `<Image />` for these, and don't download them into the repo.
-- Filenames with spaces must be URL-encoded as `%20` (e.g. `EJ-24%20%281%29.webp`), not `+`.
-- Use the existing photos only. If a design calls for a photo, pick one from the URLs already used on the site and tell me which you chose.
+**The S3 bucket's `images/` folder is the archive of originals** (about 200 photos, served at `https://dwxk3eiesmmgs.cloudfront.net/images/<file>`). It is never deployed to or deleted from this repo, and no page should link to it.
+
+- Always render photos with `src/components/Photo.astro` (which uses `astro:assets` `<Image>`), passing a `sizes` value that matches how wide the photo is shown. Never a plain `<img>` with a CloudFront URL.
+- Look photos up with `photo('filename.webp')` from `src/data/photos.ts`; it fails the build if the file is missing.
+- Give every photo meaningful `alt` text (or `alt=""` if it's decorative inside a labelled link). Only the largest photo above the fold gets `eager`; everything else stays lazy.
+- New photos: resize to max 2000px and save as WebP before committing. Don't commit camera originals.
+- Use the existing photos only. If a design calls for a photo, pick one from `src/assets/photos/` and tell me which you chose.
 - Never put anything in `public/images/`. Astro copies `public/` into `dist/`, and nothing under `images/` may ever be deployed from this repo.
 
 ## How to build UI

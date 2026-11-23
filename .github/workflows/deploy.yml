@@ -138,7 +138,15 @@ jobs:
       - name: Upload hashed assets (cache for 1 year)
         if: hashFiles('dist/_astro/**') != ''
         run: |
+          # Photos: set image/webp explicitly (the CLI's type guess for .webp depends on the runner).
           aws s3 sync dist/_astro "s3://$S3_BUCKET/_astro" \
+            --exclude "*" --include "*.webp" \
+            --exclude "images/*" \
+            --content-type "image/webp" \
+            --cache-control "public, max-age=31536000, immutable" \
+            --only-show-errors
+          aws s3 sync dist/_astro "s3://$S3_BUCKET/_astro" \
+            --exclude "*.webp" \
             --exclude "images/*" \
             --cache-control "public, max-age=31536000, immutable" \
             --only-show-errors

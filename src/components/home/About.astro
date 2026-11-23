@@ -6,15 +6,15 @@ import Arrow from '../Arrow.astro';
 import { photo } from '../../data/photos';
 
 const categories = [
-  { label: 'Bridal', href: '/portfolio#bridal', photo: photo('IMG_6087.webp'), position: '50% 35%' },
-  { label: 'Studio', href: '/portfolio#studio', photo: photo('C9FBB259-D95B-4990-9992-CFF20769905C.webp'), position: '50% 25%' },
+  { label: 'Bridal', href: '/portfolio#bridal', photo: photo('img-6087.webp'), position: '50% 35%' },
+  { label: 'Studio', href: '/portfolio#studio', photo: photo('c9fbb259-d95b-4990-9992-cff20769905c.webp'), position: '50% 25%' },
 ];
 ---
 
 <section class="reveal container-site py-section md:py-section-desktop" aria-labelledby="about">
   <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-grid-gap">
     <figure class="lg:col-span-5">
-      <Photo photo={photo('IMG_4382.webp')} alt="Jeanice Huang" aspect="aspect-[3/4]" position="50% 30%" />
+      <Photo photo={photo('img-4382.webp')} alt="Jeanice Huang" sizes="(min-width: 1280px) 460px, (min-width: 1024px) 38vw, calc(100vw - 3rem)" aspect="aspect-[3/4]" position="50% 30%" />
       <figcaption class="mt-5">
         <span class="block font-display text-headline-sm text-ink">Jeanice Huang</span>
         {/* TODO: role line drafted; owner to approve. */}
@@ -34,7 +34,7 @@ const categories = [
         {categories.map((c) => (
           <li>
             <a href={c.href} class="block">
-              <Photo photo={c.photo} alt="" aspect="aspect-[4/5]" position={c.position} />
+              <Photo photo={c.photo} alt="" sizes="(min-width: 1280px) 340px, (min-width: 1024px) 27vw, 45vw" aspect="aspect-[4/5]" position={c.position} />
               <span class="mt-4 inline-flex items-center gap-3 text-label-md uppercase text-ink">
                 <span class="link-underline">{c.label}</span>
                 <Arrow />

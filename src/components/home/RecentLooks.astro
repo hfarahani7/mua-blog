@@ -3,39 +3,43 @@
 // 7/5 then 5/7 grid. On phones they sit two per row, like the old site.
 import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
-import { photo } from '../../data/photos';
+import { photoEntry } from '../../data/photos';
 
-// TODO: alt text written from the photos; owner to check.
+// Alt text comes from src/content/photos.json.
 // NOTE: IMG_9555 and IMG_8632 are phone screenshots with black bars top and bottom; the crops
 // below keep the bars out of frame. The old code had "not this one" comments next to
 // IMG_6084 and IMG_8632 — owner to confirm these four are still the right picks.
 const looks = [
   {
-    photo: photo('IMG_6084.webp'),
-    alt: 'A bride with a pearl headband and a satin slip dress',
+    photo: photoEntry('img-6084.webp').image,
+    alt: photoEntry('img-6084.webp').alt,
     span: 'md:col-span-7',
+    sizes: '(min-width: 1280px) 640px, (min-width: 768px) 55vw, 45vw',
     aspect: 'aspect-square md:aspect-[4/5]',
     position: '50% 22%',
   },
   {
-    photo: photo('IMG_4037.webp'),
-    alt: "A bride's soft curls with baby's breath, seen from behind",
+    photo: photoEntry('img-4037.webp').image,
+    alt: photoEntry('img-4037.webp').alt,
     span: 'md:col-span-5',
+    sizes: '(min-width: 1280px) 460px, (min-width: 768px) 40vw, 45vw',
     aspect: 'aspect-square',
     position: '50% 30%',
     fillRow: true,
   },
   {
-    photo: photo('IMG_9555.webp'),
-    alt: 'A bride with a sleek bun and glowing, natural makeup',
+    photo: photoEntry('img-9555.webp').image,
+    alt: photoEntry('img-9555.webp').alt,
     span: 'md:col-span-5',
+    sizes: '(min-width: 1280px) 460px, (min-width: 768px) 40vw, 45vw',
     aspect: 'aspect-square',
     position: '50% 50%',
   },
   {
-    photo: photo('IMG_8632.webp'),
-    alt: 'A bride with long waves looking at her lace gown',
+    photo: photoEntry('img-8632.webp').image,
+    alt: photoEntry('img-8632.webp').alt,
     span: 'md:col-span-7',
+    sizes: '(min-width: 1280px) 640px, (min-width: 768px) 55vw, 45vw',
     aspect: 'aspect-square',
     position: '50% 40%',
     fillRow: true,
@@ -62,6 +66,7 @@ const looks = [
         <Photo
           photo={look.photo}
           alt={look.alt}
+          sizes={look.sizes}
           aspect={look.aspect}
           position={look.position}
           fillRow={look.fillRow}
