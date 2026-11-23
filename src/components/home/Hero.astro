@@ -3,7 +3,9 @@
 // with the offset hairline frame. No stats row, no gradient, no badge (DESIGN.md → Banned).
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
-import { photo } from '../../data/photos';
+import { photoEntry } from '../../data/photos';
+
+const hero = photoEntry('kath-matt-jeanlaurentgaudy-417.webp');
 ---
 
 <section class="container-site overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32">
@@ -24,8 +26,8 @@ import { photo } from '../../data/photos';
     <div class="relative lg:col-span-6">
       {/* TODO: alt text written from the photo; owner to check. */}
       <Photo
-        photo={photo('kath-matt-jeanlaurentgaudy-417.webp')}
-        alt="A bride in a fitted strapless gown with a long train, seen from behind on a dark staircase"
+        photo={hero.image}
+        alt={hero.alt}
         sizes="(min-width: 1280px) 556px, (min-width: 1024px) 44vw, (min-width: 768px) calc(100vw - 8rem), calc(100vw - 3rem)"
         aspect="aspect-[4/5]"
         position="50% 60%"

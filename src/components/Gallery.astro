@@ -2,21 +2,20 @@
 // CSS-only masonry gallery (CSS columns; no JavaScript, no library).
 // Photos keep their own aspect ratio, each in a white hairline frame with the hover zoom.
 // Column order runs top-to-bottom, then left-to-right.
+// Alt text and order come from src/content/photos.json.
 import Photo from './Photo.astro';
-import type { Photo as PhotoData } from '../data/photos';
+import type { PhotoEntry } from '../data/photos';
 
 interface Props {
   id: string;
   title: string;
-  photos: PhotoData[];
-  /** Alt text prefix, e.g. "Bridal hair and makeup by Jeanice Huang". */
-  altPrefix: string;
+  photos: PhotoEntry[];
   /** Load the first N photos immediately (only for the gallery at the top of the page). */
   eagerCount?: number;
   tone?: 'low' | 'canvas';
 }
 
-const { id, title, photos, altPrefix, eagerCount = 0, tone = 'canvas' } = Astro.props;
+const { id, title, photos, eagerCount = 0, tone = 'canvas' } = Astro.props;
 ---
 
 <section
@@ -33,10 +32,9 @@ const { id, title, photos, altPrefix, eagerCount = 0, tone = 'canvas' } = Astro.
     <ul class="columns-1 gap-6 sm:columns-2 lg:columns-3 lg:gap-8">
       {photos.map((p, i) => (
         <li class="mb-6 break-inside-avoid lg:mb-8">
-          {/* TODO: generic alt text; owner to provide real descriptions / photographer credits. */}
           <Photo
-            photo={p}
-            alt={`${altPrefix}, photo ${i + 1} of ${photos.length}`}
+            photo={p.image}
+            alt={p.alt}
             sizes="(min-width: 1280px) 360px, (min-width: 1024px) 28vw, (min-width: 640px) 45vw, calc(100vw - 4rem)"
             natural
             framed

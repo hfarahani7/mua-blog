@@ -1,0 +1,389 @@
+{
+  "photos": [
+    {
+      "image": "src/assets/photos/0048.webp",
+      "alt": "Hands fastening the back of a bride's lace gown, her dark curls over her shoulder",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/0060.webp",
+      "alt": "Black-and-white portrait of a bride with vintage waves putting on an earring by a window",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/0663.webp",
+      "alt": "A bride with a long veil and bouquet in an open field under a dark evening sky",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/a7ba88fe-e4a7-46f8-9833-18df2fd1f2ea.webp",
+      "alt": "A bride's soft brown curls being styled while she wears a satin robe",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/dana-21.webp",
+      "alt": "A smiling bride in a strapless gown holding a white bouquet among tropical greenery",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/dana-28.webp",
+      "alt": "A bride in a lace gown standing at a bright window, seen from behind, in black and white",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/dana-48.webp",
+      "alt": "A bride and groom laughing together as she holds a white bouquet",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/dana-117.webp",
+      "alt": "A bride in a white robe sitting by a window beside her hanging gown",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/dscf7649.webp",
+      "alt": "A bride with long waves being laced into her gown by a window overlooking the city",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/dtc-14.webp",
+      "alt": "White roses and baby's breath arranged against dark greenery",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/ej-32.webp",
+      "alt": "A bride and groom holding hands by the water with the Brooklyn Bridge behind them",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/hl-16102776383.webp",
+      "alt": "Bridesmaids helping a bride in a white robe get ready by a large window",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-3040.webp",
+      "alt": "A bride and groom kissing under a weeping willow, her train spread across the grass",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-4037.webp",
+      "alt": "A bride's soft curls with baby's breath, seen from behind",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-5471.webp",
+      "alt": "A bride and groom laughing during their ceremony beside the officiant, with water behind them",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-6008.webp",
+      "alt": "A bride in a satin robe celebrating with bridesmaids in black robes",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-6086.webp",
+      "alt": "A bride and groom by a fountain as her long veil blows in the wind",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-6093.webp",
+      "alt": "Black-and-white photo of a bride and her bridal party posing playfully in a row",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-8629.webp",
+      "alt": "A bride with long blonde waves smiling on a sofa in a lace robe",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-8630.webp",
+      "alt": "A blonde bride with her eyes closed while her makeup is applied",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-9073.webp",
+      "alt": "A makeup artist touching up a bride's face by a window",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-9085.webp",
+      "alt": "A bride in a fitted gown sitting on garden steps beneath blossoming trees",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-9092.webp",
+      "alt": "A bride with a pearl headband and soft curls looking down at her lace-trimmed dress",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/kath-matt-jeanlaurentgaudy-030.webp",
+      "alt": "A dark wood-panelled bar lit by a leaded-glass window",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/kath-matt-jeanlaurentgaudy-060.webp",
+      "alt": "A bouquet of peach roses and greenery on a table beside small vases",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/kath-matt-jeanlaurentgaudy-087.webp",
+      "alt": "A bride in a satin robe toasting with bridesmaids in black robes",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/kath-matt-jeanlaurentgaudy-185.webp",
+      "alt": "A bride putting on an earring while her hair is pinned, in warm lamplight",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/kath-matt-jeanlaurentgaudy-527.webp",
+      "alt": "A bride and groom standing beside a vintage car on a tree-lined drive",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/kath-matt-jeanlaurentgaudy-603.webp",
+      "alt": "Black-and-white photo of a bride getting ready in a mirrored dressing room",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/pc-32.webp",
+      "alt": "White orchids and a book on a table by a window overlooking the Manhattan skyline",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/pc-35.webp",
+      "alt": "A lace wedding gown hanging in a hotel room",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/pc-51-1.webp",
+      "alt": "A bride being buttoned into her gown by a tall window",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/pc-67.webp",
+      "alt": "A bride in a lace gown and veil putting on her white heels",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/pc-74.webp",
+      "alt": "A bride with sleek half-up hair putting on an earring",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/pc-81-1.webp",
+      "alt": "A bride in a floral lace gown holding a white bouquet in a dark hallway",
+      "gallery": "bridal",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/1dc67769-7753-4d92-86bb-1c5aaa630cef.webp",
+      "alt": "A smiling man with a grey beard applying skincare cream to his cheek",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/3cfe1b70-5830-430e-a829-992db953fac7.webp",
+      "alt": "Close-up of a woman with sleek brown hair, soft pink blush and glossy lips",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/7d2fa728-c2ab-4f5f-8319-ad4344bcf27e.webp",
+      "alt": "A model with long braids in a dark metallic jacket, seated for a studio portrait",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/374ac1de-0983-4b4f-a336-0aa0187c7e55.webp",
+      "alt": "A model with natural hair and polished bronze makeup in a white blazer",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/4949bfe8-2684-49b7-a4a0-d4d103b941e0.webp",
+      "alt": "A model with bright green eyeshadow and pink blush resting her head on her arm",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/c9fbb259-d95b-4990-9992-cff20769905c.webp",
+      "alt": "Two models with glowing skin and statement earrings, one in a blue satin corset",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/d6420a2f-b705-4371-b6e9-debe128ecd87.webp",
+      "alt": "A model with long curly hair and warm, natural makeup raising her arms",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/e6710887-ba74-4089-8d4d-d1677c468dfe.webp",
+      "alt": "A model with long dark waves in a black fringe dress",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/ej-24-1.webp",
+      "alt": "A pond covered in lily pads, surrounded by greenery",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-0581.webp",
+      "alt": "Two models in colourful knitwear with playful editorial makeup",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-0600.webp",
+      "alt": "A model with bold pastel eye makeup eating a slice of pizza",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-0655.webp",
+      "alt": "Two models in black coats, photographed with a fisheye lens between city towers",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-6418.webp",
+      "alt": "A model with a sleek blonde ponytail and red lips in a black leather suit",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-9677.webp",
+      "alt": "A smiling model with curly hair in a lime green top, resting her chin on her hand",
+      "gallery": "studio",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/kath-matt-jeanlaurentgaudy-417.webp",
+      "alt": "A bride in a fitted strapless gown with a long train, seen from behind on a dark staircase",
+      "gallery": "none",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-6084.webp",
+      "alt": "A bride with a pearl headband and a satin slip dress",
+      "gallery": "none",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-9555.webp",
+      "alt": "A bride with a sleek bun and glowing, natural makeup",
+      "gallery": "none",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-8632.webp",
+      "alt": "A bride with long waves looking at her lace gown",
+      "gallery": "none",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-4382.webp",
+      "alt": "Jeanice Huang",
+      "gallery": "none",
+      "photographer": "",
+      "photographerUrl": ""
+    },
+    {
+      "image": "src/assets/photos/img-6087.webp",
+      "alt": "A groom kissing his bride under her veil, in black and white",
+      "gallery": "none",
+      "photographer": "",
+      "photographerUrl": ""
+    }
+  ]
+}

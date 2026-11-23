@@ -4,7 +4,9 @@
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import InquiryForm from '../components/InquiryForm.astro';
-import { photo } from '../data/photos';
+import { photoEntry } from '../data/photos';
+
+const side = photoEntry('dana-28.webp');
 ---
 
 {/* TODO: title and description drafted; owner to approve. */}
@@ -21,8 +23,8 @@ import { photo } from '../data/photos';
           Tell me about your wedding: your date, your venue and who needs hair and makeup.
         </p>
         <Photo
-          photo={photo('dana-28.webp')}
-          alt="A bride in a lace gown standing at a bright window, seen from behind"
+          photo={side.image}
+          alt={side.alt}
           sizes="(min-width: 1280px) 460px, 38vw"
           aspect="aspect-[4/5]"
           position="50% 40%"
