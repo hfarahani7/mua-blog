@@ -1,0 +1,81 @@
+# Pages CMS configuration (https://pagescms.org/docs/configuration/).
+# Editors change src/content/photos.json and upload photos into src/assets/photos/.
+# Every save is a commit to the branch open in Pages CMS; a save on master deploys the site.
+# The build stops (and nothing deploys) if a photo is missing or has no description.
+
+media:
+  - name: photos
+    label: Photos
+    input: src/assets/photos
+    output: src/assets/photos
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+
+content:
+  - name: photos
+    label: Photos
+    type: file
+    path: src/content/photos.json
+    format: json
+    fields:
+      - name: photos
+        label: Photos
+        description: >-
+          Every photo on the website. The order here is the order in the Portfolio galleries.
+          Photos marked "Not in a gallery" are used on the home or inquiries page; don't remove
+          those without asking, or the site won't build.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {alt}"
+        fields:
+          - name: image
+            label: Photo
+            type: image
+            required: true
+            description: JPG, PNG or WebP. Large camera files are shrunk automatically after upload.
+            options:
+              media: photos
+              extensions: [jpg, jpeg, png, webp]
+          - name: alt
+            label: Description (alt text)
+            type: string
+            required: true
+            description: >-
+              What's in the photo, for people using screen readers and for search engines.
+              One plain sentence, e.g. "A bride with soft curls and baby's breath, seen from behind".
+            options:
+              maxlength: 200
+          - name: gallery
+            label: Where it appears
+            type: select
+            required: true
+            options:
+              values:
+                - name: bridal
+                  label: Portfolio, Bridal
+                - name: studio
+                  label: Portfolio, Studio
+                - name: none
+                  label: Not in a gallery (home or inquiries page)
+          - name: photographer
+            label: Photographer
+            type: string
+            description: 'Shown as "Photo: Name". Leave blank if unknown.'
+          - name: photographerUrl
+            label: Photographer link
+            type: string
+            description: Their website or Instagram, starting with https://. Optional.
+            pattern:
+              regex: "^(https://\\S+)?$"
+              message: Use a full link starting with https://, or leave it blank.
+
+settings:
+  commit:
+    identity: user
+    templates:
+      create: "content: add {path} (via Pages CMS, {userName})"
+      update: "content: update {path} (via Pages CMS, {userName})"
+      delete: "content: delete {path} (via Pages CMS, {userName})"
+      rename: "content: rename {oldPath} to {newPath} (via Pages CMS, {userName})"
