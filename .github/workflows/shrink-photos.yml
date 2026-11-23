@@ -1,0 +1,60 @@
+# Shrinks photos uploaded to src/assets/photos/ (for example through Pages CMS) so camera
+# originals don't stay in the repo: max 2000px, camera metadata (including GPS) removed.
+# Filenames and formats never change, so src/content/photos.json stays valid.
+#
+# The fix-up commit is pushed with the built-in GITHUB_TOKEN. GitHub doesn't start other
+# workflows for pushes made with that token, so this doesn't trigger a second deploy or a loop.
+# (The deploy for the upload itself still runs; Astro resizes the large file at build time.)
+# This workflow never talks to AWS.
+
+name: Shrink uploaded photos
+
+on:
+  push:
+    branches: [master]
+    paths: ['src/assets/photos/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shrink-photos
+  cancel-in-progress: false
+
+jobs:
+  shrink:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install sharp (image library)
+        run: npm install --prefix "$RUNNER_TEMP/sharp" --no-audit --no-fund sharp@0.34.5
+
+      - name: Shrink large photos
+        env:
+          SHARP_DIR: ${{ runner.temp }}/sharp
+        run: node .github/scripts/shrink-photos.mjs
+
+      - name: Commit and push the smaller files
+        run: |
+          if git diff --quiet -- src/assets/photos; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/assets/photos
+          git commit -m "photos: shrink uploaded photos (automatic)"
+          # Someone may have saved again in the CMS meanwhile; rebase and retry.
+          for i in 1 2 3; do
+            git pull --rebase origin master && git push origin HEAD:master && exit 0
+            sleep 5
+          done
+          echo "::error::Could not push the shrunk photos after 3 tries."
+          exit 1

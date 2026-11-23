@@ -52,12 +52,23 @@ image-sync.js       manual tool: syncs portfolio photos between S3 and a local f
 
 **The S3 bucket's `images/` folder is the archive of originals** (about 200 photos, served at `https://dwxk3eiesmmgs.cloudfront.net/images/<file>`). It is never deployed to or deleted from this repo, and no page should link to it.
 
+**`src/content/photos.json` is the list of every site photo**: image path, alt text, gallery (`bridal`, `studio` or `none`), photographer and photographer link. Gallery order is list order. The owner edits it through Pages CMS (below), so treat it as content, not code.
+
 - Always render photos with `src/components/Photo.astro` (which uses `astro:assets` `<Image>`), passing a `sizes` value that matches how wide the photo is shown. Never a plain `<img>` with a CloudFront URL.
-- Look photos up with `photo('filename.webp')` from `src/data/photos.ts`; it fails the build if the file is missing.
-- Give every photo meaningful `alt` text (or `alt=""` if it's decorative inside a labelled link). Only the largest photo above the fold gets `eager`; everything else stays lazy.
-- New photos: resize to max 2000px and save as WebP before committing. Don't commit camera originals.
-- Use the existing photos only. If a design calls for a photo, pick one from `src/assets/photos/` and tell me which you chose.
+- Look photos up with `photoEntry('filename.webp')` (image + alt + credit) or `photo('filename.webp')` from `src/data/photos.ts`. Both fail the build if the photo isn't in `photos.json`. Use the alt text from the data file rather than writing it in components.
+- Every photo needs meaningful alt text in `photos.json` (the build fails without it). Use `alt=""` only when a photo is decorative inside a labelled link. Only the largest photo above the fold gets `eager`; everything else stays lazy.
+- New photos: max 2000px, no camera originals. Uploads through the CMS are shrunk automatically by `.github/workflows/shrink-photos.yml`; when adding photos by hand, resize first.
+- Use the existing photos only. If a design calls for a photo, pick one from `photos.json` and tell me which you chose.
 - Never put anything in `public/images/`. Astro copies `public/` into `dist/`, and nothing under `images/` may ever be deployed from this repo.
+
+## Content editing (Pages CMS)
+
+The owner edits photos (and later, copy) with [Pages CMS](https://pagescms.org), configured in `.pages.yml`. It reads that file from the default branch (`master`), commits edits directly, and a commit to `master` deploys the site.
+
+- The CMS can only change what `.pages.yml` defines: today `src/content/photos.json` and uploads to `src/assets/photos/`. Keep that file's field names in sync with `src/data/photos.ts`.
+- The build is the safety net: a missing photo, empty alt text or unknown gallery stops it before anything deploys. Don't weaken those checks.
+- Don't hand-edit `photos.json` in a way the CMS can't represent (extra keys are dropped when the CMS saves it).
+- CMS commits to `master` are expected. The "never commit to master" rule is for the agent, not for content edits.
 
 ## How to build UI
 
