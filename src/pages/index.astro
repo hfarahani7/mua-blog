@@ -4,9 +4,6 @@ import Hero from '../components/home/Hero.astro';
 import RecentLooks from '../components/home/RecentLooks.astro';
 import About from '../components/home/About.astro';
 import InquiryPrompt from '../components/InquiryPrompt.astro';
-import { photo, photoUrl } from '../data/photos';
-
-const heroUrl = photoUrl(photo('Kath_Matt_JeanLaurentGaudy_417.webp'));
 ---
 
 {/* TODO: title and description drafted from existing copy; owner to approve. */}
@@ -15,7 +12,6 @@ const heroUrl = photoUrl(photo('Kath_Matt_JeanLaurentGaudy_417.webp'));
   title="Jeanice Huang | Bridal Hair & Makeup, Long Island & NYC"
   description="Bridal hair and makeup by Jeanice Huang. From subtle elegance to show-stopping glam, on location throughout Long Island and NYC."
 >
-  <link slot="head" rel="preload" as="image" href={heroUrl} fetchpriority="high" />
   <Hero />
   <RecentLooks />
   <About />

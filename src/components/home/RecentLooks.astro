@@ -11,31 +11,35 @@ import { photo } from '../../data/photos';
 // IMG_6084 and IMG_8632 — owner to confirm these four are still the right picks.
 const looks = [
   {
-    photo: photo('IMG_6084.webp'),
+    photo: photo('img-6084.webp'),
     alt: 'A bride with a pearl headband and a satin slip dress',
     span: 'md:col-span-7',
+    sizes: '(min-width: 1280px) 640px, (min-width: 768px) 55vw, 45vw',
     aspect: 'aspect-square md:aspect-[4/5]',
     position: '50% 22%',
   },
   {
-    photo: photo('IMG_4037.webp'),
+    photo: photo('img-4037.webp'),
     alt: "A bride's soft curls with baby's breath, seen from behind",
     span: 'md:col-span-5',
+    sizes: '(min-width: 1280px) 460px, (min-width: 768px) 40vw, 45vw',
     aspect: 'aspect-square',
     position: '50% 30%',
     fillRow: true,
   },
   {
-    photo: photo('IMG_9555.webp'),
+    photo: photo('img-9555.webp'),
     alt: 'A bride with a sleek bun and glowing, natural makeup',
     span: 'md:col-span-5',
+    sizes: '(min-width: 1280px) 460px, (min-width: 768px) 40vw, 45vw',
     aspect: 'aspect-square',
     position: '50% 50%',
   },
   {
-    photo: photo('IMG_8632.webp'),
+    photo: photo('img-8632.webp'),
     alt: 'A bride with long waves looking at her lace gown',
     span: 'md:col-span-7',
+    sizes: '(min-width: 1280px) 640px, (min-width: 768px) 55vw, 45vw',
     aspect: 'aspect-square',
     position: '50% 40%',
     fillRow: true,
@@ -62,6 +66,7 @@ const looks = [
         <Photo
           photo={look.photo}
           alt={look.alt}
+          sizes={look.sizes}
           aspect={look.aspect}
           position={look.position}
           fillRow={look.fillRow}

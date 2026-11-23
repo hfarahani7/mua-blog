@@ -1,96 +1,74 @@
-// Photo data for the site. All photos live in the S3 bucket under images/ and are served
-// from CloudFront; none are in this repo. Widths/heights are the real pixel sizes (read from
-// the files), used for <img width height> so the layout doesn't shift while photos load.
-// Order matches the old Next.js site. Generated during the Astro migration.
+// Website photos. The files live in src/assets/photos/ (resized to max 2000px) and are
+// optimized by Astro at build time: each <Photo> gets 400–1600px WebP versions with correct
+// width/height, served from /_astro/ with long-term caching. The originals stay in the S3
+// bucket under images/ as an archive and are never deployed from this repo.
+import type { ImageMetadata } from 'astro';
 
-export const IMAGE_BASE = 'https://dwxk3eiesmmgs.cloudfront.net/images/';
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/photos/*.{webp,jpg,jpeg,png,avif}', {
+  eager: true,
+});
 
-export interface Photo {
-  /** Filename in images/ (unencoded; spaces allowed). */
-  file: string;
-  width: number;
-  height: number;
+export type Photo = ImageMetadata;
+
+/** Look up a photo in src/assets/photos/ by filename. Throws at build time if it's missing. */
+export function photo(name: string): Photo {
+  const mod = files[`../assets/photos/${name}`];
+  if (!mod) throw new Error(`Photo not found in src/assets/photos/: ${name}`);
+  return mod.default;
 }
 
-/** Full CloudFront URL for a photo. Spaces become %20 (not +), brackets %28 / %29. */
-export function photoUrl(p: Pick<Photo, 'file'> | string): string {
-  const file = typeof p === 'string' ? p : p.file;
-  return IMAGE_BASE + encodeURIComponent(file).replace(/\(/g, '%28').replace(/\)/g, '%29');
-}
-
-/** Look up a photo by filename. Throws at build time if it isn't listed below. */
-export function photo(file: string): Photo {
-  const p = ALL.find((x) => x.file === file);
-  if (!p) throw new Error(`Unknown photo: ${file}`);
-  return p;
-}
-
-// TODO: the old site had placeholder captions ("Photo: John Smith") for these. Real
-// photographer credits and descriptive alt text are needed from the owner.
+// TODO: real photographer credits and descriptive alt text are needed from the owner.
 export const BRIDAL: Photo[] = [
-  { file: "0048.webp", width: 3360, height: 5040 },
-  { file: "0060.webp", width: 5040, height: 3360 },
-  { file: "0663.webp", width: 3360, height: 5040 },
-  { file: "A7BA88FE-E4A7-46F8-9833-18DF2FD1F2EA.webp", width: 1440, height: 1800 },
-  { file: "Dana-21.webp", width: 3598, height: 5408 },
-  { file: "Dana-28.webp", width: 2985, height: 4486 },
-  { file: "Dana-48.webp", width: 3228, height: 4852 },
-  { file: "Dana-117.webp", width: 4740, height: 3600 },
-  { file: "DSCF7649.webp", width: 5500, height: 4122 },
-  { file: "DTC-14.webp", width: 3667, height: 5500 },
-  { file: "EJ-32.webp", width: 5500, height: 4120 },
-  { file: "hl-16102776383.webp", width: 512, height: 340 },
-  { file: "IMG_3040.webp", width: 1284, height: 1603 },
-  { file: "IMG_4037.webp", width: 1284, height: 1927 },
-  { file: "IMG_5471.webp", width: 1284, height: 822 },
-  { file: "IMG_6008.webp", width: 1284, height: 833 },
-  { file: "IMG_6086.webp", width: 1284, height: 698 },
-  { file: "IMG_6093.webp", width: 1284, height: 623 },
-  { file: "IMG_8629.webp", width: 1284, height: 845 },
-  { file: "IMG_8630.webp", width: 1284, height: 814 },
-  { file: "IMG_9073.webp", width: 1600, height: 1065 },
-  { file: "IMG_9085.webp", width: 1067, height: 1600 },
-  { file: "IMG_9092.webp", width: 1067, height: 1600 },
-  { file: "Kath_Matt_JeanLaurentGaudy_030.webp", width: 2334, height: 3500 },
-  { file: "Kath_Matt_JeanLaurentGaudy_060.webp", width: 2334, height: 3500 },
-  { file: "Kath_Matt_JeanLaurentGaudy_087.webp", width: 3500, height: 2334 },
-  { file: "Kath_Matt_JeanLaurentGaudy_185.webp", width: 2334, height: 3500 },
-  { file: "Kath_Matt_JeanLaurentGaudy_527.webp", width: 3500, height: 2334 },
-  { file: "Kath_Matt_JeanLaurentGaudy_603.webp", width: 3500, height: 2334 },
-  { file: "pc-32.webp", width: 3667, height: 5500 },
-  { file: "pc-35.webp", width: 4133, height: 5500 },
-  { file: "pc-51 (1).webp", width: 5500, height: 4122 },
-  { file: "pc-67.webp", width: 4134, height: 5500 },
-  { file: "pc-74.webp", width: 3667, height: 5500 },
-  { file: "pc-81 (1).webp", width: 3667, height: 5500 },
-];
+  '0048.webp',
+  '0060.webp',
+  '0663.webp',
+  'a7ba88fe-e4a7-46f8-9833-18df2fd1f2ea.webp',
+  'dana-21.webp',
+  'dana-28.webp',
+  'dana-48.webp',
+  'dana-117.webp',
+  'dscf7649.webp',
+  'dtc-14.webp',
+  'ej-32.webp',
+  'hl-16102776383.webp',
+  'img-3040.webp',
+  'img-4037.webp',
+  'img-5471.webp',
+  'img-6008.webp',
+  'img-6086.webp',
+  'img-6093.webp',
+  'img-8629.webp',
+  'img-8630.webp',
+  'img-9073.webp',
+  'img-9085.webp',
+  'img-9092.webp',
+  'kath-matt-jeanlaurentgaudy-030.webp',
+  'kath-matt-jeanlaurentgaudy-060.webp',
+  'kath-matt-jeanlaurentgaudy-087.webp',
+  'kath-matt-jeanlaurentgaudy-185.webp',
+  'kath-matt-jeanlaurentgaudy-527.webp',
+  'kath-matt-jeanlaurentgaudy-603.webp',
+  'pc-32.webp',
+  'pc-35.webp',
+  'pc-51-1.webp',
+  'pc-67.webp',
+  'pc-74.webp',
+  'pc-81-1.webp',
+].map(photo);
 
 export const STUDIO: Photo[] = [
-  { file: "1DC67769-7753-4D92-86BB-1C5AAA630CEF.webp", width: 4716, height: 5895 },
-  { file: "3CFE1B70-5830-430E-A829-992DB953FAC7.webp", width: 4716, height: 5895 },
-  { file: "7D2FA728-C2AB-4F5F-8319-AD4344BCF27E.webp", width: 5163, height: 7741 },
-  { file: "374AC1DE-0983-4B4F-A336-0AA0187C7E55.webp", width: 5163, height: 7741 },
-  { file: "4949BFE8-2684-49B7-A4A0-D4D103B941E0.webp", width: 4624, height: 5780 },
-  { file: "C9FBB259-D95B-4990-9992-CFF20769905C.webp", width: 5163, height: 7741 },
-  { file: "D6420A2F-B705-4371-B6E9-DEBE128ECD87.webp", width: 4128, height: 6192 },
-  { file: "E6710887-BA74-4089-8D4D-D1677C468DFE.webp", width: 5128, height: 7689 },
-  { file: "EJ-24 (1).webp", width: 4118, height: 5500 },
-  { file: "IMG_0581.webp", width: 5530, height: 6912 },
-  { file: "IMG_0600.webp", width: 5083, height: 6354 },
-  { file: "IMG_0655.webp", width: 4973, height: 6217 },
-  { file: "IMG_6418.webp", width: 633, height: 950 },
-  { file: "IMG_9677.webp", width: 4128, height: 6192 },
-];
-
-/** Photos used outside the portfolio galleries (home, inquiries). */
-const OTHER: Photo[] = [
-  { file: "IMG_6084.webp", width: 1284, height: 2281 },
-  { file: "IMG_9555.webp", width: 1284, height: 2778 },
-  { file: "IMG_8632.webp", width: 1284, height: 2778 },
-  { file: "IMG_4382.webp", width: 1284, height: 1889 },
-  { file: "IMG_6087.webp", width: 1284, height: 1858 },
-  { file: "Kath_Matt_JeanLaurentGaudy_417.webp", width: 2334, height: 3500 },
-  { file: "IMG_6091.webp", width: 1284, height: 712 },
-];
-
-const ALL: Photo[] = [...BRIDAL, ...STUDIO, ...OTHER];
+  '1dc67769-7753-4d92-86bb-1c5aaa630cef.webp',
+  '3cfe1b70-5830-430e-a829-992db953fac7.webp',
+  '7d2fa728-c2ab-4f5f-8319-ad4344bcf27e.webp',
+  '374ac1de-0983-4b4f-a336-0aa0187c7e55.webp',
+  '4949bfe8-2684-49b7-a4a0-d4d103b941e0.webp',
+  'c9fbb259-d95b-4990-9992-cff20769905c.webp',
+  'd6420a2f-b705-4371-b6e9-debe128ecd87.webp',
+  'e6710887-ba74-4089-8d4d-d1677c468dfe.webp',
+  'ej-24-1.webp',
+  'img-0581.webp',
+  'img-0600.webp',
+  'img-0655.webp',
+  'img-6418.webp',
+  'img-9677.webp',
+].map(photo);

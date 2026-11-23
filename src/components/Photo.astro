@@ -1,12 +1,16 @@
 ---
-// A photo from CloudFront in a fixed-aspect, overflow-hidden frame (DESIGN.md → Image frame).
-// Plain <img> with real width/height (no astro:assets: the photos are remote).
-import { photoUrl, type Photo } from '../data/photos';
+// A photo in a fixed-aspect, overflow-hidden frame (DESIGN.md → Image frame).
+// Uses astro:assets: the build makes 400–1600px WebP versions and the browser picks one
+// using `sizes`, so phones download small files. width/height come from the file itself.
+import { Image } from 'astro:assets';
+import type { Photo } from '../data/photos';
 
 interface Props {
   photo: Photo;
   /** Meaningful alt text, or "" when the photo is decorative (e.g. inside a labelled link). */
   alt: string;
+  /** How wide the photo is shown, as a `sizes` value, e.g. "(min-width: 1024px) 33vw, 100vw". */
+  sizes: string;
   /** Tailwind aspect classes, e.g. "aspect-[4/5] md:aspect-[3/4]". */
   aspect?: string;
   /** CSS object-position for the crop, e.g. "50% 30%". */
@@ -25,6 +29,7 @@ interface Props {
 const {
   photo,
   alt,
+  sizes,
   aspect = 'aspect-[4/5]',
   position,
   framed = false,
@@ -33,6 +38,9 @@ const {
   natural = false,
   class: className,
 } = Astro.props;
+
+// Generated widths, never larger than the stored file.
+const widths = [400, 800, 1200, 1600].filter((w) => w < photo.width).concat(Math.min(photo.width, 2000));
 ---
 
 <div class:list={[framed && 'border border-line bg-card p-2 md:p-3', fillRow && 'md:flex md:flex-col', className]}>
@@ -40,11 +48,13 @@ const {
     class:list={['photo-zoom relative overflow-hidden bg-canvas-mid', !natural && aspect, fillRow && 'md:aspect-auto md:flex-1']}
     style={natural ? `aspect-ratio: ${photo.width} / ${photo.height}` : undefined}
   >
-    <img
-      src={photoUrl(photo)}
-      width={photo.width}
-      height={photo.height}
+    <Image
+      src={photo}
       alt={alt}
+      widths={widths}
+      sizes={sizes}
+      format="webp"
+      quality={78}
       loading={eager ? 'eager' : 'lazy'}
       fetchpriority={eager ? 'high' : undefined}
       decoding="async"

@@ -37,6 +37,7 @@ const { id, title, photos, altPrefix, eagerCount = 0, tone = 'canvas' } = Astro.
           <Photo
             photo={p}
             alt={`${altPrefix}, photo ${i + 1} of ${photos.length}`}
+            sizes="(min-width: 1280px) 360px, (min-width: 1024px) 28vw, (min-width: 640px) 45vw, calc(100vw - 4rem)"
             natural
             framed
             eager={i < eagerCount}
